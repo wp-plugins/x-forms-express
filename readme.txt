@@ -31,6 +31,30 @@ Create professional forms **real fast**, **real easy** with very **little effort
 * No Programming skills required!
 * Add forms to post and pages with a click of a button.
 
+= Built in Anti-Spam =
+That's right!, all form submission you'll receive are submitted by humans and not robots! This is done without using Captha which is proved to annoy most users!
+
+= Clever Admin Panel Layout =
+The admin interface/panel is very easy to use. You can find all you need on one single screen, no jumping around to different pages to get things done! All forms and their settings are immediately accessible by a single click. There is no loading time once the page is open, if you click something you get it instantly...in other words, no fancy animated loading icons to frustrate you during your form setup.
+
+= Visual Editor =
+visual editor that allows you to change individual form elements or change the same element group as a whole by using the following settings:
+* **Font:** change element's the font color, family, alignment, letter spacing, line height and transition (uppercase, lowercase, capitalize)
+* **Dimensions:** change the element's width and height
+* **Background:** change the element's background color
+* **Padding:** change the space between the element border inwards (left right, bottom, top)
+* **Margin:** change the space between the element border outwards (left, right, bottom, top)
+* **Border:** change the border style as solid, dashed or dotted...Change the border thickness...Change the border color
+
+= Form entry storage and export =
+All form entries are stored and can be retrieved from the admin panel. These entries can also be exported as a .csv file for further use!
+
+= Multiple forms on a single page =
+Add more then on form on a single page for example one (or more) in the page content, one (or more) in the footer and one (or more) in the sidebar.
+
+= Create your own templates =
+Creating a template is easy, simply create a form and use the duplicate form function!
+
 == Installation ==
 
 1. After your download log into your WordPress admin interface
