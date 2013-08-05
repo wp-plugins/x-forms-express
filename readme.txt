@@ -8,11 +8,11 @@ Stable tag: 2.1.0
 License: GPLv2
 
 
-Build forms in seconds using this extremely user friendly form creator with some amazing features! 
+Build forms in seconds using this extremely user friendly form creator which includes some amazing features! 
 
 == Description ==
 
-X Forms is a high quality and simple to use form creator.
+**X Forms** is a **high quality** and simple to use **form creator**.
 If you have a need to create and customize good looking forms on your WordPress website, **X Forms is the awnser**!
 
 Create professional forms **real fast**, **real easy** with very **little effort**!
@@ -39,12 +39,12 @@ The admin interface/panel is very easy to use. You can find all you need on one 
 
 = Visual Editor =
 visual editor that allows you to change individual form elements or change the same element group as a whole by using the following settings:
-* **Font:** change element's the font color, family, alignment, letter spacing, line height and transition (uppercase, lowercase, capitalize)
-* **Dimensions:** change the element's width and height
-* **Background:** change the element's background color
-* **Padding:** change the space between the element border inwards (left right, bottom, top)
-* **Margin:** change the space between the element border outwards (left, right, bottom, top)
-* **Border:** change the border style as solid, dashed or dotted...Change the border thickness...Change the border color
+* Font: change element's the font color, family, alignment, letter spacing, line height and transition (uppercase, lowercase, capitalize)
+* Dimensions: change the element's width and height
+* Background: change the element's background color
+* Padding: change the space between the element border inwards (left right, bottom, top)
+* Margin: change the space between the element border outwards (left, right, bottom, top)
+* Border: change the border style as solid, dashed or dotted...Change the border thickness...Change the border color
 
 = Form entry storage and export =
 All form entries are stored and can be retrieved from the admin panel. These entries can also be exported as a .csv file for further use!
