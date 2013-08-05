@@ -38,7 +38,8 @@ That's right!, all form submission you'll receive are submitted by humans and no
 The admin interface/panel is very easy to use. You can find all you need on one single screen, no jumping around to different pages to get things done! All forms and their settings are immediately accessible by a single click. There is no loading time once the page is open, if you click something you get it instantly...in other words, no fancy animated loading icons to frustrate you during your form setup.
 
 = Visual Editor =
-visual editor that allows you to change individual form elements or change the same element group as a whole by using the following settings:
+The Visual editor allows you to change individual form elements or change the same element group as a whole by using the following settings:
+
 * Font: change element's the font color, family, alignment, letter spacing, line height and transition (uppercase, lowercase, capitalize)
 * Dimensions: change the element's width and height
 * Background: change the element's background color
