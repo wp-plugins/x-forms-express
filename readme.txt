@@ -19,7 +19,7 @@ Create professional forms **real fast**, **real easy** with very **little effort
 
 = Plugin Features: =
 
-*Listed below is some of the favourates...there are way to many list them all!*
+*Listed below is some of the favourites...there are way to many list them all!*
 
 * Simple Drag and Drop.
 * Up to 25 different form elements.
