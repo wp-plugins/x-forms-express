@@ -12,7 +12,10 @@ License: GPLv2
 X Forms is a high quality and simple to use form creator. If you have a need to create and customize good looking forms on your WordPress website, X Forms is the awnser...
 Create professional forms real fast, real easy with very little effort!
 
-## Features ##
+**Plugin Features:**
+
+Listed below is some of the favourates, way to many list them all!
+
 * Simple Drag and Drop.
 * Up to 25 different form elements.
 * Confirmation mail setup.
