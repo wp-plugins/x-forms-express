@@ -14,11 +14,9 @@ If you have a need to create and customize good looking forms on your WordPress 
 
 Create professional forms **real fast**, **real easy** with very **little effort**!
 
-___
-
 = Plugin Features: =
 
-*Listed below is some of the favourates, there are way to many list them all!
+*Listed below is some of the favourates...there are way to many list them all!*
 
 * Simple Drag and Drop.
 * Up to 25 different form elements.
