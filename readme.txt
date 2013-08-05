@@ -3,7 +3,7 @@
 Contributors: Webaways
 Tags: forms, form builder, form biulder, form creator, form elements, data storage, export, auto complete, color schemes, css editor, custom themes, date picker, time picker, file upload, confirmation mails, drag, drop, anti-spam, anti spam, no programming, sidbar form
 Requires at least: 3.2
-Tested up to: 3.5
+Tested up to: 3.6
 Stable tag: 2.1.0
 License: GPLv2
 
