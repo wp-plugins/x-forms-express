@@ -7,6 +7,9 @@ Tested up to: 3.6
 Stable tag: 2.1.0
 License: GPLv2
 
+
+Build forms in seconds using this extremely user friendly form creator with some amazing features! 
+
 == Description ==
 
 X Forms is a high quality and simple to use form creator.
