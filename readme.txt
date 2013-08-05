@@ -12,7 +12,7 @@ License: GPLv2
 X Forms is a high quality and simple to use form creator. If you have a need to create and customize good looking forms on your WordPress website, X Forms is the awnser…
 Create professional forms real fast, real easy with very little effort!
 
-##Features
+<h1>Features</h1>
 * Simple Drag and Drop.
 * Up to 25 different form elements.
 * Confirmation mail setup.
@@ -27,10 +27,10 @@ Create professional forms real fast, real easy with very little effort!
 
 1. After your download log into your WordPress admin interface
 2. After login click on  Plugins from the left  hand menu
-3. Click on “Add new”
-4. Click on “Upload”
-5. Browse to the directory you downloaded the plugin to and click “Install Now”
-6. After Wordpress has finished unpacking the file click on “Activate Plugin”
+3. Click on "Add new"
+4. Click on "Upload"
+5. Browse to the directory you downloaded the plugin to and click "Install Now"
+6. After Wordpress has finished unpacking the file click on "Activate Plugin"
 7. After the plugin has been activated you will notice a new menu item on the left hand navigation labelled X Forms
 
 == Screenshots ==
