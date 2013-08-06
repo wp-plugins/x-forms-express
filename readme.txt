@@ -14,7 +14,7 @@ Build unlimited forms in seconds using this extremely user friendly form creator
 
 = Create professional forms real fast, real easy! =
 **X Forms** is a **high quality** and simple to use **form creator**.
-If you have a need to create and customize good looking forms on your WordPress website, **X Forms is the answer**!
+If you have a need to create and customize good looking forms on your WordPress website, look no further...**X Forms is the answer**!
 
 
 
