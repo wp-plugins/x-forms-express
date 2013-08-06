@@ -1,7 +1,7 @@
 === X Forms Express ===
 
-Contributors: Webaways
-Tags: forms, form builder, form biulder, form creator, form elements, data storage, export, auto complete, color schemes, css editor, custom themes, date picker, time picker, file upload, confirmation mails, drag, drop, anti-spam, anti spam, no programming, sidbar form
+Contributors: Basix
+Tags: forms, form, form builder, form biulder, form creator, form elements, data storage, export, auto complete, color schemes, css editor, custom themes, date picker, time picker, file upload, confirmation mails, drag, drop, anti-spam, anti spam, no programming, sidebar form, sidebar widget, widget, sidebar
 Requires at least: 3.2
 Tested up to: 3.6
 Stable tag: 2.1.0
@@ -26,6 +26,7 @@ Create professional forms **real fast**, **real easy** with very **little effort
 * Confirmation mail setup.
 * No loading time while creating forms.
 * Built-in anti-spam.
+* Real time Visual Editor
 * Includes sidebar widget.
 * Form entry storage and export.
 * No Programming skills required!
@@ -83,7 +84,7 @@ Creating a template is easy, simply create a form and use the duplicate form fun
 == Frequently Asked Questions ==
 
 = Why is the user-interface not displaying correctly? =
-Your theme's style.css might be interfering with the default css of the plugin. To customize the way the plugin is displayed in your theme either create styles overwriting the the styles called from X Forms/css/ui.css or customize X Forms/css/ui.css to suit your theme. 
+Your theme's style.css might be interfering with the default css of the plugin. To customize the way the plugin is displayed in your theme either create styles overwriting the the styles called from /X Forms/css/ui.css or customize /X Forms/css/ui.css to suit your theme. 
 This plugin was developed following WP best practice and will work best with themes thats developed using the same standards.
 
 = The form element does not convert into the actual field on dropping =
