@@ -1,7 +1,7 @@
 === X Forms Express ===
 
 Contributors: Basix
-Tags: forms, form, form builder, form biulder, form creator, form elements, data storage, export, auto complete, color schemes, css editor, custom themes, date picker, time picker, file upload, confirmation mails, drag, drop, anti-spam, anti spam, no programming, sidebar form, sidebar widget, widget, sidebar
+Tags: forms, form, form builder, form biulder, form creator, form elements, data storage, export, auto complete, color schemes, css editor, custom themes, date picker, time picker, file upload, confirmation mails, drag, drop, anti-spam, anti spam, no programming, sidebar form, sidebar widget, widget, sidebar,page, posts, images, admin, Post, TinyMCE, tinymce
 Requires at least: 3.2
 Tested up to: 3.6
 Stable tag: 2.1.0
@@ -13,7 +13,7 @@ Build forms in seconds using this extremely user friendly form creator which inc
 == Description ==
 
 **X Forms** is a **high quality** and simple to use **form creator**.
-If you have a need to create and customize good looking forms on your WordPress website, **X Forms is the awnser**!
+If you have a need to create and customize good looking forms on your WordPress website, **X Forms is the answer**!
 
 Create professional forms **real fast**, **real easy** with very **little effort**!
 
