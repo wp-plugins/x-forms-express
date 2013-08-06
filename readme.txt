@@ -8,14 +8,15 @@ Stable tag: 2.1.0
 License: GPLv2
 
 
-Build forms in seconds using this extremely user friendly form creator which includes some amazing features! 
+Build unlimited forms in seconds using this extremely user friendly form creator which includes some amazing features! 
 
 == Description ==
 
+= Create professional forms real fast, real easy! =
 **X Forms** is a **high quality** and simple to use **form creator**.
 If you have a need to create and customize good looking forms on your WordPress website, **X Forms is the answer**!
 
-Create professional forms **real fast**, **real easy** with very **little effort**!
+
 
 = Plugin Features: =
 
@@ -26,7 +27,7 @@ Create professional forms **real fast**, **real easy** with very **little effort
 * Confirmation mail setup.
 * No loading time while creating forms.
 * Built-in anti-spam.
-* Real time Visual Editor
+* Real time Visual Editor.
 * Includes sidebar widget.
 * Form entry storage and export.
 * No Programming skills required!
