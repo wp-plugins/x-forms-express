@@ -47,7 +47,7 @@ The Visual editor allows you to change individual form elements or change the sa
 * Background: change the element's background color
 * Padding: change the space between the element border inwards (left right, bottom, top)
 * Margin: change the space between the element border outwards (left, right, bottom, top)
-* Border: change the border style as solid, dashed or dotted...Change the border thickness...Change the border color
+* Border: change the border style as solid, dashed or dotted, change the border thickness and change the border color
 
 = Form entry storage and export =
 All form entries are stored and can be retrieved from the admin panel. These entries can also be exported as a .csv file for further use!
