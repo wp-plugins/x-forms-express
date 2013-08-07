@@ -96,4 +96,4 @@ If you drag a form element onto the canvas area (center column) it sometimes doe
 Yes, go to /X forms/documentation/index.html
 
 = How do I make suggestions or report bugs for this plugin? =
-Email questions,bugs and suggestions to pluginsexpress@webaways.com
+Email questions, bugs and suggestions to pluginsexpress@webaways.com
