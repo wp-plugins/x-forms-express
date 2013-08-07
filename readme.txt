@@ -25,12 +25,12 @@ If you have a need to create and customize good looking forms on your WordPress 
 * Simple Drag and Drop.
 * Up to 25 different form elements.
 * Confirmation mail setup.
-* No loading time while creating forms.
 * Built-in anti-spam.
 * Real time Visual Editor.
 * Includes sidebar widget.
 * Form entry storage and export.
 * No Programming skills required!
+* No loading time while creating forms.
 * Add forms to post and pages with a click of a button.
 
 = Built in Anti-Spam =
