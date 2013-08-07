@@ -1,7 +1,7 @@
 === X Forms Express ===
 
 Contributors: Basix
-Tags: forms, form, form builder, form biulder, form creator, form elements, data storage, export, auto complete, color schemes, css editor, custom themes, date picker, time picker, file upload, confirmation mails, drag, drop, anti-spam, anti spam, no programming, sidebar form, sidebar widget, widget, sidebar,page, posts, images, admin, Post, TinyMCE, tinymce
+Tags: X forms,express, x-forms, X-Forms,X Forms Express, X-Forms-Express, x-forms-express, Forms,forms, form, form builder, form biulder, form creator, form elements, data storage, export, auto complete, color schemes, css editor, custom themes, date picker, time picker, file upload, confirmation mails, drag, drop, anti-spam, anti spam, no programming, sidebar form, sidebar widget, widget, sidebar,page, posts, images, admin, Post, TinyMCE, tinymce
 Requires at least: 3.2
 Tested up to: 3.6
 Stable tag: 2.1.0
