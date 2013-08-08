@@ -102,18 +102,50 @@ Yes, go to /X forms/documentation/index.html
 = How do I make suggestions or report bugs for this plugin? =
 Email questions, bugs and suggestions to pluginsexpress@webaways.com
 
-== Quick guide == 
+== Using X Forms == 
 
-= Using X Forms =
+= Layout =
 
 * Left hand column: Contains all fields grouped into 4 sections (click on the headings to toggle through). Drag them to the canvas area and drop.
 * Center column: The very top contains all forms next to the "New Form" tab. Click on the tabs to switch forms. Next is the form title, form actions (duplicate and delete), Viewing tabs (Build, Design, Form Entries and Code), and then we have the actual form canvas where elements can be dropped, sorted (drag up or down) or removed (click on the X top right corner of the field).
 * Right hand column: When in "build" view this contains General settings, Email Setup, Form Layout and Color schemes(themes). When in "Design" view this contians The Visual Editor, Form Layout and Color schemes(themes). Click on these to toggel hide and show.
-* Editing field settings: After a field has been dropped into the canvas, hover over it and you will notice a few links popup. Click on edit settings to customize the field title, error message (shown if required, or pre-formatted) and help text. If the hower state get switched around just click on current form tab agian.
-* Editing Field titles, paragraphs and heading: Just click on theme, enter the desired name and hit enter or click somewhere away from the field.
-* Radio and Check groups, Dropdowns, Autocomplete, Upload file and Date-picker fields:</strong></em> These have settings unique to theme. you will finsd it by hover over the field.
 * Using the Visual Editor: When in design view you will notice the visual editor on the right hand column. You can change a all of a single form element's style attrtibutes by clicking on it or you can change specific elements types as a whole by using the the dropdown labeled (Overall styling selections)
-* The views and setting are unigue to each form and not as n whole...
 
-**Lastly** - Unfortunately there is one bug that simple wont die and at this stage still remain: If you drag a form element onto the canvas area (center column) it sometimes does'nt convert into the actual field. This happens mostly if the element is dropped at the very top or bottom of the form. Just drag and drop it little, almost shaking it until it converts.
+
+= Field settings =
+
+* Editing field settings: After a field has been dropped into the canvas, hover over it and you will notice a few links popup. Click on edit settings to customize the field title, error message (shown if required, or pre-formatted) and help text. If the hower state get switched around just click on current form tab agian.
+* Editing Field titles, paragraphs and heading: Just click on them, enter the desired name and hit enter or click somewhere away from the field.
+* Radio and Check groups, Dropdowns, Autocomplete, Upload file and Date-picker fields:</strong></em> These have settings unique to theme. you will finsd it by hover over the field.
+
+
+* The views and setting are unigue to each form and not as n whole...*
+
+= Adding a form to a page post =
+
+1. Go to your post or page
+2. Check the top strip of the editor for a "XF" button.
+3. Click it
+4. Select the form you want to insert
+5. Click insert into post
+
+= Adding a form directly into your HTML or PHP script =
+
+1. Go to X Forms
+2. Click on the form you want to insert
+3. Click on the "Code" tab, just below the form title
+4. follow the instructions and copy the PHP/HTML code
+5. Paste it into your HTML or PHP script
+
+
+= Adding a form to a Sidebar =
+
+1. Go to Appearance -> widgets
+2. Drag the X Forms widget into the desired sidebar
+3. Select the form the widget should include/display
+4. Click save
+ 
+
+= Known Bugs =
+* Unfortunately there is one bug that simple wont die and at this stage still remain: If you drag a form element onto the canvas area (center column) it sometimes does'nt convert into the actual field. This happens mostly if the element is dropped at the very top or bottom of the form. Just drag and drop it little, almost shaking it until it converts.
 										
