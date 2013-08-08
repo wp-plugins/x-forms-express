@@ -67,7 +67,7 @@ Add more then on form on a single page for example one (or more) in the page con
 Creating a template is easy, simply create a form and use the duplicate form function!
 
 We offer a lot in this version and you may be happy with just that, but you mis out on so much more from this plugin.
-[Upgrade to the full version](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711) and recieve a lot more from this amazing tool. And as a buyer you will recieve excellent support!
+[Upgrade to the full version](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711) and recieve a lot more from this amazing tool. As a buyer you will recieve excellent support!
 
 == Installation ==
 
