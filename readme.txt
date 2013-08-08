@@ -50,7 +50,7 @@ The admin interface/panel is very easy to use. You can find all you need on one 
 = Visual Editor =
 The Visual editor allows you to change individual form elements or change the same element group as a whole by using the following settings:
 
-* Font: change element's the font color, family, alignment, letter spacing, line height and transition (uppercase, lowercase, capitalize)
+* Font: Change element's the font color, family, alignment, letter spacing, line height and transition (uppercase, lowercase, capitalize)
 * Dimensions: change the element's width and height
 * Background: change the element's background color
 * Padding: change the space between the element border inwards (left right, bottom, top)
