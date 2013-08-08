@@ -21,7 +21,9 @@ If you have a need to create and customize good looking forms on your WordPress 
 [Full Version Demo](http://webaways.com/x-forms/)  
 [Full Version Admin Panel](http://webaways.com/x-forms/wp-admin/)
 
+
 [Quick user guide](http://wordpress.org/plugins/x-forms-express/other_notes/)
+
 
 
 = Plugin Features: =
