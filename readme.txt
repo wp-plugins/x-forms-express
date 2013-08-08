@@ -41,9 +41,6 @@ If you have a need to create and customize good looking forms on your WordPress 
 * No loading time while creating forms.
 * Add forms to post and pages with a click of a button.
 
-###[Upgrade to the full version now for only $21](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711) and recieve 70% more functionality from this amazing tool.
-
-
 = Built in Anti-Spam =
 That's right!, all form submission you'll receive are submitted by humans and not robots! This is done without using Captha which is proved to annoy most users!
 
@@ -68,6 +65,9 @@ Add more then on form on a single page for example one (or more) in the page con
 
 = Create your own templates =
 Creating a template is easy, simply create a form and use the duplicate form function!
+
+We offer a lot in this version and you may be happy with just that, but you mis out on so much more from this plugin.
+[Upgrade to the full version](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711) and recieve a lot more from this amazing tool. And as a buyer you will recieve excellent support!
 
 == Installation ==
 
@@ -96,10 +96,10 @@ Creating a template is easy, simply create a form and use the duplicate form fun
 == Frequently Asked Questions ==
 
 = Why does the layout selection not work? =
-You have the light/express version of this plugin and changing form layouts is only avialable in the full version. [Upgrade to the full version now](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711) and recieve 70% more functionality from this amazing tool.
+You have the light/express version of this plugin and changing form layouts is only avialable in the full version. [Upgrade to the full version](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711) and recieve a lot more from this amazing tool.
 
 = Why cant I change the form theme? =
-You have the light/express version of this plugin and changing themes/color schemes is only avialable in the full version. [Upgrade to the full version now](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711) and recieve 70% more functionality from this amazing tool.
+You have the light/express version of this plugin and changing themes/color schemes is only avialable in the full version. [Upgrade to the full version](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711) and recieve a lot more from this amazing tool.
 
 
 = Why is the user-interface not displaying correctly? =
