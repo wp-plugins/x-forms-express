@@ -90,7 +90,7 @@ We offer a lot in this version and you may be happy with just that, but you mis 
 == Changelog ==
 
 = 2.1.0 =
-* First release
+* First release 
 
 
 == Frequently Asked Questions ==
