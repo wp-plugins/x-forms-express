@@ -26,9 +26,6 @@ If you have a need to create and customize good looking forms on your WordPress 
 [Quick user guide](http://wordpress.org/plugins/x-forms-express/other_notes/)
 
 
-
-
-
 = Express Features: =
 
 *Listed below is some of the favourites...there are way to many list them all!*
