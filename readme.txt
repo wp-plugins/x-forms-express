@@ -16,10 +16,11 @@ Build unlimited forms in seconds using this advnaced user friendly form creator!
 **X Forms** is a **High Quality** and simple to use **Form Creator**.
 If you have a need to create and customize good looking forms on your WordPress website, look no further...**X Forms is the answer**!
 
+WE created X Forms, where X=Any, because we got sick of trying to find the perfect form builder. From the knowledge we gathered from all the form builders that came short we came up with X Forms...and we share it with you!
 
-**With X form you dont have to worry about online form agian!**
+**With X Forms you dont have to worry about online forms agian!**
 
-### Live [Preview](http://webaways.com/x-forms/)
+### [Live Preview](http://webaways.com/x-forms/)
 
 [Full Version Demo](http://webaways.com/x-forms/)  
 [Full Version Admin Panel](http://webaways.com/x-forms/wp-admin/)
