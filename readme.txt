@@ -100,10 +100,10 @@ We offer a lot in this version and you may be happy with just that...But you mis
 == Frequently Asked Questions ==
 
 = Why does the layout selection not work? =
-You have the light/express version of this plugin and changing form layouts is only avialable in the full version. [Upgrade to the full version](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711) and recieve a lot more from this amazing tool.
+You have the light/express version of this plugin and changing form layouts is only avialable in the full version. [Upgrade to the full version](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix) and recieve a lot more from this amazing tool.
 
 = Why cant I change the form theme? =
-You have the light/express version of this plugin and changing themes/color schemes is only avialable in the full version. [Upgrade to the full version](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711) and recieve a lot more from this amazing tool.
+You have the light/express version of this plugin and changing themes/color schemes is only avialable in the full version. [Upgrade to the full version](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix) and recieve a lot more from this amazing tool.
 
 
 = Why is the user-interface not displaying correctly? =
