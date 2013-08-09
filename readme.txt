@@ -142,11 +142,11 @@ Email questions, bugs and suggestions to pluginsexpress@webaways.com
 
 = Adding a form to a page post =
 
-1. Go to your post or page
+1. Go to your post or page.
 2. Check the top strip of the editor for a "XF" button.
-3. Click it
-4. Select the form you want to insert
-5. Click insert into post
+3. Click it.
+4. Select the form you want to insert.
+5. Click insert into post.
 
 = Adding a form directly into your HTML or PHP script =
 
