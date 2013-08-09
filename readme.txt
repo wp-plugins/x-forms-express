@@ -71,7 +71,7 @@ Creating a template is easy, simply create a form and use the duplicate form fun
 
 ###Upgrade to the Pro version
 We offer a lot in this version and you may be happy with just that...But you mis out on so much more from this plugin that comes at a very low cost.
-*[Upgrade to the full version](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711)* and get the full monty! As a buyer you will recieve excellent proffesional support!
+*[Upgrade to the full version](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix)* and get the full monty! As a buyer you will recieve excellent proffesional support!
 
 == Installation ==
 
