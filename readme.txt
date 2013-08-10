@@ -17,7 +17,7 @@ If you have a need to create and customize professional good looking forms on yo
 
 We created [X Forms](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix), where X=Any, because we got sick of trying to find the perfect form builder. From the knowledge we gathered from all the form builders that came short we came up with this, [X Forms](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix)...and we share it with you!
 
-**With X Forms you don’t have to worry about online forms again!**
+**With X Forms you don't have to worry about online forms again!**
 
 ### [Live Preview](http://webaways.com/x-forms/)
 
@@ -102,7 +102,7 @@ We offer a lot in this version and you may be happy with just that...But you mis
 = Why does the layout selection not work? =
 You have the light/express version of this plugin and changing form layouts is only available in the full version. [Upgrade to the full version](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix) and receive a lot more from this amazing tool.
 
-= Why can’t I change the form theme? =
+= Why can't I change the form theme? =
 You have the light/express version of this plugin and changing themes/color schemes is only available in the full version. [Upgrade to the full version](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix) and receive a lot more from this amazing tool.
 
 
