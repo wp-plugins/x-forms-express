@@ -12,12 +12,12 @@ Build unlimited forms in seconds using this advnaced user friendly form creator!
 == Description ==
 
 ### Create professional forms real fast, real easy!
-**[X Forms](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix)** is a **High Quality** and simple to use **Form Creator**.
-If you have a need to create and customize good looking forms on your WordPress website, **you came to the right place!**
+**X Forms** is a **High Quality** and simple to use **Form Creator**.
+If you have a need to create and customize professional good looking forms on your WordPress website, **you came to the right place!**
 
 We created [X Forms](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix), where X=Any, because we got sick of trying to find the perfect form builder. From the knowledge we gathered from all the form builders that came short we came up with this, [X Forms](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix)...and we share it with you!
 
-**With [X Forms](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix) you dont have to worry about online forms agian!**
+**With X Forms you don’t have to worry about online forms again!**
 
 ### [Live Preview](http://webaways.com/x-forms/)
 
@@ -52,7 +52,7 @@ The admin interface/panel is very easy to use. You can find all you need on one 
 = Visual Editor =
 The Visual editor allows you to change individual form elements or change the same element group as a whole by using the following settings:
 
-* Font: Change element's the font color, family, alignment, letter spacing, line height and transition (uppercase, lowercase, capitalize)
+* Font: Change element's the font color, family, alignment, letter spacing, line height and transition (uppercase, lowercase and capitalize)
 * Dimensions: change the element's width and height
 * Background: change the element's background color
 * Padding: change the space between the element border inwards (left right, bottom, top)
@@ -70,8 +70,8 @@ Creating a template is easy, simply create a form and use the duplicate form fun
 
 
 ###Upgrade to the Pro version
-We offer a lot in this version and you may be happy with just that...But you mis out on so much more from this plugin that comes at a very low cost.
-*[Upgrade to the full version](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix)* and get the full monty! As a buyer you will recieve excellent proffesional support!
+We offer a lot in this version and you may be happy with just that...But you miss out on so much more from this plugin that comes at a very low cost.
+*[Upgrade to the full version](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix)* and get the full Monty! As a buyer you will receive excellent professional support!
 
 == Installation ==
 
@@ -80,7 +80,7 @@ We offer a lot in this version and you may be happy with just that...But you mis
 3. Click on "Add new"
 4. Click on "Upload"
 5. Browse to the directory you downloaded the plugin to and click "Install Now"
-6. After Wordpress has finished unpacking the file click on "Activate Plugin"
+6. After WordPress has finished unpacking the file click on "Activate Plugin"
 7. After the plugin has been activated you will notice a new menu item on the left hand navigation labelled X Forms
 
 == Screenshots ==
@@ -100,10 +100,10 @@ We offer a lot in this version and you may be happy with just that...But you mis
 == Frequently Asked Questions ==
 
 = Why does the layout selection not work? =
-You have the light/express version of this plugin and changing form layouts is only avialable in the full version. [Upgrade to the full version](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix) and recieve a lot more from this amazing tool.
+You have the light/express version of this plugin and changing form layouts is only available in the full version. [Upgrade to the full version](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix) and receive a lot more from this amazing tool.
 
-= Why cant I change the form theme? =
-You have the light/express version of this plugin and changing themes/color schemes is only avialable in the full version. [Upgrade to the full version](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix) and recieve a lot more from this amazing tool.
+= Why can’t I change the form theme? =
+You have the light/express version of this plugin and changing themes/color schemes is only available in the full version. [Upgrade to the full version](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix) and receive a lot more from this amazing tool.
 
 
 = Why is the user-interface not displaying correctly? =
@@ -125,9 +125,9 @@ Email questions, bugs and suggestions to pluginsexpress@webaways.com
 = Layout =
 
 * Left hand column: Contains all fields grouped into 4 sections (click on the headings to toggle through). Drag them to the canvas area and drop.
-* Center column: The very top contains all forms next to the "New Form" tab. Click on the tabs to switch forms. Next is the form title, form actions (duplicate and delete), Viewing tabs (Build, Design, Form Entries and Code), and then we have the actual form canvas where elements can be dropped, sorted (drag up or down) or removed (click on the X top right corner of the field).
-* Right hand column: When in "build" view this contains General settings, Email Setup, Form Layout and Color schemes(themes). When in "Design" view this contians The Visual Editor, Form Layout and Color schemes(themes). Click on these to toggel hide and show.
-* Using the Visual Editor: When in design view you will notice the visual editor on the right hand column. You can change a all of a single form element's style attrtibutes by clicking on it or you can change specific elements types as a whole by using the the dropdown labeled (Overall styling selections)
+* Centre column: The very top contains all forms next to the "New Form" tab. Click on the tabs to switch forms. Next is the form title, form actions (duplicate and delete), Viewing tabs (Build, Design, Form Entries and Code), and then we have the actual form canvas where elements can be dropped, sorted (drag up or down) or removed (click on the X top right corner of the field).
+* Right hand column: When in "build" view this contains General settings, Email Setup, Form Layout and Color schemes(themes). When in "Design" view this contains The Visual Editor, Form Layout and Color schemes(themes). Click on these to toggle hide and show.
+* Using the Visual Editor: When in design view you will notice the visual editor on the right hand column. You can change a all of a single form element's style attributes by clicking on it or you can change specific elements types as a whole by using the dropdown labelled (Overall styling selections)
 
 
 = Field settings =
