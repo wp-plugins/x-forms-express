@@ -16,8 +16,6 @@ Build unlimited forms in seconds using this advanced user friendly form creator!
 **X Forms** is a **High Quality** and simple to use **Form Creator**.
 If you have a need to create and customize professional good looking forms on your WordPress website, **you came to the right place!**
 
-We created [X Forms](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix), where X=Any, because we got sick of trying to find the perfect form builder. From the knowledge we gathered from all the form builders that came short we came up with this, [X Forms](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix)...and we share it with you!
-
 **With X Forms you don't have to worry about online forms again!**
 
 ### [Live Preview](http://webaways.com/x-forms/)
@@ -167,4 +165,8 @@ Email questions, bugs and suggestions to pluginsexpress@webaways.com
 
 = Known Bugs =
 * Unfortunately there is one bug that simple wont die and at this stage still remain: If you drag a form element onto the canvas area (center column) it sometimes does'nt convert into the actual field. This happens mostly if the element is dropped at the very top or bottom of the form. Just drag and drop it little, almost shaking it until it converts.
+
+== About ==
+
+We created [X Forms](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix), where X=Any, because we got sick of trying to find the perfect form builder. From the knowledge we gathered from all the form builders that came short we came up with this, [X Forms](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix)...and we share it with you!
 										
