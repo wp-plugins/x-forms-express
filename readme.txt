@@ -7,6 +7,7 @@ Tested up to: 3.6
 Stable tag: 2.1.0
 License: GPLv2
 
+
 Build unlimited forms in seconds using this advanced user friendly form creator! Includes some amazing features! 
 
 == Description ==
@@ -102,6 +103,15 @@ You have the light/express version of this plugin and changing form layouts is o
 
 = Why can't I change the form theme? =
 You have the light/express version of this plugin and changing themes/color schemes is only available in the full version. [Upgrade to the full version](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix) and receive a lot more from this amazing tool.
+
+= Drag and drop does not work? =
+We’ve found that some themes and plugins includes java-scripts that interferes with the drag and drop functionality. We are working on this problem and will have the fix in the next version 2.1.1
+
+In the meanwhile we’ve created a fix that would allow you to click on the form element to add it to the canvas area (center column) instead of dragging it over.
+
+How to install the fix:
+1. Download the following file: functions.js
+2. Replace /wp-content/plugins/X Forms/functions.js with the one you’ve downloaded.
 
 
 = Why is the user-interface not displaying correctly? =
