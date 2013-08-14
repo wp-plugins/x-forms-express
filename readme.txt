@@ -175,7 +175,7 @@ Email questions, bugs and suggestions to pluginsexpress@webaways.com
 = Known Bugs =
 * Unfortunately there is one bug that simple wont die and at this stage still remain: If you drag a form element onto the canvas area (center column) it sometimes does'nt convert into the actual field. This happens mostly if the element is dropped at the very top or bottom of the form. Just drag and drop it little, almost shaking it until it converts.
 
-== About ==
+== Why X Forms ==
 
 We created [X Forms](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix), where X=Any, because we got sick of trying to find the perfect form builder. From the knowledge we gathered from all the form builders that came short we came up with this, [X Forms](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix)...and we share it with you!
 										
