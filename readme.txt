@@ -110,7 +110,7 @@ In the meanwhile we’ve created a fix that would allow you to click on the form e
 
 How to install the fix:
 1. Download the following file: functions.js
-2. Replace /wp-content/plugins/X Forms/functions.js with the one you’ve downloaded.
+2. Replace /wp-content/plugins/X Forms/js/functions.js with the one you’ve downloaded.
 
 
 = Why is the user-interface not displaying correctly? =
