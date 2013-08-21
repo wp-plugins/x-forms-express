@@ -94,6 +94,8 @@ We offer a lot in this version and you may be happy with just that...But you mis
 = 2.1.0 =
 * First release 
 
+= 2.1.0 =
+* Fixed drag and drop
 
 == Frequently Asked Questions ==
 
