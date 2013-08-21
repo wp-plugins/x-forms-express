@@ -1,0 +1,60 @@
+/* CSS Document */
+div#xforms_dashboard_widget h3 span {
+    background: url("../images/menu_icon.png") no-repeat scroll 0 1px transparent;
+    padding-left: 26px;
+}
+
+div.dashboard_wrapper div.form_holder {
+    clear: both;
+    border-bottom: 1px dotted #e7e7e7;
+}
+div.dashboard_wrapper div.form_entry_count {
+    float: right;
+	margin: 0;
+}
+div.dashboard_wrapper div.form_name {
+    float: left;
+    max-width: 70%;
+    overflow: hidden;
+    white-space: nowrap;
+	margin: 0;
+}
+
+div.dashboard_wrapper div.logo_big {
+    background: url(../images/logo_big.png) no-repeat;
+    width: 250px;
+    height: 70px;
+}
+div#XFormsExpress_dashboard_widget div.inside {
+    padding: 0;
+    margin: 0;
+}
+div.form_holder.header {
+  background: linear-gradient(to top, #D7EDF7, #fff) repeat scroll 0 0 #D7EDF7 !important;
+	 background: none repeat scroll 0 0 #E7E7E7;
+    border: 1px solid #CCCCCC ;
+    border-radius: 5px 5px 0 0;
+}
+div.dashboard_wrapper div.table {
+    border: 1px solid #CCCCCC;
+    max-height: 100px;
+    overflow-y: scroll;
+	 border-radius: 0 0 5px 5px;
+}
+div.form_holder.header h4 {
+    
+    margin: 0 !important;
+	padding: 10px !important;
+}
+div.form_holder.form {
+    background: linear-gradient(to top, #ECECEC, #F9F9F9) repeat scroll 0 0 #F1F1F1 !important;
+    padding: 5px 10px;
+}
+div.form_holder.form:hover{
+	 background: linear-gradient(to top, #FFDCA8, #fff) repeat scroll 0 0 #D7EDF7 !important;
+	/*background:#fff !important;*/	
+}
+div.dashboard_wrapper{
+	 background: url(../images/pro_banner_bg.png);
+	 padding:5px 15px 0 15px;
+}
