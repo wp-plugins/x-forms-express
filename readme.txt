@@ -106,16 +106,6 @@ You have the light/express version of this plugin and changing form layouts is o
 = Why can't I change the form theme? =
 You have the light/express version of this plugin and changing themes/color schemes is only available in the full version. [Upgrade to the full version](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix) and receive a lot more from this amazing tool.
 
-= Drag and drop does not work? =
-We’ve found that some themes and plugins includes java-scripts that interferes with the drag and drop functionality. We are working on this problem and will have the fix in the next version 2.1.1
-
-In the meanwhile we’ve created a fix that would allow you to click on the form element to add it to the canvas area (center column) instead of dragging it over.
-
-How to install the fix:
-1. Download the following file: functions.js
-2. Replace /wp-content/plugins/X Forms/js/functions.js with the one you’ve downloaded.
-
-
 = Why is the user-interface not displaying correctly? =
 Your theme's style.css might be interfering with the default css of the plugin. To customize the way the plugin is displayed in your theme either create styles overwriting the the styles called from /X Forms/css/ui.css or customize /X Forms/css/ui.css to suit your theme. 
 This plugin was developed following WP best practice and will work best with themes thats developed using the same standards.
