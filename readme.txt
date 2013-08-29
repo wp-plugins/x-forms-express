@@ -1,12 +1,11 @@
 === X Forms Express ===
 
 Contributors: Basix
-Tags: forms, form, form creator, buider, form manager, date picker, file upload, anti spam, widget, sidebar,page, posts, admin
+Tags: forms, form, form creator, buider, form manager, file upload, anti spam, widget, sidebar,page, posts, admin
 Requires at least: 3.2
 Tested up to: 3.6
 Stable tag: 2.1.0
 License: GPLv2
-
 
 Build unlimited forms in seconds using this advanced user friendly form creator! Includes some amazing features! 
 
