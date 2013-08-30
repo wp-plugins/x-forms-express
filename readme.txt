@@ -1,7 +1,7 @@
 === X Forms Express ===
 
 Contributors: Basix
-Tags: forms, form, form creator, buider, form manager, file upload, anti spam, widget, sidebar,page, posts, admin
+Tags: form, forms, form creator, form buider, form manager, contact form, form widget, form maker, form contructor, Form, Forms, Contact
 Requires at least: 3.2
 Tested up to: 3.6
 Stable tag: 2.1.0
