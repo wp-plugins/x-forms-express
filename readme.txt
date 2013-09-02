@@ -22,7 +22,6 @@ If you have a need to create and customize professional good looking forms on yo
 [Full Version Demo](http://webaways.com/x-forms/)  
 [Full Version Admin Panel](http://webaways.com/x-forms/wp-admin/)
 
-
 [Quick user guide](http://wordpress.org/plugins/x-forms-express/other_notes/)
 
 
