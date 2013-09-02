@@ -105,6 +105,9 @@ You have the light/express version of this plugin and changing form layouts is o
 = Why can't I change the form theme? =
 You have the light/express version of this plugin and changing themes/color schemes is only available in the full version. [Upgrade to the full version](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix) and receive a lot more from this amazing tool.
 
+= The submit button doesnt work? =
+You have javascript errors on your theme either from the theme itself or an installed plugin. You can troubleshoot this by hitting F12 and checking the browser console.
+
 = Why is the user-interface not displaying correctly? =
 Your theme's style.css might be interfering with the default css of the plugin. To customize the way the plugin is displayed in your theme either create styles overwriting the the styles called from /X Forms/css/ui.css or customize /X Forms/css/ui.css to suit your theme. 
 This plugin was developed following WP best practice and will work best with themes thats developed using the same standards.
