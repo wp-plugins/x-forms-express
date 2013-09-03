@@ -86,7 +86,6 @@ We offer a lot in this version and you may be happy with just that...But you mis
 3. User Interface - with errors (using theme twentytwelve)
 4. User Interface - sidebar form (using theme twentytwelve)
 
-
 == Changelog ==
 
 = 2.1.0 =
