@@ -28,16 +28,16 @@ If you have a need to create and customize professional good looking forms on yo
 
 *Listed below is some of the favourites...there are way to many list them all!*
 
-    * Simple Drag and Drop.
-    * Up to 25 different form elements.
-    * Confirmation mail setup.
-    * Built-in anti-spam.
-    * Real time Visual Editor.
-    * Includes sidebar widget.
-    * Form entry storage and export.
-    * No Programming skills required!
-    * No loading time while creating forms.
-    * Add forms to post and pages with a click of a button.
+* Simple Drag and Drop.
+* Up to 25 different form elements.
+* Confirmation mail setup.
+* Built-in anti-spam.
+* Real time Visual Editor.
+* Includes sidebar widget.
+* Form entry storage and export.
+* No Programming skills required!
+* No loading time while creating forms.
+* Add forms to post and pages with a click of a button.
 
 = Built in Anti-Spam =
 That's right!, all form submission you'll receive are submitted by humans and not robots! This is done without using Captha which is proved to annoy most users!
