@@ -17,23 +17,23 @@ If you have a need to create and customize professional good looking forms on yo
 
 **With X Forms you don't have to worry about online forms again!**
 
-### [Live Preview](http://webaways.com/x-forms/)
+### [Live X Forms Preview](http://webaways.com/x-forms/)
 
 [Full Version Demo](http://webaways.com/x-forms/)  
 [Full Version Admin Panel](http://webaways.com/x-forms/wp-admin/)
 
-[Quick user guide](http://wordpress.org/plugins/x-forms-express/other_notes/)
+[Quick user guide to start creating forms](http://wordpress.org/plugins/x-forms-express/other_notes/)
 
 = Express Features: =
 
 *Listed below is some of the favourites...there are way to many list them all!*
 
-* Simple Drag and Drop.
+* Biuld forms with Simple Drag and Drop.
 * Up to 25 different form elements.
-* Confirmation mail setup.
+* Confirmation mail setup (customizable for each form individually)
 * Built-in anti-spam.
-* Real time Visual Editor.
-* Includes sidebar widget.
+* Real time Visual Form Editor.
+* Includes sidebar form widget.
 * Form entry storage and export.
 * No Programming skills required!
 * No loading time while creating forms.
@@ -46,7 +46,7 @@ That's right!, all form submission you'll receive are submitted by humans and no
 The admin interface/panel is very easy to use. You can find all you need on one single screen, no jumping around to different pages to get things done! All forms and their settings are immediately accessible by a single click. There is no loading time once the page is open, if you click something you get it instantly...in other words, no fancy animated loading icons to frustrate you during your form setup.
 
 = Visual Editor =
-The Visual editor allows you to change individual form elements or change the same element group as a whole by using the following settings:
+The Visual form editor allows you to change individual form elements or change the same element group as a whole by using the following settings:
 
 * Font: Change element's the font color, family, alignment, letter spacing, line height and transition (uppercase, lowercase and capitalize)
 * Dimensions: change the element's width and height
@@ -56,18 +56,18 @@ The Visual editor allows you to change individual form elements or change the sa
 * Border: change the border style as solid, dashed or dotted, change the border thickness and change the border color
 
 = Form entry storage and export =
-All form entries are stored and can be retrieved from the admin panel. These entries can also be exported as a .csv file for further use!
+All form entries are stored and can be retrieved from the admin panel. These form entries can also be exported as a .csv file for further use!
 
 = Multiple forms on a single page =
-Add more then on form on a single page for example one (or more) in the page content, one (or more) in the footer and one (or more) in the sidebar.
+Add more then one form on a single page for example one (or more) in the page content, one (or more) in the footer and one (or more) in the sidebar.
 
 = Create your own templates =
 Creating a template is easy, simply create a form and use the duplicate form function!
 
 
 ###Upgrade to the Pro version
-* Now featured among the top quality plugins worldwide *
-We offer a lot in this version and you may be happy with just that...But you miss out on so much more from this plugin that comes at a very low cost.
+**Now featured among the top quality plugins worldwide**
+We offer a lot in this version and you may be happy with just that...But you miss out on so much more from this form plugin that comes at a very low cost.
 *[Upgrade to the full version](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix)* and get the full Monty! As a buyer you will receive excellent professional support!
 
 == Installation ==
