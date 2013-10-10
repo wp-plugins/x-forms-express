@@ -1,12 +1,11 @@
 === X Forms Express ===
 
 Contributors: Basix
-Tags: form, forms, form creator, form buider, form manager, contact form, form widget, form maker, form contructor, Form, Forms, Contact
+Tags: form, forms, feedback form, feedback forms, custom form, form creator, form builder, form manager, form generator, contact form, form widget, form maker, form contructor, contact us, form plugin, multiple forms
 Requires at least: 3.2
 Tested up to: 3.6
 Stable tag: 2.1.0
 License: GPLv2
-
 
 Build unlimited forms in seconds using this advanced user friendly form creator! Includes some amazing features! 
 
