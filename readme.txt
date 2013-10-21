@@ -48,15 +48,15 @@ The admin interface/panel is very easy to use. You can find all you need on one 
 = Visual Editor =
 The Visual form editor allows you to change individual form elements or change the same element group as a whole by using the following settings:
 
-* Font: Change element's the font color, family, alignment, letter spacing, line height and transition (uppercase, lowercase and capitalize)
-* Dimensions: change the element's width and height
-* Background: change the element's background color
-* Padding: change the space between the element border inwards (left right, bottom, top)
-* Margin: change the space between the element border outwards (left, right, bottom, top)
+* Font: Change the form element's font color, family, alignment, letter spacing, line height and transition (uppercase, lowercase and capitalize)
+* Dimensions: change the form element's width and height
+* Background: change the form element's background color
+* Padding: change the space between the form element border inwards (left right, bottom, top)
+* Margin: change the space between the form element border outwards (left, right, bottom, top)
 * Border: change the border style as solid, dashed or dotted, change the border thickness and change the border color
 
 = Form entry storage and export =
-All form entries are stored and can be retrieved from the admin panel. These form entries can also be exported as a .csv file for further use!
+All form entries/submissions are stored and can be retrieved from the admin panel. These form entries can also be exported as a .csv file for further use!
 
 = Multiple forms on a single page =
 Add more then one form on a single page for example one (or more) in the page content, one (or more) in the footer and one (or more) in the sidebar.
