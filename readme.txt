@@ -3,7 +3,7 @@
 Contributors: Basix
 Tags: form, forms, custom form, form creator, form builder, form generator, contact form, form widget, form plugin, Widget, post, page, plugin
 Requires at least: 3.2
-Tested up to: 3.6
+Tested up to: 3.8
 Stable tag: 2.1.0
 License: GPLv2
 
