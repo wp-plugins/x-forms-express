@@ -17,8 +17,6 @@ If you have a need to create and customize professional good looking forms on yo
 
 **With X Forms you don't have to worry about online forms again!**
 
-[Quick user guide to start creating forms](http://wordpress.org/plugins/x-forms-express/other_notes/)
-
 = Express Features: =
 
 *Listed below is some of the favourites...there are way to many list them all!*
