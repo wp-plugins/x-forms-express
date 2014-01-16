@@ -17,19 +17,15 @@ If you have a need to create and customize professional good looking forms on yo
 
 **With X Forms you don't have to worry about online forms again!**
 
-### [Live X Forms Preview](http://webaways.com/x-forms/)
-
-[Full Version Demo](http://webaways.com/x-forms/)  
-[Full Version Admin Panel](http://webaways.com/x-forms/wp-admin/)
-
 [Quick user guide to start creating forms](http://wordpress.org/plugins/x-forms-express/other_notes/)
 
 = Express Features: =
 
 *Listed below is some of the favourites...there are way to many list them all!*
 
+* 25 different form elements.
 * Biuld forms with Simple Drag and Drop.
-* Up to 25 different form elements.
+* 25 different color schemes.
 * Confirmation mail setup (customizable for each form individually)
 * Built-in anti-spam.
 * Real time Visual Form Editor.
@@ -38,6 +34,8 @@ If you have a need to create and customize professional good looking forms on yo
 * No Programming skills required!
 * No loading time while creating forms.
 * Add forms to post and pages with a click of a button.
+* Unlimited forms
+* Multiple forms on a single page, post or sidebar
 
 = Built in Anti-Spam =
 That's right!, all form submission you'll receive are submitted by humans and not robots! This is done without using Captha which is proved to annoy most users!
@@ -65,12 +63,6 @@ Add more then one form on a single page for example one (or more) in the page co
 Creating a template is easy, simply create a form and use the duplicate form function!
 
 
-###Upgrade to the Pro version
-**Now featured among the top quality plugins worldwide**
-
-We offer a lot in this version and you may be happy with just that...But you miss out on so much more from this form plugin that comes at a very low cost.
-*[Upgrade to the full version](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix)* and get the full Monty! As a buyer you will receive excellent professional support!
-
 == Installation ==
 
 1. After your download log into your WordPress admin interface
@@ -97,12 +89,6 @@ We offer a lot in this version and you may be happy with just that...But you mis
 * Fixed drag and drop
 
 == Frequently Asked Questions ==
-
-= Why does the layout selection not work? =
-You have the light/express version of this plugin and changing form layouts is only available in the full version. [Upgrade to the full version](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix) and receive a lot more from this amazing tool.
-
-= Why can't I change the form theme? =
-You have the light/express version of this plugin and changing themes/color schemes is only available in the full version. [Upgrade to the full version](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix) and receive a lot more from this amazing tool.
 
 = The submit button doesnt work? =
 You have javascript errors on your theme either from the theme itself or an installed plugin. You can troubleshoot this by hitting F12 and checking the browser console.
