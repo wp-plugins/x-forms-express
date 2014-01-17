@@ -1,6 +1,7 @@
 === X Forms Express ===
 
 Contributors: Basix
+Donate link: http://basixonline.net/codecanyon/x-forms/donations/
 Tags: form, forms, custom form, form creator, form builder, form generator, contact form, form widget, form plugin, Widget, post, page, plugin
 Requires at least: 3.2
 Tested up to: 3.8
