@@ -12,7 +12,12 @@ Build unlimited forms in seconds using this advanced user friendly form creator!
 
 == Description ==
 
-### Create professional forms real fast, real easy!
+### Looking for the BEST WordPress Form Builder?!
+Check it out now, you wont regret it!
+[NEX-Forms - Demo](http://basixonline.net/nex-forms/)  
+[NEX-Forms - Admin Panel](http://basixonline.net/nex-forms/wp-admin/)
+
+### X Forms Express - Create professional forms real fast, real easy!
 **X Forms** is a **high quality** and simple to use **form creator**.
 If you have a need to create and customize professional good looking forms on your WordPress website, **you came to the right place!**
 
