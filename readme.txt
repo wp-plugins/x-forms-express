@@ -14,7 +14,8 @@ Build unlimited forms in seconds using this advanced user friendly form creator!
 == Description ==
 
 ### Looking for the BEST WordPress Form Builder?!
-Check it out now, you wont regret it!
+Check it out now, you will not regret it!!
+
 [NEX-Forms - Demo](http://basixonline.net/nex-forms/)  
 [NEX-Forms - Admin Panel](http://basixonline.net/nex-forms/wp-admin/)
 
