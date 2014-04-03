@@ -8,13 +8,12 @@ Tested up to: 3.8
 Stable tag: 2.1.0
 License: GPLv2
 
-
 Build unlimited forms in seconds using this advanced user friendly form creator! Includes some amazing features! 
 
 == Description ==
 
 ### Looking for the BEST of the BEST WordPress Form Builder?!
-Check it out now, you will not regret it!!
+Have a look, you will not regret it!!
 
 [NEX-Forms - Demo](http://basixonline.net/nex-forms/)  
 [NEX-Forms - Admin Panel](http://basixonline.net/nex-forms/wp-admin/)
