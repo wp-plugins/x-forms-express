@@ -72,10 +72,10 @@ Creating a template is easy, simply create a form and use the duplicate form fun
 
 1. After your download log into your WordPress admin interface
 2. After login click on  Plugins from the left  hand menu
-3. Click on "Add new"
-4. Click on "Upload"
-5. Browse to the directory you downloaded the plugin to and click "Install Now"
-6. After WordPress has finished unpacking the file click on "Activate Plugin"
+3. Click on *Add new*
+4. Click on *Upload*
+5. Browse to the directory you downloaded the plugin to and click *Install Now*
+6. After WordPress has finished unpacking the file click on *Activate Plugin*
 7. After the plugin has been activated you will notice a new menu item on the left hand navigation labelled X Forms
 
 == Screenshots ==
