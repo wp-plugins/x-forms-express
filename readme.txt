@@ -121,7 +121,6 @@ Email questions, bugs and suggestions to pluginsexpress@webaways.com
 * Right hand column: When in "build" view this contains General settings, Email Setup, Form Layout and Color schemes(themes). When in "Design" view this contains The Visual Editor, Form Layout and Color schemes(themes). Click on these to toggle hide and show.
 * Using the Visual Editor: When in design view you will notice the visual editor on the right hand column. You can change a all of a single form element's style attributes by clicking on it or you can change specific elements types as a whole by using the dropdown labelled (Overall styling selections)
 
-
 = Field settings =
 
 * Editing field settings: After a field has been dropped into the canvas, hover over it and you will notice a few links popup. Click on edit settings to customize the field title, error message (shown if required, or pre-formatted) and help text. If the hower state get switched around just click on current form tab agian.
