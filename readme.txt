@@ -28,14 +28,14 @@ If you have a need to create and customize professional good looking forms on yo
 *Listed below is some of the favourites...there are way to many list them all!*
 
 * 25 different form elements.
-* Biuld forms with Simple Drag and Drop.
-* 25 different color schemes.
-* Confirmation mail setup (customizable for each form individually)
-* Built-in anti-spam.
+* Build forms with Simple Drag and Drop.
+* 25 different form color schemes.
+* form submission Confirmation mail setup (customizable for each form individually)
+* forms include Built-in anti-spam.
 * Real time Visual Form Editor.
 * Includes sidebar form widget.
 * Form entry storage and export.
-* No Programming skills required!
+* No Programming skills required to create forms!
 * No loading time while creating forms.
 * Add forms to post and pages with a click of a button.
 * Unlimited forms
@@ -65,7 +65,6 @@ Add more then one form on a single page for example one (or more) in the page co
 
 = Create your own templates =
 Creating a template is easy, simply create a form and use the duplicate form function!
-
 
 == Installation ==
 
