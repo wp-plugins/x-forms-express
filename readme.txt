@@ -8,7 +8,6 @@ Tested up to: 3.8
 Stable tag: 2.1.0
 License: GPLv2
 
-
 Build unlimited forms in seconds using this advanced user friendly form creator! Includes some amazing features! 
 
 == Description ==
