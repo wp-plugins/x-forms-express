@@ -2,7 +2,7 @@
 
 Contributors: Basix
 Donate link: http://basixonline.net/codecanyon/x-forms/donations/
-Tags: form, forms, custom form, form creator, form builder, form generator, contact form, form widget, form plugin, Widget, post, page, plugin
+Tags: form, forms, custom form, form creator, form builder, forms creator, forms builder, form generator, contact form, contact forms, form widget, form plugin, Widget, post, page, plugin
 Requires at least: 3.2
 Tested up to: 3.8
 Stable tag: 2.1.0
@@ -12,11 +12,6 @@ License: GPLv2
 Build unlimited forms in seconds using this advanced user friendly form creator! Includes some amazing features! 
 
 == Description ==
-
-### [Looking for the BEST of the BEST WordPress Form Builder?!Have a look, you will not regret it!!](http://codecanyon.net/item/nexforms-the-ultimate-wordpress-form-builder/7103891?ref=Basix)
-
-[NEX-Forms - Demo](http://basixonline.net/nex-forms/)  
-[NEX-Forms - Admin Panel](http://basixonline.net/nex-forms/wp-admin/)
 
 ### X Forms Express - Create professional forms real fast, real easy!
 **X Forms** is a **high quality** and simple to use **form creator**.
@@ -160,4 +155,64 @@ Email questions, bugs and suggestions to pluginsexpress@webaways.com
 == Why X Forms ==
 
 We created [X Forms](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix), where X=Any, because we got sick of trying to find the perfect form builder. From the knowledge we gathered from all the form builders that came short we came up with this, [X Forms](http://codecanyon.net/item/x-forms-wordpress-form-creator-plugin/5214711?ref=Basix)...and we share it with you!
+
+= Default Form CSS =
+.xforms_ui div.field_holder{clear:both;}ul.ui-autocomplete{z-index:9999;}.xforms_ui div.form_field label.title {font-weight: bold;margin-bottom: 2px;display: inline !important;}.xforms_ui div.form_field input.text,.xforms_ui div.form_field input.date,.xforms_ui div.form_field input.time,.xforms_ui div.form_field input.text_only,.xforms_ui div.form_field input.numbers_only,.xforms_ui div.form_field input.auto,.xforms_ui div.form_field input.email,.xforms_ui div.form_field input.phone_number,.xforms_ui div.form_field input.file{/* border: 1px solid #DDDDDD;*/border-radius: 5px 5px 5px 5px;display: block;padding: 5px;width: 98%;/*float:left;*/}.xforms_ui div.form_field input.email,.xforms_ui div.form_field input.phone_number,.xforms_ui div.form_field input.date,.xforms_ui div.form_field input.time,.xforms_ui div.form_field input.text_only,.xforms_ui div.form_field input.numbers_only,.xforms_ui div.form_field input.url{padding-left: 36px;width: 93%;font-weight:inherit;}.xforms_ui div.form_field {margin-bottom: 15px;}.xforms_ui div.form_field input[type="radio"], .xforms_ui div.form_field input[type="checkbox"] {margin-right: 5px;}.xforms_ui div.form_field select option {padding: 3px 5px;}.xforms_ui div.form_field textarea {width: 99%;padding-right:2px;display: block;min-height:87px;font-family:inherit;/*float:left;*/}.xforms_ui hr {clear: both;margin: 0 !important;}.xforms_ui div.form_field select {/*	border: 1px solid #ccc;*/border-radius: 5px 5px 5px 5px;display: block;height: 27px;padding: 3px;width: 100%;/*float:left;*/}.xforms_ui div.form_field select:hover,.xforms_ui div.form_field textarea:hover,.xforms_ui div.form_field input[type="text"]:hover{/*border:1px solid #ccc;*/box-shadow:0px 0px 2px #ccc;}.combowrap input[type="text"]:hover{border:none !important;box-shadow:none !important;cursor:pointer;}div.field_actions {display:none;}.xforms_ui div.form_field.show_actions div.field_actions {display:block;}span.set_required, span.add_edit_items,span.show_field_settings,span.add_description,span.set_error_message,span.field_settings,span.click_to_edit{visibility:hidden;padding-left:10px;display:none;}label.normal{font-weight:normal !important;}div.error_msg{border-radius: 7px 7px 7px 7px;display: none;margin-bottom: 10px;padding: 5px 10px 5px 13px;width: 96%;}div.radio_button_group label,div.check_box_group label {margin-bottom: 0 !important;margin-left: -3px;margin-right: 0 !important;margin-top: 0 !important;padding: 4px 10px;}.ui-tooltip {padding: 10px 20px;text-transform: none !important;box-shadow: 1px 1px 3px #333;z-index:99999999;max-width:200px;}div#help_text {cursor: help;display: none;float: right !important;height: 17px;margin: 0 !important;position: relative;width: 14px;z-index: 100;}div.radio_button_group input.ui-helper-hidden-accessible,div.check_box_group input.ui-helper-hidden-accessible{position: relative !important;top: 0 !important;left: 0 !important;float: left;margin-top: 6px !important;margin-left: 5px;margin-right: 6px;}div.radio_button_group label,div.check_box_group label {border-radius: 4px 4px 4px 4px !important;display: block;margin-bottom: 3px !important;margin-top: 3px !important;width: 50% !important;padding-left: 26px;cursor:pointer;}div.radio_button_group.inline input.ui-helper-hidden-accessible, div.check_box_group.inline input.ui-helper-hidden-accessible {float: none;margin-left: 0;margin-right: 0;position: absolute;}div.radio_button_group.inline label, div.check_box_group.inline label {float: left;width: auto !important;border-radius: 4px !important;margin-top: 0 !important;margin-bottom: 0 !important;white-space: nowrap !important;border-radius:0 !important;padding-left: 7px;padding-top:0 !important;padding-top:0 !important;}div.radio_button_group.inline label:last-child,div.check_box_group.inline label:last-child{border-radius: 0 4px 4px 0 !important;}div.radio_button_group.inline label:first-child,div.check_box_group.inline label:first-child,div.radio_button_group.inline label.ui-corner-left,div.check_box_group.inline label.ui-corner-left{border-radius: 4px 0px 0px 4px  !important;}div.radio_button_group,div.check_box_group{margin-bottom: 10px;margin-left: 4px;margin-top: 0;}.xforms_ui div.form_field.submit_button {clear: both;}div.examples {width: 83%;padding: 10px;}.iz-submit {cursor: pointer;}div.submit_form_entry{min-width:20%;}div.form_holder.heading {margin: 0 !important;padding: 0 !important;}div.form_holder.heading h1,div.form_holder.heading h2,div.form_holder.heading h3,div.form_holder.heading h4,div.form_holder.heading h5,div.form_holder.heading h6 {margin-top: 5px;margin-bottom: 5px;}span.prepend-icon{height: 40px;left: 7px;position: absolute;top: 27%;width: 40px;text-shadow:0px 0px 1px #fff;font-size: 12px !important;}span.icon-mail {background: url("../images/ui-icons/mail.png") no-repeat scroll 0 0 transparent !important;}span.icon-phone {background: url("../images/ui-icons/phone.png") no-repeat scroll 0 0 transparent !important;}span.icon-date {background: url("../images/ui-icons/date.png") no-repeat scroll 0 0 transparent !important;}span.icon-time {background: url("../images/ui-icons/time.png") no-repeat scroll 0 0 transparent !important;}span.icon-num {font-family: Georgia,"Times New Roman",Times,serif;left: 6px;top: 11%;}span.icon-text {font-family: Georgia,"Times New Roman",Times,serif;left: 6px;top: 11%;}span.icon-url {left: 7px;top: 16%;text-transform:lowercase !important;}div.form_container {min-height: 100px;}.xforms_ui hr {margin: 0 !important;}.prepend-input .ui-button-text{cursor:pointer;}span.is_required{display:inline !important;}
 										
+= Javascript =
+
+This form plugin uses the following javascript libraries:
+
+* jQuery
+* Backbone
+* Underscore
+* JSON
+* Forms validation function
+* Form Ajax submit functions
+* Custom form functions
+
+Locations of all Javascript files included:
+/wp-content/plugins/Nex-Forms/js/
+
+== You also might be interested in ==
+
+= NEX-Forms - The Ultimate wordpress form builder =
+
+The Ultimate WordPress Forms Builder plugin that will allow you to effortlessly create astonishing web forms with amazing user friendly form fields...
+
+[NEX-Forms - Demo](http://basixonline.net/nex-forms/)  
+[NEX-Forms - Admin Panel](http://basixonline.net/nex-forms/wp-admin/)
+
+### NEX-Forms - A Form Builder in its own league!
+**NEX-Forms** is a **high quality** and simple to use drag and drop/single click **form creator** offering a wide range of customizability, flexibility, design and usability that will make online form building a walk in the park. 
+Do you have a need to easily create and customize professional and awesome looking forms on your WordPress website, **Then this form builder is the one you need!** Easiest to use back-end panel you have seen!
+
+### Features include:
+* Fully responsive forms
+* Conditional logic/laws to hide and show fields
+* 35+ form elements
+* Create custom form fields
+* Animated forms
+* Drag and drop or click to add elements to forms
+* Form Grid layout system (with unlimited nesting)
+* On form submmision email Auto-responder
+* Live form previewer with different devices
+* 1200+ Fonts available for forms
+* 400+ Icons available for forms
+* Ajax powered forms
+* Sidebar form widget
+* Retina ready font-awesome icons
+* Anti-spam form submision control
+* Form entry storage
+* Form entry Export
+* Duplicate form fields function
+* Unlimited forms
+* Add form fields to a clipboard
+* Bootstrap integrated form fields
+* Bootstrap integrated web elements
+* jQuery integrated form fields
+* NO Programing skills required to create forms
+* Fun and easy to use admin panel, very very easy to use!
+* Interactive tutorial
+* Unlimited Forms
+
