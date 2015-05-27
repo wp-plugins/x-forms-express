@@ -1,4 +1,4 @@
-=== NEX-Forms Lite - Wordpress Contact Form builder ===
+=== NEX-Forms Lite - Contact Form builder ===
 
 Contributors: Basix
 Donate link: http://codecanyon.net/item/nexforms-lite-wordpress-form-builder-plugin/5214711?ref=Basix
