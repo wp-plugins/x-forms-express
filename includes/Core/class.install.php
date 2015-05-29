@@ -155,7 +155,6 @@ if(!class_exists('IZC_Instalation'))
 					}
 				$sql .= 'PRIMARY KEY (`'. $this->db_table_primary_key .'`)
 					) ENGINE=InnoDB DEFAULT CHARSET=utf8;';
-				require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 				dbDelta($sql);
 			}
 		}

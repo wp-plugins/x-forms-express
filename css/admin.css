@@ -151,7 +151,7 @@ div.nex-forms-container .grid-system .panel.grid-system > .panel-body {margin: 0
 .col-xs-2, .col-xs-1 {padding-left: 6px !important;}
 .col-xs-3 {padding-left: 6px !important;}
 .col-xs-4,.col-xs-3 {padding-right: 0 !important;}
-#isotope_container{margin-bottom:40px;}
+#categorize_it_container{margin-bottom:40px;}
 .nex-forms-field-settings .btn {font-size: 11px;}
 .nex-forms-field-settings .form-control {font-size: 12px;height: 30px;}
 .sticky-menu #adminmenuwrap{z-index:1000000 !important;}
@@ -273,9 +273,9 @@ div.trash-can {bottom: 7px;font-size: 47px;height: 64px;padding-right: 30px !imp
 div.trash-can div{border:none !important;padding:0 !important;margin:0 !important;background:none;}
 div.controls .btn-group{margin-right:6px;}
 .nav.nav-tabs li.active{}
-.col-sm-6.isotope-item.populate,.col-sm-6.isotope-item.selected-color ,.col-sm-6.isotope-item.error_color{z-index: 10000 !important;}
-.col-sm-6.isotope-item.populate .btn {height: 38px !important;}
-.col-sm-6.isotope-item.populate div.input_holder {/*padding-bottom: 33px !important;*/}
+.col-sm-6.categorize_it-item.populate,.col-sm-6.categorize_it-item.selected-color ,.col-sm-6.categorize_it-item.error_color{z-index: 10000 !important;}
+.col-sm-6.categorize_it-item.populate .btn {height: 38px !important;}
+.col-sm-6.categorize_it-item.populate div.input_holder {/*padding-bottom: 33px !important;*/}
 .field.custom-fields {width: 33%;}
 .field.other-elements.heading {width: 58px;}
 .field.other-elements {width: 33%;}
@@ -334,14 +334,14 @@ div#nex-forms-field-settings {background: none repeat scroll 0 0 #FFFFFF;box-sha
 div#field-settings-inner{padding: 15px;background:#f8f8f8;}
 ul.option-set li a.selected {background: #f8f8f8  !important;}
 .editing-field{outline-offset: 10px;outline-style:dotted !important;outline-color:#5CB85C !important;outline-width:4px;}
-.isotope-hidden {display: none;}
+.categorize_it-hidden {display: none;}
 ul.nav-tabs {/* background: #f8f8f8;*/}
 ul.nav-tabs li a {border-radius: 0;border-top: none !important;}
 ul.nav-tabs li:first-child a {border-left: none !important;}
 div#nex-forms-field-settings .panel-heading{border-radius: 0px !important;}
 div#nex-forms-field-settings .nav-tabs > li a:hover {background: #f8f8f8 !important;}
 .nex-forms-field-settings.bs-callout{padding:0;}
-#isotope_container{overflow:visible !important;}
+#categorize_it_container{overflow:visible !important;}
 #nex-forms .selectpicker.btn {/* line-height: 30px;*/}
 #nex-forms .popover h3.tut-title {display: block !important;}
 /* tutorail */.tutorial-popovers {min-width: 300px !important;}
@@ -396,14 +396,14 @@ div#nex-forms div.panel-heading h4 a {font-size: 11px !important;}
 }
 .col1 .panel-heading h4 small{}
 .col1 .panel-heading h4 a {font-size: 12px !important;}
-/* Start: Recommended Isotope styles *//**** Isotope Filtering ****/.isotope-item {z-index: 2;}
-.isotope-hidden.isotope-item {pointer-events: none;z-index: 1;}
-.isotope-item a{outline: none;}
-/**** Isotope CSS3 transitions ****/.isotope,.isotope .isotope-item {-webkit-transition-duration: 0.4s;-moz-transition-duration: 0.4s;-ms-transition-duration: 0.4s;-o-transition-duration: 0.4s;transition-duration: 0.4s;}
-.isotope {-webkit-transition-property: height, width;-moz-transition-property: height, width;-ms-transition-property: height, width;-o-transition-property: height, width;transition-property: height, width;}
-.isotope .isotope-item {-webkit-transition-property: -webkit-transform, opacity;-moz-transition-property:    -moz-transform, opacity;-ms-transition-property:     -ms-transform, opacity;-o-transition-property:      -o-transform, opacity;transition-property:         transform, opacity;}
-/**** disabling Isotope CSS3 transitions ****/.isotope.no-transition,.isotope.no-transition .isotope-item,.isotope .isotope-item.no-transition {-webkit-transition-duration: 0s;-moz-transition-duration: 0s;-ms-transition-duration: 0s;-o-transition-duration: 0s;transition-duration: 0s;}
-/* End: Recommended Isotope styles *//* disable CSS transitions for containers with infinite scrolling*/.isotope.infinite-scrolling {-webkit-transition: none;-moz-transition: none;-ms-transition: none;-o-transition: none;transition: none;}
+/* Start: Recommended Catogorize It styles *//**** Catogorize It Filtering ****/.categorize_it-item {z-index: 2;}
+.categorize_it-hidden.categorize_it-item {pointer-events: none;z-index: 1;}
+.categorize_it-item a{outline: none;}
+/**** Catogorize It CSS3 transitions ****/.categorize_it,.categorize_it .categorize_it-item {-webkit-transition-duration: 0.4s;-moz-transition-duration: 0.4s;-ms-transition-duration: 0.4s;-o-transition-duration: 0.4s;transition-duration: 0.4s;}
+.categorize_it {-webkit-transition-property: height, width;-moz-transition-property: height, width;-ms-transition-property: height, width;-o-transition-property: height, width;transition-property: height, width;}
+.categorize_it .categorize_it-item {-webkit-transition-property: -webkit-transform, opacity;-moz-transition-property:    -moz-transform, opacity;-ms-transition-property:     -ms-transform, opacity;-o-transition-property:      -o-transform, opacity;transition-property:         transform, opacity;}
+/**** disabling Catogorize It CSS3 transitions ****/.categorize_it.no-transition,.categorize_it.no-transition .categorize_it-item,.categorize_it .categorize_it-item.no-transition {-webkit-transition-duration: 0s;-moz-transition-duration: 0s;-ms-transition-duration: 0s;-o-transition-duration: 0s;transition-duration: 0s;}
+/* End: Recommended Catogorize It styles *//* disable CSS transitions for containers with infinite scrolling*/.categorize_it.infinite-scrolling {-webkit-transition: none;-moz-transition: none;-ms-transition: none;-o-transition: none;transition: none;}
 .element {width: 110px;height: 110px;margin: 5px;float: left;overflow: hidden;position: relative;background: #888;color: #222;-webkit-border-top-right-radius: 1.2em;-moz-border-radius-topright: 1.2em;border-top-right-radius: 1.2em;}
 .element * {position: absolute;margin: 0;}
 .element .symbol {left: 0.2em;top: 0.4em;font-size: 3.8em;line-height: 1.0em;color: #FFF;}

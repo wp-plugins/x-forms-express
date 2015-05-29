@@ -1,6 +1,6 @@
 <?php
 wp_enqueue_script('jquery');
-wp_register_script('wa-tinymce-functions', WP_PLUGIN_URL .'/x-forms-express/tinyMCE/functions.js');
+wp_register_script('wa-tinymce-functions', plugins_url('/tinyMCE/functions.js',dirname(__FILE__)));
 wp_enqueue_script('wa-tinymce-functions');
 wp_register_script('wa-tinymce-tiny_mce_popup', get_option('siteurl').'/wp-includes/js/tinymce/tiny_mce_popup.js');
 wp_enqueue_script('wa-tinymce-tiny_mce_popup');
@@ -23,7 +23,8 @@ function populate_dropdown_list($table){
 		
 		global $wpdb;
 		
-		$results	= $wpdb->get_results('SELECT * FROM '. $wpdb->prefix . $table);
+		$get_results	= $wpdb->prepare('SELECT * FROM '. $wpdb->prefix . $table);
+		$results	= $wpdb->get_results($get_results);
 
 		if($results)
 			{			
