@@ -12,8 +12,6 @@ Author URI: http://codecanyon.net/user/Basix/portfolio?ref=Basix
 License: GPL
 */
 
-error_reporting(1);
-
 require( dirname(__FILE__) . '/includes/Core/includes.php');
 require( dirname(__FILE__) . '/includes/class.admin.php');
 /***************************************/
