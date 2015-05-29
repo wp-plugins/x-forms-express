@@ -1375,7 +1375,7 @@ jQuery('select#date-picker-lang-selector').change(
 			$('div#nex-forms-field-settings #set_default_value').change(
 				function()
 					{
-					$(this).closest('#isotope_container').find('.prepopulate_target textarea').trigger('change');
+					$(this).closest('#categorize_it_container').find('.prepopulate_target textarea').trigger('change');
 					}
 				);
 			$('div#nex-forms-field-settings #set_options').val(current_options)
@@ -1401,7 +1401,7 @@ jQuery('select#date-picker-lang-selector').change(
 		$('ul.prepopulate li a').live('click',
 			function()
 				{
-				var container = $(this).closest('#isotope_container').find('.prepopulate_target textarea');
+				var container = $(this).closest('#categorize_it_container').find('.prepopulate_target textarea');
 				container.val($('div.preload.'+ $(this).attr('class') ).text())
 				setTimeout(
 					function()
@@ -2142,9 +2142,9 @@ jQuery('select#date-picker-lang-selector').change(
 			}
 		);
 	//ISOTOP
-	 var $container = jQuery('#isotope_container');
+	 var $container = jQuery('#categorize_it_container');
 
-	  $container.isotope({
+	  $container.categorize_it({
 		itemSelector : '.col-sm-6, .col-sm-12'
 	  });
 		var $optionSets = jQuery('#options .option-set'),
@@ -2285,7 +2285,7 @@ jQuery('select#date-picker-lang-selector').change(
 							  changeLayoutMode( $this, options )
 							} else {
 							  // otherwise, apply new options
-							  $container.isotope( options );
+							  $container.categorize_it( options );
 							}
 							
 							return false;

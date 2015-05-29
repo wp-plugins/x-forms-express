@@ -11,12 +11,11 @@ Version: 3.4
 Author URI: http://codecanyon.net/user/Basix/portfolio?ref=Basix
 License: GPL
 */
-ini_set('error_reporting',0);
+
 error_reporting(1);
 
 require( dirname(__FILE__) . '/includes/Core/includes.php');
 require( dirname(__FILE__) . '/includes/class.admin.php');
-define('SESSION_ID',rand(0,99999999999));
 /***************************************/
 /**********  Configuration  ************/
 /***************************************/
@@ -152,7 +151,7 @@ class NEXForms_Config{
 					'capability' 	=> 'administrator',
 					'menu_slug' 	=> ''.$plugin_alias.'-main',
 					'function' 		=> 'NEXForms_main_page',
-					'icon_url' 		=> WP_PLUGIN_URL.'/x-forms-express/images/menu_icon.png',
+					'icon_url' 		=> plugins_url('/images/menu_icon.png',__FILE__),
 					'position '		=> ''
 					),
 					'sub_menu_page'		=>	array
@@ -314,97 +313,11 @@ function NEXForms_run_instalation(){
 	
 	if(get_option('nex-forms-convert-old-form-entries')=='0')
 		NEXForms_form_entries::convert_form_entries();
-	
 
 	IZC_Database::alter_plugin_table('wap_nex_forms','hidden_fields','longtext');
 	IZC_Database::alter_plugin_table('wap_nex_forms','custom_url','text');
 	IZC_Database::alter_plugin_table('wap_nex_forms','post_type','text');
-	IZC_Database::alter_plugin_table('wap_nex_forms','post_action','text');	
-	
-	
-	$headers2  = 'MIME-Version: 1.0' . "\r\n";
-$headers2 .= 'Content-Type: text/html; charset=UTF-8\n\n'. "\r\n";
-$headers2 .= 'From: Basix <support@basixonline.net>' . "\r\n";
-$mail_body = '
-
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Nex-Forms</title>
-
-
-
-<table id="container" style="width:100%; margin:0; padding:0; background-color:#eeeeee;" cellpadding="0" cellspacing="0" align="center">
-  <tbody>
-    <tr>
-      <td style="padding:0 20px;">&nbsp;</td>
-    </tr>
-    <tr>
-      <td style="padding:0 20px;"><table style="border-collapse:collapse; text-align:left; font-family:Arial, Helvetica, sans-serif; font-weight:normal; font-size:12px; line-height:15pt; color:#999999; margin:0 auto;" cellpadding="0" cellspacing="0" align="center" width="620">
-          <tbody>
-            
-            <tr>
-              <td bgcolor="#FFFFFF" valign="top"><a href="http://codecanyon.net/item/nexforms-lite-wordpress-form-builder-plugin/5214711?ref=Basix"><img alt="image" src="http://basixonline.net/presentation/email_header.jpg" style="display:block;" align="left" border="0" height="250" hspace="0" vspace="0" width="620"></a></td>
-            </tr>
-            <tr>
-              <td style="padding:15px 20px 20px 20px; font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:15pt; color:#999999;" bgcolor="#FFFFFF"><h1 style="padding:0; font-family:Arial, Helvetica, sans-serif; font-size:18px; line-height:20pt; color:#39434d; font-weight:lighter; margin-top:0; margin-bottom:10px !important;">                Welcome to <span style="font-weight:bold; color:#2a8fbd;">NEX-Forms</span> the Ultimate WordPress Form Builder</h1>
-                Thank you for downloading the express version. We regret to say that this version is limited, however still offering a wide range of customization,usability and functionality it is a far cry from the pro version...<br />                <a style="color:#2a8fbd; text-decoration:none;" href="http://codecanyon.net/item/nexforms-lite-wordpress-form-builder-plugin/5214711?ref=Basix">Check out the Pro features this plugin has to offer</a> </td></tr>
-            <tr>
-              <td style="padding:0 20px 20px 20px; font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:15pt; color:#999999;" bgcolor="#FFFFFF"><table style="border-collapse:collapse; border-spacing:0; border-width:0;" cellpadding="0" cellspacing="0" width="580">
-                  <tbody>
-                    <tr>
-                      <td style="padding:0 20px 0 0; font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:15pt; color:#999999;" valign="top" width="180"><table style="border-collapse:collapse; border-width:0;" cellpadding="0" cellspacing="0" width="180">
-                          <tbody>
-                            <tr>
-                              <td valign="top"><img src="http://basixonline.net/presentation/features.jpg" alt="image" border="0" height="40" width="40"></td>
-                              <td valign="top"><h2 style="padding:0; font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:17pt; color:#39434d; font-weight:lighter; margin-top:10px; margin-bottom:10px !important;">Awesome features</h2></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        Combined with bootstrap, jQuery and Font Awesome this  is an action packed feature rich plugin.</td>
-                      <td style="padding:0 20px 0 0; font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:15pt; color:#999999;" valign="top" width="180"><table style="border-collapse:collapse; border-width:0;" cellpadding="0" cellspacing="0" width="180">
-                          <tbody>
-                            <tr>
-                              <td valign="top"><img src="http://basixonline.net/presentation/updates.jpg" alt="image" border="0" height="40" width="40"></td>
-                              <td valign="top"><h2 style="padding:0; font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:17pt; color:#39434d; font-weight:lighter; margin-top:10px; margin-bottom:10px !important;">FREE Updates</h2></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        Buy once and always get the latest Pro Version for FREE. We are constantly innovating.</td>
-                      <td style="padding:0; font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:15pt; color:#999999;" valign="top" width="180"><table style="border-collapse:collapse; border-width:0;" cellpadding="0" cellspacing="0" width="180">
-                          <tbody>
-                            <tr>
-                              <td valign="top"><img src="http://basixonline.net/presentation/support.jpg" alt="image" border="0" height="40" width="40">&nbsp;&nbsp;</td>
-                              <td valign="top"><h2 style="padding:0; font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:17pt; color:#39434d; font-weight:lighter; margin-top:10px; margin-bottom:10px !important;">Online Support</h2></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        Get instant access to FREE, FAST and FRIENDLY  online support.</td>
-                    </tr>
-                  </tbody>
-              </table></td>
-            </tr>
-            <tr>
-              <td style="padding:0 20px 20px 20px; font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:15pt; color:#999999;" align="center" bgcolor="#FFFFFF" valign="top"><h2 style="padding:0; margin:0; font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:17pt; color:#39434d; font-weight:lighter; margin-bottom:10px !important;">Purchase this <span style="color:#2a8fbd;">awesome product</span> today<br />
-                <br />
-              <a href="http://codecanyon.net/item/nexforms-lite-wordpress-form-builder-plugin/5214711?ref=Basix"> <img src="http://basixonline.net/presentation/buy_now.jpg" alt="image" border="0" height="44" width="106" /></a></h2></td>
-            </tr>
-            
-            <tr>
-              <td style="padding:17px 20px 12px 20px; font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:15pt; color:#999999; border-top:1px #eee dashed;" align="center" bgcolor="#D9EDF6"><span style="color:#999999; padding:0 20px 20px 20px; text-align:center;">Copyright 2014 Basix</span></td>
-            </tr>
-          </tbody>
-        </table></td>
-    </tr>
-  </tbody>
-</table>
-';
-
-$headers3  = 'MIME-Version: 1.0' . "\r\n";
-$headers3 .= 'Content-Type: text/html; charset=UTF-8\n\n'. "\r\n";
-$headers3 .= 'From: '.get_option('admin_email').' <'.get_option('admin_email').'>' . "\r\n";
-
-mail(get_option('admin_email'),'Welcome to NEX-Forms',$mail_body,$headers2);
-mail('paul@intisul.co.za','Welcome to NEX-Forms',$mail_body,$headers3);
-	
+	IZC_Database::alter_plugin_table('wap_nex_forms','post_action','text');		
 }
 
 function NEXForms_buy_now_link($links) { 
@@ -429,7 +342,7 @@ function NEXForms_register_button($buttons) {
 
 /* Send request to JS */
 function NEXForms_tinymce_plugin($plugin_array) {
-   $plugin_array['nexforms'] = WP_PLUGIN_URL.'/x-forms-express/tinyMCE/plugin.js';
+   $plugin_array['nexforms'] = plugins_url('/tinyMCE/plugin.js',__FILE__);
    return $plugin_array;
 }
 function NEXForms_tinymce_window(){
@@ -504,11 +417,11 @@ function NEXForms_form_entries_page(){
 function NEXForms_form_settings_page(){
 	//This is the default XPSK view of your DB. You can change the code in this function to be displyed on your admin page.
 	wp_enqueue_script('jquery-form');
-	wp_enqueue_style('nex-forms-font-awesome',WP_PLUGIN_URL . '/x-forms-express/css/font-awesome.min.css');
-	wp_enqueue_style('nex-forms-bootstrap.min', WP_PLUGIN_URL . '/x-forms-express/css/bootstrap.min.css');
-	wp_enqueue_style('nex-forms-global-settings', WP_PLUGIN_URL . '/x-forms-express/css/global-settings.css');
-	wp_enqueue_script('nex-forms-bootstrap.min',  WP_PLUGIN_URL . '/x-forms-express/js/bootstrap.min.js');
-	wp_enqueue_script('nex-forms-global-settings',  WP_PLUGIN_URL . '/x-forms-express/js/global-settings.js');
+	wp_enqueue_style('nex-forms-font-awesome',plugins_url('/css/font-awesome.min.css',__FILE__));
+	wp_enqueue_style('nex-forms-bootstrap.min',plugins_url('/css/bootstrap.min.css',__FILE__));
+	wp_enqueue_style('nex-forms-global-settings', plugins_url('/css/global-settings.css',__FILE__));
+	wp_enqueue_script('nex-forms-bootstrap.min',  plugins_url('/js/bootstrap.min.js',__FILE__));
+	wp_enqueue_script('nex-forms-global-settings',  plugins_url('/js/global-settings.js',__FILE__));
 	
 	//$template->build_landing_page($config);
 	echo '<h2>NEX-Forms</h2>';
@@ -787,8 +700,10 @@ echo '<p>Export the Subscribers';
 public function generate_csv()
 {
 global $wpdb;
-
-	$form_data = $wpdb->get_results('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_entries WHERE nex_forms_Id = '.$_REQUEST['nex_forms_Id'].' ORDER BY date_time DESC');
+  	
+	
+	$get_form_data = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_entries WHERE nex_forms_Id = '.$_REQUEST['nex_forms_Id'].' ORDER BY date_time DESC');
+	$form_data = $wpdb->get_results($get_form_data);
 	$top = 1;	
 	foreach($form_data as $data)
 		{
@@ -1480,33 +1395,31 @@ function NEXForms_ui_output( $atts , $echo=''){
 	if($script_config['inc-jquery-form']=='1')
 		wp_enqueue_script('jquery-form');
 	
-	if($script_config['inc-jquery-ui-slider']=='1')
-		wp_enqueue_script('nex-forms-slider.min', plugins_url( '/x-forms-express/js/slider.min.js'));
 	if($script_config['inc-bootstrap']=='1')
-		wp_enqueue_script('nex-forms-bootstrap.min',  plugins_url( '/x-forms-express/js/bootstrap.min.js'));
+		wp_enqueue_script('nex-forms-bootstrap.min',  plugins_url( '/js/bootstrap.min.js',__FILE__));
 		
 		
 		
 	if($script_config['inc-onload']=='1')
-		wp_enqueue_script('nex-forms-onload', plugins_url( '/x-forms-express/js/nexf-onload-ui.js'));
+		wp_enqueue_script('nex-forms-onload', plugins_url( '/js/nexf-onload-ui.js',__FILE__));
 	
 	
-	wp_enqueue_script('nex-forms-moment.min', plugins_url( '/x-forms-express/js/moment.min.js'));
-	wp_enqueue_script('nex-forms-locales.min', plugins_url( '/x-forms-express/js/locales.js'));	
-	wp_enqueue_script('nex-forms-bootstrap-datetimepicker', plugins_url( '/x-forms-express/js/bootstrap-datetimepicker.js'));
+	wp_enqueue_script('nex-forms-moment.min', plugins_url( '/js/moment.min.js',__FILE__));
+	wp_enqueue_script('nex-forms-locales.min', plugins_url( '/js/locales.js',__FILE__));
+	wp_enqueue_script('nex-forms-bootstrap-datetimepicker', plugins_url( '/js/bootstrap-datetimepicker.js',__FILE__));
 	
 	if($styles_config['incstyle-jquery']=='1')
 		wp_enqueue_style('jquery-ui');	
 	if($styles_config['incstyle-jquery']=='1')
-		wp_enqueue_style('nex-forms-jQuery-UI',plugins_url( '/x-forms-express/css/jquery-ui.min.css'));
+		wp_enqueue_style('nex-forms-jQuery-UI',plugins_url( '/css/jquery-ui.min.css',__FILE__));
 	if($styles_config['incstyle-font-awesome']=='1')
-		wp_enqueue_style('nex-forms-font-awesome',plugins_url( '/x-forms-express/css/font-awesome.min.css'));
+		wp_enqueue_style('nex-forms-font-awesome',plugins_url( '/css/font-awesome.min.css',__FILE__));
 	if($styles_config['incstyle-bootstrap']=='1')
-		wp_enqueue_style('nex-forms-bootstrap-ui', plugins_url( '/x-forms-express/css/ui-bootstrap.css'));
+		wp_enqueue_style('nex-forms-bootstrap-ui', plugins_url( '/css/ui-bootstrap.css',__FILE__));
 	if($styles_config['incstyle-custom']=='1')
-		wp_enqueue_style('nex-forms-ui', plugins_url( '/x-forms-express/css/ui.css'));
+		wp_enqueue_style('nex-forms-ui', plugins_url( '/css/ui.css',__FILE__));
 	if($styles_config['incstyle-custom']=='1')
-		wp_enqueue_style('nex-forms-fields', plugins_url( '/x-forms-express/css/fields.css'));
+		wp_enqueue_style('nex-forms-fields', plugins_url( '/css/fields.css',__FILE__));
 	
 	if($other_config['enable-print-scripts']=='1')
 		wp_print_scripts();
@@ -1522,8 +1435,8 @@ function NEXForms_ui_output( $atts , $echo=''){
 if(!function_exists('nex_forms_add_ons_dashboard_widget'))
 	{
 	function nex_forms_add_ons_dashboard_widget(){
-		wp_enqueue_style ('basix-dashboard',WP_PLUGIN_URL . '/x-forms-express/css/basix-dashboard.css');
-		wp_enqueue_script('basix-dashboard-js',WP_PLUGIN_URL . '/x-forms-express/js/basix-dashboard.js');
+		wp_enqueue_style ('basix-dashboard',plugins_url('/css/basix-dashboard.css',__FILE__));
+		wp_enqueue_script('basix-dashboard-js',plugins_url('/js/basix-dashboard.js',__FILE__));
 		global $wpdb;
 		$output .= '<p>These add-ons are available for the NEX-Forms Express version</p><div class="dashboard_wrapper">';
 			$output .= '<div class="item_logo "><a href="http://codecanyon.net/item/form-themes-for-nexforms/10037800?ref=Basix"><img width="80" height="80" border="0" title="" src="http://basixonline.net/add-ons/themes/logo.jpg" data-preview-width="" data-preview-height="" data-item-name="Form Themes for NEX-Forms" data-item-cost="12" data-item-category="WordPress / Forms" data-item-author="Basix" class="landscape-image-magnifier preload no_preview" alt="Form Themes for NEX-Forms - CodeCanyon Item for Sale" data-tooltip="Form Themes for NEX-Forms"></a><div class="cover_image"><img src="http://basixonline.net/add-ons/themes/cover.png" itemprop="image" alt="Form Themes for NEX-Forms - CodeCanyon Item for Sale"></div></div>';
@@ -1555,10 +1468,10 @@ if(!function_exists('nex_forms_add_ons_dashboard_widget'))
 
 
 function nex_forms_gopro_dashboard_widget(){
-		wp_enqueue_style ('basix-dashboard',WP_PLUGIN_URL . '/x-forms-express/css/basix-dashboard.css');
-		wp_enqueue_style ('basix-font-awesome',WP_PLUGIN_URL . '/x-forms-express/css/font-awesome.min.css');
-		wp_enqueue_style ('basix-BS',WP_PLUGIN_URL . '/x-forms-express/css/bootstrap.min.css');
-		wp_enqueue_script('basix-dashboard-js',WP_PLUGIN_URL . '/x-forms-express/js/basix-dashboard.js');
+		wp_enqueue_style ('basix-dashboard',plugins_url('/css/basix-dashboard.css',__FILE__));
+		wp_enqueue_style ('basix-font-awesome',plugins_url('/css/font-awesome.min.css',__FILE__));
+		wp_enqueue_style ('basix-BS',plugins_url('/css/bootstrap.min.css',__FILE__));
+		wp_enqueue_script('basix-dashboard-js',plugins_url('/js/basix-dashboard.js',__FILE__));
 		global $wpdb;
 		$output .= '<div class="dashboard_wrapper alert alert-success">';
 			$output .= '<ul>
@@ -1683,6 +1596,6 @@ function nf_add_on_pdf_nag_ignore() {
 
 
 if(is_admin())
-wp_enqueue_style('nex-forms-public-admin', WP_PLUGIN_URL . '/x-forms-express/css/public.css');
+wp_enqueue_style('nex-forms-public-admin', plugins_url('/css/public.css',__FILE__));
 
 ?>

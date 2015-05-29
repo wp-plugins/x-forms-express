@@ -10,8 +10,8 @@ add_action('wp_ajax_get_event_information',  array('NEXForms_admin','get_event_i
 add_action('wp_ajax_load_nex_event_calendars',  array('NEXForms_admin','get_calendars') );
 add_action('wp_ajax_build_form_data_table', array('NEXForms_form_entries','build_form_data_table'));
 add_action('wp_ajax_populate_form_data_list', array('NEXForms_form_entries','get_form_data'));
-add_action( 'wp_ajax_do_upload_image', array('NEXForms_admin','do_upload_image'));
-add_action( 'wp_ajax_do_upload_image_select', array('NEXForms_admin','do_upload_image_select'));
+add_action('wp_ajax_do_upload_image', array('NEXForms_admin','do_upload_image'));
+add_action('wp_ajax_do_upload_image_select', array('NEXForms_admin','do_upload_image_select'));
 
 
 add_action( 'wp_ajax_save_email_config', array('NEXForms_admin','save_email_config'));
@@ -151,7 +151,9 @@ class NEXForms_admin{
 	
 	public function get_calendars(){
 		global $wpdb;
-		$calendars = $wpdb->get_results('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms ORDER BY Id DESC');
+		
+		$get_calendars = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms ORDER BY Id DESC');
+		$calendars = $wpdb->get_results($get_calendars);
 		//$i=1;
 		foreach($calendars as $calendar)
 			{
@@ -214,7 +216,7 @@ tiff</div></div></form><div id="nex-forms-field-settings" class="nex-forms-field
 												  </div>';
 									
 									$output .= '<div id="field-settings-inner">';
-                  						$output .= '<div class="clearfix row isotope" id="isotope_container" style="position: relative; height: 606px;">';
+                  						$output .= '<div class="clearfix row categorize_it" id="categorize_it_container" style="position: relative; height: 606px;">';
 
 /******************************************************************************************************************************/
 //Conditional Logic             							 
@@ -275,7 +277,7 @@ $output .= '</div>';
 											//text
 											$output .= '<div class="row">';
 												
-													$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-prefix icons selected-color" style="z-index:1000004 !important;">';
+													$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-prefix icons selected-color" style="z-index:1000004 !important;">';
 														$output .= '<div class="input_holder ">';											
 															$output .= '<label>Prefix Color</label>';
 															$output .= '<div class="btn-group">
@@ -313,7 +315,7 @@ $output .= '</div>';
 //LABEL SETTINGS                							 
 											//text
 											$output .= '<div class="row">';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-label isotope-item">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-label categorize_it-item">';
 													$output .= '<div class="input_holder ">';					
 														$output .= '<label>Text</label>';
 														$output .= '<div class="input-group">';
@@ -323,7 +325,7 @@ $output .= '</div>';
 														$output .= '</div>';
 													$output .= '</div>';
 												$output .= '</div>';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-label isotope-item">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-label categorize_it-item">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Color</label>';
 														$output .= '<div id="label-color" class="input-group colorpicker-component demo demo-auto">
@@ -337,7 +339,7 @@ $output .= '</div>';
 											
 											//Subtext
 											$output .= '<div class="row">';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-label isotope-item">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-label categorize_it-item">';
 													$output .= '<div class="input_holder ">';											
 														$output .= '<label>Sub Label</label>';
 														$output .= '<div class="input-group">';
@@ -347,7 +349,7 @@ $output .= '</div>';
 														$output .= '</div>';
 													$output .= '</div>';
 												$output .= '</div>';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-label isotope-item">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-label categorize_it-item">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Color</label>';
 															$output .= '<div id="label-subtext" class="input-group colorpicker-component demo demo-auto">
@@ -361,7 +363,7 @@ $output .= '</div>';
 											
 											//Position / alingment
 											$output .= '<div class="row">';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-label isotope-item">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-label categorize_it-item">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Position</label>';
 														$output .= '<div role="toolbar" class="btn-toolbar">
@@ -373,7 +375,7 @@ $output .= '</div>';
 																	</div>';
 													$output .= '</div>';
 												$output .= '</div>';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-label isotope-item">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-label categorize_it-item">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Alignment</label>';
 														$output .= '<div role="toolbar" class="btn-toolbar">
@@ -390,13 +392,13 @@ $output .= '</div>';
 											
 											//Font / Size
 											$output .= '<div class="row">';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-label isotope-item" style="z-index:1000">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-label categorize_it-item" style="z-index:1000">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Font</label>';
 														$output .=	'<div class="google-fonts-dropdown-label input-group"><select name="label-fonts" class="sfm form-control"></select><span class="input-group-addon"><i><input type="checkbox" checked="checked" title="Show Preview" data-placement="top" data-toggle="tooltip" class="bs-tooltip" name="show-font-preview"></i></span></div>';
 													$output .= '</div>';
 												$output .= '</div>';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-label isotope-item">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-label categorize_it-item">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Size</label>';
 														$output .= '<div role="toolbar" class="btn-toolbar">
@@ -415,7 +417,7 @@ $output .= '</div>';
 											$output .= '<div class="row">';
 												
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-paragraph">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-paragraph">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Paragraph text</label>';
 														$output .= '<textarea name="set_paragraph" id="set_paragraph" class="form-control"></textarea>';
@@ -427,7 +429,7 @@ $output .= '</div>';
 /******************************************************************************************************************************/
 //HEADING SETTINGS												
 											$output .= '<div class="row">';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-heading">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-heading">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Heading Text</label>';
 														$output .= '<div class="input-group">';
@@ -442,7 +444,7 @@ $output .= '</div>';
 /******************************************************************************************************************************/
 //PANEL SETTINGS												
 											$output .= '<div class="row">';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-panel">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-panel">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Heading</label>';
 														$output .= '<div class="input-group">';
@@ -452,7 +454,7 @@ $output .= '</div>';
 														$output .= '</div>';
 													$output .= '</div>';
 												$output .= '</div>';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-panel">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-panel">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Heading Size</label>';
 														$output .= '<div role="toolbar" class="btn-toolbar">
@@ -472,7 +474,7 @@ $output .= '</div>';
 												
 												
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-panel">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-panel">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Heading Color</label>';
 														$output .= '<div id="panel_heading_color" class="input-group colorpicker-component demo demo-auto">
@@ -483,7 +485,7 @@ $output .= '</div>';
 													$output .= '</div>';
 												$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-panel">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-panel">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Heading Background Color</label>';
 														$output .= '<div id="panel_heading_background" class="input-group colorpicker-component demo demo-auto">
@@ -495,7 +497,7 @@ $output .= '</div>';
 												$output .= '</div>';
 												
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-panel">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-panel">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Body Background Color</label>';
 														$output .= '<div id="panel_body_background" class="input-group colorpicker-component demo demo-auto">
@@ -506,7 +508,7 @@ $output .= '</div>';
 													$output .= '</div>';
 												$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-panel">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-panel">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Border Color</label>';
 														$output .= '<div id="panel_border_color" class="input-group colorpicker-component demo demo-auto">
@@ -517,7 +519,7 @@ $output .= '</div>';
 													$output .= '</div>';
 												$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-panel" style="z-index:1000">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-panel" style="z-index:1000">';
 													$output .= '<div class="input_holder">';
 														$output .= '<label>Font</label>';
 														$output .=	'<div class="google-fonts-dropdown-panel input-group"><select name="panel-fonts" class="sfm form-control"></select><span class="input-group-addon"><i><input type="checkbox" checked="checked" title="Show Preview" data-placement="top" data-toggle="tooltip" class="bs-tooltip" name="show-font-preview"></i></span></div>';
@@ -534,7 +536,7 @@ $output .= '</div>';
 //TAGS SETTINGS												
 											$output .= '<div class="row">';
 												//tags
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-tags icons" style="z-index:1000001 !important;">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-tags icons" style="z-index:1000001 !important;">';
 													$output .= '<div class="input_holder ">';											
 														$output .= '<label>Tag Icon</label>';
 														$output .= '
@@ -550,7 +552,7 @@ $output .= '</div>';
 														$output .= NEXForms_admin::show_icons();
 														$output .= '</div></div></div></div>';
 														$output .= '</div>';
-														$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-tags icons selected-color" style="z-index:1000000 !important;">';
+														$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-tags icons selected-color" style="z-index:1000000 !important;">';
 															$output .= '<div class="input_holder ">';											
 																$output .= '<label>Color</label>';
 																$output .= '<div class="btn-group">
@@ -579,14 +581,14 @@ $output .= '</div>';
 											//required / placeholder
 											$output .= '<div class="row">';
 												//datetime
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-autocomplete">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-autocomplete">';
 													$output .= '<div class="input_holder prepopulate_target">';											
 														$output .= '<label>Selection</label>';
 														$output .= '<textarea id="set_selections" name="set_selections" class="form-control"></textarea>';
 													$output .= '</div>';
 												$output .= '</div>';
 												//autocomplete
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-date-time">';										
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-date-time">';										
 														$output .= '<label>Date Format</label>';
 														$output .= '<select id="select_date_format" class="form-control">
 																	<option value="DD/MM/YYYY hh:mm A">DD/MM/YYYY hh:mm A</option>
@@ -598,13 +600,13 @@ $output .= '</div>';
 														$output .= '<br /><input id="set_date_format" type="text" name="set_date_format" value="" class="form-control hidden"><span class="help-block">See <a href="http://momentjs.com/docs/#/displaying/format/">momentjs\' docs</a> for valid formats</span>';
 												$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-date-time">';										
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-date-time">';										
 														$output .= '<label>Select Language</label>';
 														$output .= '<select id="date-picker-lang-selector" class="form-control"><option value="en">en</option><option value="ar-ma">ar-ma</option><option value="ar-sa">ar-sa</option><option value="ar-tn">ar-tn</option><option value="ar">ar</option><option value="bg">bg</option><option value="ca">ca</option><option value="cs">cs</option><option value="da">da</option><option value="de-at">de-at</option><option value="de">de</option><option value="el">el</option><option value="en-au">en-au</option><option value="en-ca">en-ca</option><option value="en-gb">en-gb</option><option value="es">es</option><option value="fa">fa</option><option value="fi">fi</option><option value="fr-ca">fr-ca</option><option value="fr">fr</option><option value="he">he</option><option value="hi">hi</option><option value="hr">hr</option><option value="hu">hu</option><option value="id">id</option><option value="is">is</option><option value="it">it</option><option value="ja">ja</option><option value="ko">ko</option><option value="lt">lt</option><option value="lv">lv</option><option value="nb">nb</option><option value="nl">nl</option><option value="pl">pl</option><option value="pt-br">pt-br</option><option value="pt">pt</option><option value="ro">ro</option><option value="ru">ru</option><option value="sk">sk</option><option value="sl">sl</option><option value="sr-cyrl">sr-cyrl</option><option value="sr">sr</option><option value="sv">sv</option><option value="th">th</option><option value="tr">tr</option><option value="uk">uk</option><option value="vi">vi</option><option value="zh-cn">zh-cn</option><option value="zh-tw">zh-tw</option></select>';
 														$output .= '';
 												$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition populate setting-autocomplete">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition populate setting-autocomplete">';
 													$output .= '<div class="input_holder">';											
 														$output .= '<label>Presets</label>';
 														$output .= '<div class="btn-group">
@@ -623,7 +625,7 @@ $output .= '</div>';
 												$output .= '</div>';
 												
 												//color-pallet
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-color-pallet">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-color-pallet">';
 													$output .= '<div class="input_holder prepopulate_target">';											
 														$output .= '<label>Color Selection</label>';
 														$output .= '<textarea id="set_color_selection" name="set_color_selection" class="form-control"></textarea>';
@@ -632,7 +634,7 @@ $output .= '</div>';
 												
 											
 												//select
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-select setting-multi-select">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-select setting-multi-select">';
 													$output .= '<div class="input_holder prepopulate_target">';	
 														$output .= '<label>Default Value</label>';
 														$output .= '<input id="set_default_value" type="text" name="set_default_value" value="--- Select ---" class="form-control">
@@ -643,7 +645,7 @@ $output .= '</div>';
 													$output .= '</div>';
 												$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition populate setting-select setting-multi-select">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition populate setting-select setting-multi-select">';
 													$output .= '<div class="input_holder">';											
 														$output .= '<label>Presets</label>';
 														$output .= '<div class="btn-group">
@@ -662,14 +664,14 @@ $output .= '</div>';
 												$output .= '</div>';
 												
 												//file input
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-validation-file-input" >';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-validation-file-input" >';
 													$output .= '<div class="input_holder prepopulate_target">';
 													$output .= '<label>Allowed Extensions</label>';
 														$output .= '<textarea id="set_extensions" name="set_extensions" class="form-control"></textarea>';
 													$output .= '</div>';
 												$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition populate setting-validation-file-input" style="z-index:1000000 !important;">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition populate setting-validation-file-input" style="z-index:1000000 !important;">';
 													$output .= '<div class="input_holder">';											
 														$output .= '<label>Presets</label>';
 														$output .= '<div class="btn-group">
@@ -688,14 +690,14 @@ $output .= '</div>';
 												$output .= '</div>';
 												
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-text setting-textarea">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-text setting-textarea">';
 													$output .= '<div class="input_holder ">';											
 														$output .= '<label>Place Holder</label>';
 														$output .= '<input id="set_place_holder" type="text" name="set_place_holder" class="form-control">';
 													$output .= '</div>';
 												$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-all">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-all">';
 													$output .= '<div class="input_holder ">';											
 														$output .= '<label>Input Name</label><small>This is used to identify your field and will be used to label your entry value on form submission</small>';
 														$output .= '<input id="set_input_name" type="text" name="set_input_name" class="form-control">';
@@ -706,7 +708,7 @@ $output .= '</div>';
 											
 											//Input value / max chars
 											$output .= '<div class="row">';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-text setting-textarea setting-button">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-text setting-textarea setting-button">';
 													
 													$output .= '<div class="input_holder ">';											
 														$output .= '<label>Input Value</label>';
@@ -722,7 +724,7 @@ $output .= '</div>';
 											
 											
 											
-											$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-button">';
+											$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-button">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Width</label>';
 														$output .= '<div role="toolbar" class="btn-toolbar">
@@ -739,7 +741,7 @@ $output .= '</div>';
 											$output .= '</div>';
 											
 											
-											$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-bg-image setting-panel">';
+											$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-bg-image setting-panel">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Background Image</label>';
 														$output .= '
@@ -769,7 +771,7 @@ tiff</div>
 												$output .= '</div>';
 												
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-bg-image setting-panel">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-bg-image setting-panel">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Background Size</label>';
 														$output .= '<div role="toolbar" class="btn-toolbar">
@@ -783,7 +785,7 @@ tiff</div>
 												$output .= '</div>';
 												
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-bg-image setting-panel">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-bg-image setting-panel">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Background Repeat</label>';
 														$output .= '<div role="toolbar" class="btn-toolbar">
@@ -798,7 +800,7 @@ tiff</div>
 												$output .= '</div>';
 												
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-bg-image setting-panel">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-bg-image setting-panel">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Background Position</label>';
 														$output .= '<div role="toolbar" class="btn-toolbar">
@@ -815,7 +817,7 @@ tiff</div>
 											
 											//Colors
 											$output .= '<div class="row">';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-paragraph setting-heading settings-input setting-button">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-paragraph setting-heading settings-input setting-button">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Color</label>';
 														$output .= '<div id="input-color" class="input-group colorpicker-component demo demo-auto">
@@ -825,7 +827,7 @@ tiff</div>
 																	</div>';
 													$output .= '</div>';
 												$output .= '</div>';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-input setting-button">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-input setting-button">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Background Color</label>';
 														$output .= '<div id="input-bg-color" class="input-group colorpicker-component demo demo-auto">
@@ -839,7 +841,7 @@ tiff</div>
 											
 											//Border
 											$output .= '<div class="row ">';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-input setting-button setting-divider">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-input setting-button setting-divider">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Border Color</label>';
 														$output .= '<div id="input-border-color" class="input-group colorpicker-component demo demo-auto">
@@ -849,7 +851,7 @@ tiff</div>
 																	</div>';
 													$output .= '</div>';
 												$output .= '</div>';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-input">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-input">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Border Color On Focus</label>';
 														$output .= '<div id="input-onfocus-color" class="input-group colorpicker-component demo demo-auto">
@@ -866,7 +868,7 @@ tiff</div>
 											//Size / Alignment
 											$output .= '<div class="row">';
 												//paragraph
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-paragraph">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-paragraph">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Alignment</label>';
 														$output .= '<div role="toolbar" class="btn-toolbar">
@@ -879,7 +881,7 @@ tiff</div>
 																	</div>';
 													$output .= '</div>';
 												$output .= '</div>';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-input setting-heading setting-button">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-input setting-heading setting-button">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Alignment</label>';
 														$output .= '<div role="toolbar" class="btn-toolbar">
@@ -891,7 +893,7 @@ tiff</div>
 																	</div>';
 													$output .= '</div>';
 												$output .= '</div>';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-input setting-button">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-input setting-button">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Size</label>';
 														$output .= '<div role="toolbar" class="btn-toolbar">
@@ -906,13 +908,13 @@ tiff</div>
 											$output .= '</div>';
 											//font
 											$output .= '<div class="row">';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-input setting-paragraph setting-heading setting-button" style="z-index:1000">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-input setting-paragraph setting-heading setting-button" style="z-index:1000">';
 													$output .= '<div class="input_holder">';
 														$output .= '<label>Font</label>';
 														$output .=	'<div class="google-fonts-dropdown-input input-group"><select name="input-fonts" class="sfm form-control"></select><span class="input-group-addon"><i><input type="checkbox" checked="checked" title="Show Preview" data-placement="top" data-toggle="tooltip" class="bs-tooltip" name="show-font-preview"></i></span></div>';
 													$output .= '</div>'; 
 												$output .= '</div>';
-											$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-input setting-slider setting-panel setting-tags setting-button">';
+											$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-input setting-slider setting-panel setting-tags setting-button">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Corners</label>';
 														$output .= '<div role="toolbar" class="btn-toolbar">
@@ -931,7 +933,7 @@ tiff</div>
 										
 											//Text
 											$output .= '<div class="row">';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-help-text">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-help-text">';
 													$output .= '<div class="input_holder ">';											
 														$output .= '<label>Text</label>';														
 														$output .= '<div class="input-group">';
@@ -941,7 +943,7 @@ tiff</div>
 														$output .= '</div>';
 													$output .= '</div>';
 												$output .= '</div>';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-help-text">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-help-text">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Color</label>';
 														$output .= '<div id="help-text-color" class="input-group colorpicker-component demo demo-auto">
@@ -956,7 +958,7 @@ tiff</div>
 											//Position / alignment
 											$output .= '<div class="row">';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-help-text">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-help-text">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Position</label>';
 														$output .= '<div role="toolbar" class="btn-toolbar">
@@ -969,7 +971,7 @@ tiff</div>
 													$output .= '</div>';
 												$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-help-text">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-help-text">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Alignment</label>';
 														$output .= '<div role="toolbar" class="btn-toolbar">
@@ -994,13 +996,13 @@ tiff</div>
 											
 											//font / size
 											$output .= '<div class="row">';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-help-text" style="z-index:1000">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-help-text" style="z-index:1000">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Font</label>';
 														$output .=	'<div class="google-fonts-dropdown-help-text input-group"><select name="help-text-fonts" class="sfm form-control"></select><span class="input-group-addon"><i><input type="checkbox" checked="checked" title="Show Preview" data-placement="top" data-toggle="tooltip" class="bs-tooltip" name="show-font-preview"></i></span></div>';
 													$output .= '</div>';
 												$output .= '</div>';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-help-text">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-help-text">';
 													$output .= '<div class="input_holder">';
 														$output .= '<label>Size</label>';
 														$output .= '<div role="toolbar" class="btn-toolbar">
@@ -1018,7 +1020,7 @@ tiff</div>
 //ERROR MESSAGE SETTINGS			               
 											//Text / position
 											$output .= '<div class="row">';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-validation">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-validation">';
 													$output .= '<div class="input_holder ">';											
 														$output .= '<label>Required</label>';
 														$output .= '<div class="btn-toolbar" role="toolbar">
@@ -1034,7 +1036,7 @@ tiff</div>
 																	</div>';
 													$output .= '</div>';
 												$output .= '</div>';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-validation error_color">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-validation error_color">';
 													$output .= '<div class="input_holder ">';											
 														$output .= '<label>Required Message</label>';
 														$output .= '<div class="input-group"><input id="the_error_mesage" type="text" value="" name="the_error_mesage" class="form-control">
@@ -1052,7 +1054,7 @@ tiff</div>
 													$output .= '</div>';
 												$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-validation-text" style="z-index:100;">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-validation-text" style="z-index:100;">';
 													$output .= '<div class="input_holder">';											
 														$output .= '<label>Validate as:</label>';
 														$output .= '<button type="button" class="btn btn-primary dropdown-toggle validate-as" data-toggle="dropdown"><span class="fa fa-thumbs-o-up"></span>&nbsp;&nbsp;Any Format</button>
@@ -1068,7 +1070,7 @@ tiff</div>
 													$output .= '</div>';
 													$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-validation-text setting-validation-file-input">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-validation-text setting-validation-file-input">';
 													$output .= '<div class="input_holder ">';											
 														$output .= '<label>Secondary message</label>';
 														$output .= '<input id="set_secondary_error" type="text" value="" name="set_secondary_error" class="form-control">';
@@ -1078,7 +1080,7 @@ tiff</div>
 												
 													
 											
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition settings-validation">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition settings-validation">';
 													$output .= '<div class="input_holder ">';											
 														$output .= '<label>Popup Position</label>';
 														$output .= '<div role="toolbar" class="btn-toolbar">
@@ -1094,7 +1096,7 @@ tiff</div>
 											$output .= '</div>';
 											
 											
-											$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-text setting-textarea setting-validation-text setting-validation-textarea" style="">';
+											$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-text setting-textarea setting-validation-text setting-validation-textarea" style="">';
 													$output .= '<div class="input_holder">';											
 														$output .= '<label>Maximum Characters</label>';
 														$output .= '<div class="input-group"><input id="set_max_length" type="text" name="set_max_length" class="form-control">
@@ -1128,7 +1130,7 @@ tiff</div>
 /******************************************************************************************************************************/
 //RADIO SETTINGS												
 											$output .= '<div class="row">';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-radio setting-image-select icons">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-radio setting-image-select icons">';
 													$output .= '<div class="input_holder ">';											
 														$output .= '<label>Icons</label>';
 														$output .= '
@@ -1145,7 +1147,7 @@ tiff</div>
 																		$output .= NEXForms_admin::show_icons();
 														$output .= '</div></div></div></div>';
 												$output .= '</div>';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-radio setting-image-select icons selected-color">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-radio setting-image-select icons selected-color">';
 													$output .= '<div class="input_holder ">';											
 														$output .= '<label>Color</label>';
 														
@@ -1177,7 +1179,7 @@ tiff</div>
 					
 					
 					$output .= '<div class="row">';
-						$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-radio">';
+						$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-radio">';
 									$output .= '<div class="input_holder">';											
 										$output .= '<label>Radios</label>';
 										$output .= '<textarea id="set_radios" name="set_radios" class="form-control"></textarea>';
@@ -1186,7 +1188,7 @@ tiff</div>
 						
 								
 						
-						$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-image-select">';
+						$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-image-select">';
 									$output .= '<div class="input_holder">';											
 										$output .= '<label>Thumbs</label>';
 										$output .= '<textarea id="set_image_selection" name="set_image_selection" class="form-control"></textarea>';
@@ -1194,7 +1196,7 @@ tiff</div>
 								$output .= '</div>';
 						
 						
-						$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-image-select">';
+						$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-image-select">';
 									$output .= '<div class="input_holder ">';
 														$output .= '<label>Thumb Size</label>';
 														$output .= '<div role="toolbar" class="btn-toolbar">
@@ -1209,7 +1211,7 @@ tiff</div>
 								$output .= '</div>';
 						
 						
-						$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-radio setting-image-select">';
+						$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-radio setting-image-select">';
 							$output .= '<div class="input_holder ">';
 								$output .= '<label>Label Color</label>';
 								$output .= '<div id="radio-label-color" class="input-group colorpicker-component demo demo-auto">
@@ -1221,7 +1223,7 @@ tiff</div>
 						$output .= '</div>';
 					$output .= '</div>';
 					$output .= '<div class="row">';	
-						$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-radio setting-image-select">';
+						$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-radio setting-image-select">';
 							$output .= '<div class="input_holder ">';
 								$output .= '<label>Background Color</label>';
 								$output .= '<div id="radio-background-color" class="input-group colorpicker-component demo demo-auto">
@@ -1232,7 +1234,7 @@ tiff</div>
 							$output .= '</div>';
 						$output .= '</div>';
 						
-						$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-radio setting-image-select">';
+						$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-radio setting-image-select">';
 							$output .= '<div class="input_holder ">';
 								$output .= '<label>Border Color</label>';
 								$output .= '<div id="radio-border-color" class="input-group colorpicker-component demo demo-auto">
@@ -1243,7 +1245,7 @@ tiff</div>
 							$output .= '</div>';
 						$output .= '</div>';
 						
-						$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-radio setting-image-select">';
+						$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-radio setting-image-select">';
 							$output .= '<div class="input_holder ">';
 								$output .= '<label>Display</label>';
 								$output .= '<div role="toolbar" class="btn-toolbar">
@@ -1265,7 +1267,7 @@ tiff</div>
 /******************************************************************************************************************************/
 //SlIDER SETTINGS												
 											$output .= '<div class="row">';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-slider icons">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-slider icons">';
 													$output .= '<div class="input_holder ">';											
 														$output .= '<label>Dragicon</label>';
 														$output .= '
@@ -1281,7 +1283,7 @@ tiff</div>
 														$output .= NEXForms_admin::show_icons();
 														$output .= '</div></div></div></div>';
 														$output .= '</div>';
-														$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-slider icons selected-color">';
+														$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-slider icons selected-color">';
 															$output .= '<div class="input_holder ">';											
 																$output .= '<label>Color</label>';
 														
@@ -1310,7 +1312,7 @@ tiff</div>
 														$output .= '</div>';
 												$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-slider">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-slider">';
 														$output .= '<div class="input_holder ">';
 															$output .= '<label>Minimum value</label>';
 															$output .= '<input type="text" name="minimum_value" id="minimum_value" class="form-control" />';
@@ -1320,21 +1322,21 @@ tiff</div>
 												
 												
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-slider">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-slider">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Maximum value</label>';
 														$output .= '<input type="text" name="maximum_value" id="maximum_value" class="form-control" />';
 													$output .= '</div>';
 												$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-slider">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-slider">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Starting value</label>';
 														$output .= '<input type="text" name="start_value" id="start_value" class="form-control" />';
 													$output .= '<span class="help-block">&nbsp;</span></div>';
 												$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-slider">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-slider">';
 														$output .= '<div class="input_holder ">';
 															$output .= '<label>Step value</label>';
 															$output .= '<input type="text" name="step_value" id="step_value" class="form-control" />';
@@ -1342,7 +1344,7 @@ tiff</div>
 													$output .= '</div>';
 												
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-slider">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-slider">';
 														$output .= '<div class="input_holder ">';
 															$output .= '<label>Count Text</label>';
 															$output .= '<div class="input-group">';
@@ -1354,7 +1356,7 @@ tiff</div>
 														$output .= '</div>';
 													$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-slider">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-slider">';
 														$output .= '<div class="input_holder ">';
 															$output .= '<label>Handel Text Color</label>';
 															$output .= '<div id="slide-handel-text-color" class="input-group colorpicker-component demo demo-auto">
@@ -1365,7 +1367,7 @@ tiff</div>
 														$output .= '</div>';
 													$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-slider">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-slider">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Handel Background Color</label>';
 														$output .= '<div id="slider-handel-background-color" class="input-group colorpicker-component demo demo-auto">
@@ -1376,7 +1378,7 @@ tiff</div>
 													$output .= '</div>';
 												$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-slider">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-slider">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Handel Border Color</label>';
 														$output .= '<div id="slider-handel-border-color" class="input-group colorpicker-component demo demo-auto">
@@ -1387,7 +1389,7 @@ tiff</div>
 													$output .= '</div>';
 												$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-slider">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-slider">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Slider Border Color</label>';
 														$output .= '<div id="slider-border-color" class="input-group colorpicker-component demo demo-auto">
@@ -1398,7 +1400,7 @@ tiff</div>
 													$output .= '</div>';
 												$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-slider">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-slider">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Background Color</label>';
 														$output .= '<div id="slider-background-color" class="input-group colorpicker-component demo demo-auto">
@@ -1409,7 +1411,7 @@ tiff</div>
 													$output .= '</div>';
 												$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-slider">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-slider">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Background Fill Color</label>';
 														$output .= '<div id="slider-fill-color" class="input-group colorpicker-component demo demo-auto">
@@ -1424,14 +1426,14 @@ tiff</div>
 /******************************************************************************************************************************/
 //STAR RATING SETTINGS												
 											$output .= '<div class="row">';
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-star">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-star">';
 													$output .= '<div class="input_holder ">';											
 														$output .= '<label>Total Stars</label>';
 														$output .= '<input type="text" name="total_stars" id="total_stars" class="form-control">';
 														$output .= '</div>';
 												$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-star">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-star">';
 													$output .= '<div class="input_holder ">';											
 														$output .= '<label>Enable Half Stars</label>';
 														$output .= '<div role="toolbar" class="btn-toolbar">
@@ -1450,7 +1452,7 @@ tiff</div>
 //SPINNER SETTINGS												
 											$output .= '<div class="row">';
 												//down arrow
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-spinner icons" style="z-index:1000001 !important;">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-spinner icons" style="z-index:1000001 !important;">';
 													$output .= '<div class="input_holder ">';											
 														$output .= '<label>Touch Down Icon</label>';
 														$output .= '
@@ -1466,7 +1468,7 @@ tiff</div>
 														$output .= NEXForms_admin::show_icons();
 														$output .= '</div></div></div></div>';
 														$output .= '</div>';
-														$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-spinner icons selected-color" style="z-index:1000000 !important;">';
+														$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-spinner icons selected-color" style="z-index:1000000 !important;">';
 															$output .= '<div class="input_holder ">';											
 																$output .= '<label>Color</label>';
 														
@@ -1495,7 +1497,7 @@ tiff</div>
 														$output .= '</div>';
 												$output .= '</div>';
 												//up arrow
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-spinner icons">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-spinner icons">';
 													$output .= '<div class="input_holder ">';											
 														$output .= '<label>Touch Up Icon</label>';
 														$output .= '
@@ -1511,7 +1513,7 @@ tiff</div>
 														$output .= NEXForms_admin::show_icons();
 														$output .= '</div></div></div></div>';
 														$output .= '</div>';
-														$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-spinner icons selected-color">';
+														$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-spinner icons selected-color">';
 															$output .= '<div class="input_holder ">';											
 																$output .= '<label>Color</label>';
 														
@@ -1543,35 +1545,35 @@ tiff</div>
 												
 												
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-spinner">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-spinner">';
 														$output .= '<div class="input_holder ">';
 															$output .= '<label>Minimum value</label>';
 															$output .= '<input type="text" name="spin_minimum_value" id="spin_minimum_value" class="form-control" />';
 														$output .= '</div>';
 													$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-spinner">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-spinner">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Maximum value</label>';
 														$output .= '<input type="text" name="spin_maximum_value" id="spin_maximum_value" class="form-control" />';
 													$output .= '</div>';
 												$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-spinner">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-spinner">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Starting value</label>';
 														$output .= '<input type="text" name="spin_start_value" id="spin_start_value" class="form-control" />';
 													$output .= '</div>';
 												$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-spinner">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-spinner">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Step value</label>';
 														$output .= '<input type="text" name="spin_step_value" id="spin_step_value" class="form-control" />';
 													$output .= '</div>';
 												$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-spinner">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-spinner">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Decimal places</label>';
 														$output .= '<input type="text" name="spin_decimal" id="spin_decimal" class="form-control" />';
@@ -1589,14 +1591,14 @@ tiff</div>
 											$output .= '<div class="row">';
 												
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-tags">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-tags">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Maximum Tags</label>';
 														$output .= '<input type="text" name="max_tags" id="max_tags" class="form-control" />';
 													$output .= '</div>';
 												$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-tags">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-tags">';
 														$output .= '<div class="input_holder ">';
 															$output .= '<label>Color</label>';
 															$output .= '<div id="tags-text-color" class="input-group colorpicker-component demo demo-auto">
@@ -1607,7 +1609,7 @@ tiff</div>
 														$output .= '</div>';
 													$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-tags">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-tags">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Background Color</label>';
 														$output .= '<div id="tags-background-color" class="input-group colorpicker-component demo demo-auto">
@@ -1618,7 +1620,7 @@ tiff</div>
 													$output .= '</div>';
 												$output .= '</div>';
 												
-												$output .= '<div class="col-sm-6 isotope-item isotope-hidden no-transition setting-tags">';
+												$output .= '<div class="col-sm-6 categorize_it-item categorize_it-hidden no-transition setting-tags">';
 													$output .= '<div class="input_holder ">';
 														$output .= '<label>Border Color</label>';
 														$output .= '<div id="tags-border-color" class="input-group colorpicker-component demo demo-auto">
@@ -1632,7 +1634,7 @@ tiff</div>
 											$output .= '</div>';		
 										$output .= '</div>';				
                     
-                  					$output .= '</div> <!-- #isotope_container -->';
+                  					$output .= '</div> <!-- #categorize_it_container -->';
 								$output .= '</div>';
 							$output .= '</div>';
 						$output .= '</div>';
@@ -2010,7 +2012,7 @@ tiff</div>
 		
 		
 		//NEX CONTAINER
-		$output .= '<div id="nex-forms"><div class="form_update_id hidden"></div><link href="'.plugins_url('/x-forms-express/css/font-awesome.min.css').'" rel="stylesheet">';
+		$output .= '<div id="nex-forms"><div class="form_update_id hidden"></div>';
 		
 			
 			
@@ -2028,7 +2030,6 @@ tiff</div>
 											  </button>
 											  <ul class="dropdown-menu" role="menu">
 												<!--<li><a href="#" class="tutorial"><i class="glyphicon glyphicon-comment"></i>&nbsp;&nbsp;Tutorial<br /><em><small>Using this builder</small></em></a></li>-->
-												<li><a href="'.WP_PLUGIN_URL . '/x-forms-express/documentation/index.html" target="_blank"><i class="glyphicon glyphicon-info-sign"></i>&nbsp;&nbsp;Documentation<br /><em><small>All you need to know</small></em></a></li>
 												<li><a href="http://basix.ticksy.com" target="_blank"><i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;Support<br /><em><small>Let us help you</small></em></a></li>
 												<li><a href="http://codecanyon.net/user/Basix/portfolio" target="_blank"><i class="glyphicon glyphicon-link"></i>&nbsp;&nbsp;Visit Basix<br /><em><small>Check out more items</small></em></a></li>
 											  </ul>
@@ -4112,7 +4113,9 @@ class NEXForms_widget extends WP_Widget{
 				$placeholders[ $key .'.value' ] = $this->control_options[ $key ];
 			}
 		global $wpdb;
-		$get_forms = $wpdb->get_results('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms ORDER BY Id DESC');
+		$do_get_forms = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms ORDER BY Id DESC');
+		$get_forms = $wpdb->get_results($do_get_forms);
+		
 		$current_form = NEXForms_widget_controls::parse('[+form_id.value+]', $placeholders);
 		
 		$tpl  = '<input id="[+title.id+]" name="[+title.name+]" value="'.IZC_Database::get_title(NEXForms_widget_controls::parse('[+form_id.value+]', $placeholders),'wap_nex_forms').'" class="widefat" style="width:96%;display:none;" />';
@@ -4197,7 +4200,8 @@ class NEXForms_form_entries{
 	
 	public function delete_form(){
 			global $wpdb;
-			$wpdb->query('DELETE FROM ' .$wpdb->prefix. 'wap_nex_forms WHERE Id = '.$_POST['Id']);
+			$prep = $wpdb->prepare('DELETE FROM ' .$wpdb->prefix. 'wap_nex_forms WHERE Id = '.$_POST['Id']);
+			$wpdb->query($prep);
 			die();
 		}
 
@@ -4218,11 +4222,13 @@ class NEXForms_form_entries{
 	
 			global $wpdb;
 			
-		$forms = $wpdb->get_results('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms');
+		$get_forms = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms');
+		$forms = $wpdb->get_results($get_forms);
 		
 		foreach($forms as $form)
 			{
-			$form_data = $wpdb->get_results('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE nex_forms_Id='.$form->Id);
+			$get_form_data = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE nex_forms_Id='.$form->Id);
+			$form_data = $wpdb->get_results($get_form_data);
 			
 			$form_field_array = json_decode($form_fields->form_fields,true);
 			
@@ -4233,7 +4239,7 @@ class NEXForms_form_entries{
 				array_unique($headers);	
 				
 				
-				$sql = 'SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE nex_forms_Id='.$form->Id.' GROUP BY time_added  ORDER BY time_added';
+				$sql = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE nex_forms_Id='.$form->Id.' GROUP BY time_added  ORDER BY time_added');
 				$results 	= $wpdb->get_results($sql);
 				
 				
@@ -4249,7 +4255,8 @@ class NEXForms_form_entries{
 							$k =1;
 							foreach($headers as $heading)	
 								{
-								$check_field = $wpdb->get_row('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE meta_key="'.$heading.'" AND time_added="'.$data->time_added.'"');
+								$get_check_field = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE meta_key="'.$heading.'" AND time_added="'.$data->time_added.'"');
+								$check_field = $wpdb->get_row($get_check_field);
 								if($check_field)
 									{
 									$val[] = array('field_name'=>$heading,'field_value'=>$check_field->meta_value);
@@ -4259,7 +4266,7 @@ class NEXForms_form_entries{
 						if($new_record!=$old_record)
 							{
 							
-							$insert = $wpdb->insert($wpdb->prefix.'wap_nex_forms_entries',
+							$insert = $wpdb->prepare($wpdb->insert($wpdb->prefix.'wap_nex_forms_entries',
 								array(								
 									'nex_forms_Id'			=>	$data->nex_forms_Id,
 									'page'					=>	'undefined',
@@ -4268,10 +4275,12 @@ class NEXForms_form_entries{
 									'viewed'				=>	'no',
 									'date_time'				=>   date('Y-m-d H:i:s',$data->time_added),
 									'form_data'				=>	json_encode($val,true)
-									)
-							 );					
+										)
+									 )
+								 );		
 							}
-						
+							
+						$do_insert = $wpdb->query($insert);
 						
 						$new_record = $old_record;
 						$i++;
@@ -4308,7 +4317,8 @@ class NEXForms_form_entries{
 					$output .= '<div class="widget-holder draggable_forms">';
 						$output .= '<p class="description">Drag the forms below to the dropable area (table).</p>';
 						
-						$forms = $wpdb->get_results('SELECT * FROM '.$wpdb->prefix.'wap_wa_form_builder');
+						$get_forms = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_wa_form_builder');
+						$forms = $wpdb->get_results($get_forms);
 
 						foreach($forms as $form)
 							{
@@ -4345,8 +4355,11 @@ class NEXForms_form_entries{
 
 		$csv_data = '';
 		
-		$form_fields = $wpdb->get_row('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms WHERE Id='.$form_id);
-		$form_data = $wpdb->get_results('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE nex_forms_Id='.$form_id);
+		$get_form_fields = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms WHERE Id='.$form_id);
+		$form_fields = $wpdb->get_row($get_form_fields);
+		
+		$get_form_data = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE nex_forms_Id='.$form_id);
+		$form_data = $wpdb->get_results($get_form_data);
 		
 		$form_field_array = json_decode($form_fields->form_fields,true);
 		
@@ -4410,11 +4423,11 @@ class NEXForms_form_entries{
 			
 			$output .= '<tbody class="list:tag" id="the-list">';
 			
-			$sql = 'SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE nex_forms_Id='.$form_id.' GROUP BY time_added ORDER BY time_added DESC
-								LIMIT '.((isset($_POST['current_page'])) ? $_POST['current_page']*10 : '0'  ).',10 ';
+			$sql = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE nex_forms_Id='.$form_id.' GROUP BY time_added ORDER BY time_added DESC
+								LIMIT '.((isset($_POST['current_page'])) ? $_POST['current_page']*10 : '0'  ).',10 ');
 			$results 	= $wpdb->get_results($sql);
 			
-			$sql2 = 'SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE nex_forms_Id='.$form_id.' GROUP BY time_added ORDER BY time_added DESC';
+			$sql2 = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE nex_forms_Id='.$form_id.' GROUP BY time_added ORDER BY time_added DESC');
 			$csv_results 	= $wpdb->get_results($sql2);
 
 			if($results)
@@ -4436,7 +4449,8 @@ class NEXForms_form_entries{
 						$k =1;
 						foreach($headers as $heading)	
 							{
-							$check_field = $wpdb->get_row('SELECT meta_key,meta_value FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE meta_key="'.$heading.'" AND time_added="'.$data->time_added.'"');
+							$get_check_field = $wpdb->prepare('SELECT meta_key,meta_value FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE meta_key="'.$heading.'" AND time_added="'.$data->time_added.'"');
+							$check_field = $wpdb->get_row($get_check_field);
 							if($check_field)
 								{
 								
@@ -4501,7 +4515,8 @@ class NEXForms_form_entries{
 						}
 					foreach($headers as $heading)	
 						{
-							$check_field = $wpdb->get_row('SELECT meta_key,meta_value FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE meta_key="'.$heading.'" AND time_added="'.$data->time_added.'"');
+							$get_check_field = $wpdb->prepare('SELECT meta_key,meta_value FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE meta_key="'.$heading.'" AND time_added="'.$data->time_added.'"');
+							$check_field = $wpdb->get_row($get_check_field);
 							
 							$content = str_replace('\r\n',' ',$check_field->meta_value);
 							$content = str_replace('\r',' ',$content);
@@ -4542,10 +4557,9 @@ class NEXForms_form_entries{
 				$output .= '<input type="hidden" name="current_page" value="0">';
 				$output .= '<input type="hidden" name="wa_form_Id" value="'.$_POST['form_Id'].'">';
 
-			$output .= '<form name="export_csv" method="post" action="'.get_option('siteurl').'/wp-content/plugins/x-forms-express/includes/export.php" id="posts-filter" style="display:none;">';
 				$output .= '<textarea name="csv_content">'.$csv_data.'</textarea>';	
 				$output .= '<input name="_title" value="'.IZC_Database::get_title($form_id,'wap_nex_forms').'">';	
-			$output .= '</form>';
+		
 			
 		if($_POST['form_Id'])	{
 			echo $output;
@@ -4564,8 +4578,8 @@ class NEXForms_form_entries{
 		$headings 	= json_decode($args);
 
 		
-		$sql = 'SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE nex_forms_Id='.$_POST['form_Id'].' GROUP BY time_added ORDER BY time_added DESC
-										LIMIT '.((isset($_POST['current_page'])) ? $_POST['current_page']*10 : '0'  ).',10 ';
+		$sql = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE nex_forms_Id='.$_POST['form_Id'].' GROUP BY time_added ORDER BY time_added DESC
+										LIMIT '.((isset($_POST['current_page'])) ? $_POST['current_page']*10 : '0'  ).',10 ');
 		$results 	= $wpdb->get_results($sql);
 
 		if($results)
@@ -4587,7 +4601,8 @@ class NEXForms_form_entries{
 					$k =1;
 					foreach($headings as $heading)	
 						{						
-							$check_field = $wpdb->get_row('SELECT meta_key,meta_value FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE meta_key="'.$heading.'" AND time_added="'.$data->time_added.'"');
+							$get_check_field = $wpdb->prepare('SELECT meta_key,meta_value FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE meta_key="'.$heading.'" AND time_added="'.$data->time_added.'"');
+							$check_field = $wpdb->get_row($get_check_field );
 							
 							if($check_field)
 								{
@@ -4665,7 +4680,8 @@ class NEXForms_form_entries{
 	
 	public function get_total_form_entries($wa_form_Id){
 		global $wpdb;
-		$get_count  = $wpdb->get_results('SELECT Id FROM '.$wpdb->prefix .'wap_nex_forms_meta WHERE nex_forms_Id='.$wa_form_Id.' GROUP BY time_added');
+		$do_get_count  = $wpdb->prepare('SELECT Id FROM '.$wpdb->prefix .'wap_nex_forms_meta WHERE nex_forms_Id='.$wa_form_Id.' GROUP BY time_added');
+		$get_count  = $wpdb->get_results($do_get_count);
 
 		return count($get_count);
 		
@@ -4675,8 +4691,8 @@ class NEXForms_form_entries{
 	
 	public function delete_form_entry(){
 		global $wpdb;
-		
-		$wpdb->query('DELETE FROM ' .$wpdb->prefix. 'wap_nex_forms_meta WHERE time_added = "'.$_POST['last_update'].'"');
+		$delete = $wpdb->prepare('DELETE FROM ' .$wpdb->prefix. 'wap_nex_forms_meta WHERE time_added = "'.$_POST['last_update'].'"');
+		$wpdb->query($delete);
 
 		IZC_Functions::print_message( 'updated' , 'Item deleted' );
 		die();

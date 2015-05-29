@@ -35,7 +35,7 @@ wp_enqueue_script('jquery-ui-accordion');
 wp_enqueue_script('jquery-ui-autocomplete');
 wp_enqueue_script('jquery-ui-menu');
 wp_enqueue_script('jquery-ui-datepicker');
-/*wp_enqueue_script('jquery-ui-slider');*/
+wp_enqueue_script('jquery-ui-slider');
 wp_enqueue_script('jquery-ui-spinner');
 wp_enqueue_script('jquery-ui-button');
 wp_enqueue_script('jquery-ui-tooltip');
@@ -53,67 +53,54 @@ wp_enqueue_style('jquery-ui');
 /***************/	
 /* CSS */
 //HOLY GRAIL
-wp_enqueue_style('nex-forms-admin-holy-grail.min', plugins_url( '/x-forms-express/css/holy-grail.css'));
+wp_enqueue_style('nex-forms-admin-holy-grail.min', plugins_url('/css/holy-grail.css',dirname(dirname(__FILE__))));
 //BOOTSTRAP
-wp_enqueue_style('nex-forms-bootstrap.min', plugins_url( '/x-forms-express/css/bootstrap.min.css'));
-wp_enqueue_style('nex-forms-bootstrap-fields', plugins_url( '/x-forms-express/css/fields.css'));
+wp_enqueue_style('nex-forms-bootstrap.min', plugins_url( '/css/bootstrap.min.css',dirname(dirname(__FILE__))));
+wp_enqueue_style('nex-forms-bootstrap-fields', plugins_url( '/css/fields.css',dirname(dirname(__FILE__))));
+wp_enqueue_style('nex-forms-font-awesome',plugins_url('/css/font-awesome.min.css',dirname(dirname(__FILE__))));
 //nex-forms ADMIN
-wp_enqueue_style('nex-forms-admin', plugins_url('/x-forms-express/css/admin.css'));
+wp_enqueue_style('nex-forms-admin', plugins_url('/css/admin.css',dirname(dirname(__FILE__))));
 //nex-forms UI
-wp_enqueue_style('nex-forms-ui', plugins_url( '/x-forms-express/css/ui.css'));
+wp_enqueue_style('nex-forms-ui', plugins_url( '/css/ui.css',dirname(dirname(__FILE__))));
 //JQUERY UI
-wp_enqueue_style('nex-forms-jQuery-UI',plugins_url( '/x-forms-express/css/jquery-ui.min.css'));
-wp_enqueue_script('nex-forms-slider.min', plugins_url( '/x-forms-express/js/slider.min.js'));
+wp_enqueue_style('nex-forms-jQuery-UI',plugins_url( '/css/jquery-ui.min.css',dirname(dirname(__FILE__))));
 /* JS */
 //BOOTSTRAP
-wp_enqueue_script('nex-forms-bootstrap.min',  plugins_url( '/x-forms-express/js/bootstrap.min.js'));
+wp_enqueue_script('nex-forms-bootstrap.min',  plugins_url( '/js/bootstrap.min.js',dirname(dirname(__FILE__))));
 
-wp_enqueue_script('nex-forms-moment.min', plugins_url( '/x-forms-express/js/moment.min.js'));
-wp_enqueue_script('nex-forms-locales.min', plugins_url( '/x-forms-express/js/locales.js'));
+wp_enqueue_script('nex-forms-moment.min', plugins_url( '/js/moment.min.js',dirname(dirname(__FILE__))));
+wp_enqueue_script('nex-forms-locales.min', plugins_url( '/js/locales.js',dirname(dirname(__FILE__))));
 
-wp_enqueue_script('nex-forms-bootstrap-datetimepicker', plugins_url( '/x-forms-express/js/bootstrap-datetimepicker.js'));
-wp_enqueue_script('nex-forms-fields', plugins_url( '/x-forms-express/js/fields.js'));
-//ISOTOP
-wp_enqueue_script('nex-forms-jquery.isotope.min', plugins_url( '/x-forms-express/js/jquery.isotope.min.js'));
+wp_enqueue_script('nex-forms-bootstrap-datetimepicker', plugins_url( '/js/bootstrap-datetimepicker.js',dirname(dirname(__FILE__))));
+wp_enqueue_script('nex-forms-fields', plugins_url( '/js/fields.js',dirname(dirname(__FILE__))));
 //CUSTOM
-wp_enqueue_script('nex-forms-ui', plugins_url( '/x-forms-express/js/ui.js'));
-wp_enqueue_script('nex-forms-onload', plugins_url( '/x-forms-express/js/nexf-onload.js'));
-wp_enqueue_script('nex-forms-form-validation', plugins_url( '/x-forms-express/js/nexf-form-validation.js'));
-wp_enqueue_script('nex-forms-drag-and-drop', plugins_url( '/x-forms-express/js/nexf-admin-drag-and-drop.js'));
-wp_enqueue_script('nex-forms-form-controls', plugins_url( '/x-forms-express/js/nexf-controls.js'));
+wp_enqueue_script('nex-forms-ui', plugins_url( '/js/ui.js',dirname(dirname(__FILE__))));
+wp_enqueue_script('nex-forms-onload', plugins_url( '/js/nexf-onload.js',dirname(dirname(__FILE__))));
+wp_enqueue_script('nex-forms-form-validation', plugins_url( '/js/nexf-form-validation.js',dirname(dirname(__FILE__))));
+wp_enqueue_script('nex-forms-drag-and-drop', plugins_url( '/js/nexf-admin-drag-and-drop.js',dirname(dirname(__FILE__))));
+wp_enqueue_script('nex-forms-form-controls', plugins_url( '/js/nexf-controls.js',dirname(dirname(__FILE__))));
 //FIELD SETTINGS
-wp_enqueue_script('nex-forms-field-settings-main', plugins_url( '/x-forms-express/js/main.js'));
+wp_enqueue_script('nex-forms-field-settings-main', plugins_url( '/js/main.js',dirname(dirname(__FILE__))));
 //LOGIC
-wp_enqueue_script('nex-forms-field-logic', plugins_url( '/x-forms-express/js/logic.js'));
+wp_enqueue_script('nex-forms-field-logic', plugins_url( '/js/logic.js',dirname(dirname(__FILE__))));
 
-wp_register_script('core-functions', plugins_url( '/x-forms-express/includes/Core/js/functions.js'));
+wp_register_script('core-functions', plugins_url( '/includes/Core/js/functions.js',dirname(dirname(__FILE__))));
 	wp_enqueue_script('core-functions');
 	
-	wp_register_script('iz-grid', plugins_url( '/x-forms-express/includes/Core/js/iz-grid.js'));
-	wp_enqueue_script ('iz-grid');
-	
-	wp_register_script('iz_json2',  plugins_url( '/x-forms-express/includes/Core/js/json2.min.js'));
-	wp_enqueue_script('iz_json2');
-	
-	/*wp_register_script('jquery-ui-full',  plugins_url( '/x-forms-express/includes/Core/js/jquery-ui-full.js');
-	wp_enqueue_script('jquery-ui-full');*/
-	
-	
-	
-	
+
 
 /***************************************/
 /**************  PUBLIC  ***************/
 /***************************************/
 //JS
-wp_register_script('public-functions', plugins_url( '/x-forms-express/includes/Core/js/public.js'));
+wp_register_script('public-functions', plugins_url( '/includes/Core/js/public.js',dirname(dirname(__FILE__))));
 wp_enqueue_script('public-functions');
 	
-wp_register_script('core-public-functions', plugins_url( '/x-forms-express/includes/Core/js/public-functions.js'));
+wp_register_script('core-public-functions', plugins_url( '/includes/Core/js/public-functions.js',dirname(dirname(__FILE__))));
 wp_enqueue_script('core-public-functions');
 
 //CSS
-wp_register_style('defaults', plugins_url( '/x-forms-express/includes/Core/css/defaults.css'));
+wp_register_style('defaults', plugins_url( '/includes/Core/css/defaults.css',dirname(dirname(__FILE__))));
 wp_enqueue_style('defaults');
 
 wp_print_scripts();
@@ -141,17 +128,17 @@ if(is_admin() && ( isset($_GET['page']) && stristr($_GET['page'],'nex-formslite-
 	wp_enqueue_script('admin-tags');
 	//CSS
 	wp_enqueue_style('widgets');
-	wp_enqueue_style('nex-forms-font-awesome',plugins_url( '/x-forms-express/css/font-awesome.min.css'));
-	wp_enqueue_style('nex-forms-bootstrap.min', plugins_url( '/x-forms-express/css/bootstrap.min.css'));
-	wp_enqueue_script('nex-forms-bootstrap.min',  plugins_url( '/x-forms-express/js/bootstrap.min.js'));
+	wp_enqueue_style('nex-forms-font-awesome',plugins_url( '/css/font-awesome.min.css',dirname(dirname(__FILE__))));
+	wp_enqueue_style('nex-forms-bootstrap.min', plugins_url( '/css/bootstrap.min.css',dirname(dirname(__FILE__))));
+	wp_enqueue_script('nex-forms-bootstrap.min',  plugins_url( '/js/bootstrap.min.js',dirname(dirname(__FILE__))));
 	//***************/
 	/*** IZ Core ***/
 	/***************/
 	//JS
-	wp_register_script('module-widgets', plugins_url( '/x-forms-express/includes/Core/js/module-widgets.js'));
+	wp_register_script('module-widgets', plugins_url( '/includes/Core/js/module-widgets.js',dirname(dirname(__FILE__))));
 	wp_enqueue_script ('module-widgets');
 	
-	wp_register_script('linked-modules', plugins_url( '/x-forms-express/includes/Core/js/linked-modules.js'));
+	wp_register_script('linked-modules', plugins_url( '/includes/Core/js/linked-modules.js',dirname(dirname(__FILE__))));
 	wp_enqueue_script ('linked-modules');
 
 	//Depenedancies for creating and managing custom events
@@ -162,34 +149,24 @@ if(is_admin() && ( isset($_GET['page']) && stristr($_GET['page'],'nex-formslite-
 	wp_enqueue_script('backbone');
 	//Generic functions
 	
-	wp_register_script('core-functions', plugins_url( '/x-forms-express/includes/Core/js/functions.js'));
+	wp_register_script('core-functions', plugins_url( '/includes/Core/js/functions.js',dirname(dirname(__FILE__))));
 	wp_enqueue_script('core-functions');
 	
-	wp_register_script('iz-grid', plugins_url( '/x-forms-express/includes/Core/js/iz-grid.js'));
-	wp_enqueue_script ('iz-grid');
-	
-	wp_register_script('iz_json2',  plugins_url( '/x-forms-express/includes/Core/js/json2.min.js'));
-	wp_enqueue_script('iz_json2');
-	
-	wp_register_script('jquery-ui-full',  plugins_url( '/x-forms-express/includes/Core/js/jquery-ui-full.js'));
-	wp_enqueue_script('jquery-ui-full');
-	
-	
-	
-	
+
+
 
 /***************************************/
 /**************  PUBLIC  ***************/
 /***************************************/
 //JS
-wp_register_script('public-functions', plugins_url( '/x-forms-express/includes/Core/js/public.js'));
+wp_register_script('public-functions', plugins_url( '/includes/Core/js/public.js',dirname(dirname(__FILE__))));
 wp_enqueue_script('public-functions');
 	
-wp_register_script('core-public-functions', plugins_url( '/x-forms-express/includes/Core/js/public-functions.js'));
+wp_register_script('core-public-functions', plugins_url( '/includes/Core/js/public-functions.js',dirname(dirname(__FILE__))));
 wp_enqueue_script('core-public-functions');
 
 //CSS
-wp_register_style('defaults', plugins_url( '/x-forms-express/includes/Core/css/defaults.css'));
+wp_register_style('defaults', plugins_url( '/includes/Core/css/defaults.css',dirname(dirname(__FILE__))));
 wp_enqueue_style('defaults');
 
 

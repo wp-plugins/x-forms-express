@@ -176,7 +176,8 @@ if(!class_exists('IZC_Template'))
 										$output .= '<input type="hidden" name="selected_'.$filter['name'].'" value="'.IZC_Database::get_parent($_REQUEST['Id'],$this->component_table).'">';;
 										break;
 										case 'text':
-										$get_val = $wpdb->get_var('SELECT '.$filter['name'].' FROM '.$wpdb->prefix . $this->component_table .' WHERE Id='.$_REQUEST['Id']);
+										$do_get_val = $wpdb->prepare('SELECT '.$filter['name'].' FROM '.$wpdb->prefix . $this->component_table .' WHERE Id='.$_REQUEST['Id']);
+										$get_val = $wpdb->get_var($do_get_val);
 										$output .= '<input type="hidden" name="get_'.$filter['name'].'" value='.$get_val.'>';
 										}
 									}
@@ -191,7 +192,8 @@ if(!class_exists('IZC_Template'))
 								
 								if($key!='Parent')
 										{
-										$is_foreing_key = $wpdb->query('SHOW FIELDS FROM '.$wpdb->prefix . $this->component_table. ' LIKE "'.IZC_Functions::format_name($key).'_Id"');
+										$get_is_foreing_key = $wpdb->prepare('SHOW FIELDS FROM '.$wpdb->prefix . $this->component_table. ' LIKE "'.IZC_Functions::format_name($key).'_Id"');
+										$is_foreing_key = $wpdb->query($get_is_foreing_key);
 										$table_fields[$i] = ($is_foreing_key) ? IZC_Functions::format_name($key).'_Id': $key;
 										$i++;
 										}
@@ -260,7 +262,8 @@ if(!class_exists('IZC_Template'))
 		public function get_total_records($table,$additional_params=array(),$nex_forms_id=''){
 			global $wpdb;
 			
-			$tree = $wpdb->query('SHOW FIELDS FROM '. $wpdb->prefix . $table .' LIKE "parent_Id"');
+			$get_tree = $wpdb->prepare('SHOW FIELDS FROM '. $wpdb->prefix . $table .' LIKE "parent_Id"');
+			$tree = $wpdb->query($get_tree);
 			
 			$additional_params = json_decode(str_replace('\\','',$_POST['additional_params']),true);
 			
@@ -272,8 +275,8 @@ if(!class_exists('IZC_Template'))
 			if($nex_forms_id)
 				$where_str .= ' AND nex_forms_Id='.$nex_forms_id;
 			
-			
-			return $wpdb->get_var('SELECT count(*) FROM '.$wpdb->prefix . $table.' WHERE Id<>"" '. (($tree) ? ' AND parent_Id=0' : '').' '. (($_POST['plugin_alias']) ? ' AND plugin="'.$_POST['plugin_alias'].'"' : '').' '.$where_str );
+			$return = $wpdb->prepare('SELECT count(*) FROM '.$wpdb->prefix . $table.' WHERE Id<>"" '. (($tree) ? ' AND parent_Id=0' : '').' '. (($_POST['plugin_alias']) ? ' AND plugin="'.$_POST['plugin_alias'].'"' : '').' '.$where_str );
+			return $wpdb->get_var($return);
 		}
 		
 		public function build_data_list(){
@@ -295,7 +298,8 @@ if(!class_exists('IZC_Template'))
 								$output .= '<option selected="selected" value="">All Forms</option>';
 								
 								
-								$forms = $wpdb->get_results('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms');
+								$get_forms = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms');
+								$forms = $wpdb->get_results($get_forms);
 								
 									foreach($forms as $form)
 										{
@@ -469,12 +473,18 @@ if(!class_exists('IZC_Template'))
 			$row  = '';
 			$set_label = '';
 			if(isset($_POST['edit_Id']))
-				$row  = $wpdb->get_row('SELECT * FROM '.$wpdb->prefix . @$_POST['plugin_table'] .' WHERE Id='.@$_POST['edit_Id']);
+				{
+				$get_row  = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix . @$_POST['plugin_table'] .' WHERE Id='.@$_POST['edit_Id']);
+				$row  = $wpdb->get_row($get_row);
+				}
 			
 			if(isset($_REQUEST['Id']))
-				$row  = $wpdb->get_row('SELECT * FROM '.$wpdb->prefix . @$_REQUEST['table'] .' WHERE Id='.@$_REQUEST['Id']);
+				{
+				$get_row  = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix . @$_REQUEST['table'] .' WHERE Id='.@$_REQUEST['Id']);
+				$row  = $wpdb->get_row($get_row);
+				}
 			
-			$default_values = get_option('wnex-forms-default-settings');
+			$default_values = get_option('nex-forms-default-settings');
 			
 			if($row)
 				$set_label = $row->$label;

@@ -93,12 +93,12 @@ function ()
 					jQuery('div#col-left').animate(
 						{
 							width:0
-						},300,function(){ resetSliderPositions(jQuery('table.resizabletable')) }
+						},300,function(){  }
 					);
 					jQuery('div#col-right').animate(
 						{
 							width:cur_width_L + cur_width_R
-						},300,function(){ resetSliderPositions(jQuery('table.resizabletable')) }
+						},300,function(){ }
 					);
 					
 					jQuery(this).html('Show Form&nbsp;&nbsp;&gt;');
@@ -109,12 +109,12 @@ function ()
 					jQuery('div#col-left').animate(
 						{
 							width:cur_width_L-10
-						},300,function(){ resetSliderPositions(jQuery('table.resizabletable')) }
+						},300,function(){ }
 					);
 					jQuery('div#col-right').animate(
 						{
 							width:cur_width_R
-						},300,function(){ resetSliderPositions(jQuery('table.resizabletable')) }
+						},300,function(){ }
 					);
 					
 					jQuery(this).html('&lt;&nbsp;&nbsp;Hide Form');
@@ -127,29 +127,6 @@ function ()
 				}
 		);
 		
-		jQuery( 'input[name="entry_date"]' ).datepicker({ dateFormat: "yy-mm-dd" } );
-		jQuery( 'input[name="program_start_shop"]' ).datepicker( { dateFormat: "yy-mm-dd" } );
-		jQuery( 'input[name="program_completion_shop"]' ).datepicker( { dateFormat: "yy-mm-dd" } );
-		jQuery( 'input[name="program_start_site"]' ).datepicker( { dateFormat: "yy-mm-dd"} );
-		jQuery( 'input[name="program_completion_site"]' ).datepicker( { dateFormat: "yy-mm-dd" } );
-		jQuery( 'input[name="weld_date"]' ).datepicker( { dateFormat: "yy-mm-dd" } );
-		jQuery( 'input[name="delivery_date"]' ).datepicker( { dateFormat: "yy-mm-dd" } );
-		
-		jQuery('#date_range_from').datetimepicker({
-			numberOfMonths: 2,
-			onSelect: function (selectedDateTime){
-				var start = jQuery(this).datetimepicker('getDate');
-				jQuery('#date_range_to').datetimepicker('option', 'minDate', new Date(start.getTime()) );
-			}
-		});
-		
-		jQuery('#date_range_to').datetimepicker({
-			numberOfMonths: 2,
-			onSelect: function (selectedDateTime){
-				var end = jQuery(this).datetimepicker('getDate');
-				jQuery('#date_range_from').datetimepicker('option', 'maxDate', new Date(end.getTime()) );
-			}
-		});
 
 
 
@@ -533,7 +510,7 @@ function hideSelectedColumns(checkbox) {
 					jQuery('div#iz_col_resize_id'+(parseInt(index)+2)).hide();
 					jQuery('table.resiable-columns thead tr th:eq('+(parseInt(index)+1)+')').hide();
 					jQuery('table.resiable-columns tfoot tr th:eq('+(parseInt(index)+1)+')').hide();
-					resetSliderPositions(jQuery('table.resiable-columns'));
+					
 					}
 				);
 			}
@@ -546,7 +523,7 @@ function hideSelectedColumns(checkbox) {
 					jQuery('div#iz_col_resize_id'+(parseInt(index)+2)).show();
 					jQuery('table.resiable-columns thead tr th:eq('+(parseInt(index)+1)+')').show();
 					jQuery('table.resiable-columns tfoot tr th:eq('+(parseInt(index)+1)+')').show();
-					resetSliderPositions(jQuery('table.resiable-columns'));
+					
 					}
 				);
 			}
@@ -591,7 +568,7 @@ function populate_list(args,table,page,plugin_alias,additional_params,nex_forms_
 			
 			
 			
-			resetSliderPositions(jQuery('table.resiable-columns'));
+		
 			if(jQuery('input[name="edit_Id"]').val()=='' || jQuery('input[name="edit_status"]').val()=='done')
 				{
 				reset_form();

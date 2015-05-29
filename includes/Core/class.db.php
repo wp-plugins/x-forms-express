@@ -9,10 +9,6 @@ add_action('wp_ajax_do_insert', array('IZC_Database','do_insert'));
 add_action('wp_ajax_do_edit', array('IZC_Database','update'));
 add_action('wp_ajax_duplicate_record', array('IZC_Database','duplicate_record'));
 
-add_action('wp_ajax_nopriv_do_insert', array('IZC_Database','insert'));
-add_action('wp_ajax_nopriv_do_edit', array('IZC_Database','update'));
-add_action('wp_ajax_nopriv_duplicate_record', array('IZC_Database','duplicate_record'));
-
 
 add_action('wp_ajax_insert_nex_form', array('IZC_Database','insert_nex_form'));
 add_action('wp_ajax_edit_form', array('IZC_Database','update_form'));
@@ -49,7 +45,8 @@ if(!class_exists('IZC_Database'))
 			
 			$args 		= str_replace('\\','',$_POST['args']);
 			$headings 	= json_decode($args);
-			$tree 		= $wpdb->query('SHOW FIELDS FROM '. $wpdb->prefix .$_POST['table'].' LIKE "parent_Id"');
+			$get_tree 	= $wpdb->prepare('SHOW FIELDS FROM '. $wpdb->prefix .$_POST['table'].' LIKE "parent_Id"');
+			$tree 		= $wpdb->query($get_tree);
 			
 			$additional_params = json_decode(str_replace('\\','',$_POST['additional_params']),true);
 			
@@ -63,14 +60,14 @@ if(!class_exists('IZC_Database'))
 				$where_str .= ' AND nex_forms_Id='.$_POST['nex_forms_id'];
 			
 			
-			$sql = 'SELECT * FROM '. $wpdb->prefix . $_POST['table'].' WHERE Id <> "" 
+			$sql = $wpdb->prepare('SELECT * FROM '. $wpdb->prefix . $_POST['table'].' WHERE Id <> "" 
 											'.(($tree) ? ' AND parent_Id="0"' : '').' 
 											'.(($_POST['plugin_alias']) ? ' AND (plugin="'.$_POST['plugin_alias'].'" || plugin="shared")' : '').' 
 											'.$where_str.'   
 											ORDER BY 
 											'.((isset($_POST['orderby']) && !empty($_POST['orderby'])) ? $_POST['orderby'].' 
 											'.$_POST['order'] : 'Id DESC').' 
-											LIMIT '.((isset($_POST['current_page'])) ? $_POST['current_page']*10 : '0'  ).',10 ';
+											LIMIT '.((isset($_POST['current_page'])) ? $_POST['current_page']*10 : '0'  ).',10 ');
 			$results 	= $wpdb->get_results($sql);
 			
 			$output .= '<div class="modal fade" id="viewFormEntry" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:10001 !important;">
@@ -153,20 +150,7 @@ if(!class_exists('IZC_Database'))
 						
 						
 						
-						//Check if value is a file upload contain traces of allowed images
-						if(strstr($data->$heading,'__') && is_numeric(substr($data->$heading,0,9)))
-							{
-							$get_extension = explode('.',$data->$heading);
-							$val = '<img src="'.WP_PLUGIN_URL.'/includes/Core/images/icons/ext/'.$get_extension[count($get_extension)-1].'.png">';
-							$image_extensions = array('jpg','jpeg','gif','png','bmp');
-							foreach($image_extensions as $image_extension)
-								{
-								if(stristr($data->$heading,$image_extension))
-									{
-									$val = '<img src="'.get_option('siteurl').'/wp-content/uploads/wa-core/thumbs/'.$data->$heading.'">';
-									}
-								}
-							}
+						
 						
 						$output .= '<td class="manage-column column-'.$heading.'">'.(($k==1) ? '<strong>'.$val.'</strong>' : $val).'';
 						$output .= (($k==1) ? '<div class="row-actions"></span><span class="delete"><a href="javascript:delete_record(\''.$data->Id.'\',\''.$_POST['table'].'\');" >Delete</a></span></div>' : '' ).'</td>';
@@ -198,7 +182,8 @@ if(!class_exists('IZC_Database'))
 		
 		public function load_nex_form(){
 			global $wpdb;
-			$form = $wpdb->get_row('SELECT form_fields FROM '.$wpdb->prefix.'wap_nex_forms WHERE Id='.$_POST['form_Id']);
+			$get_form = $wpdb->prepare('SELECT form_fields FROM '.$wpdb->prefix.'wap_nex_forms WHERE Id='.$_POST['form_Id']);
+			$form = $wpdb->get_row($get_form);
 			echo str_replace('\\','',$form->form_fields);
 			die();	
 		}
@@ -213,7 +198,8 @@ if(!class_exists('IZC_Database'))
 		
 		public function load_nex_form_attr(){
 			global $wpdb;
-			$form = $wpdb->get_row('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms WHERE Id='.$_POST['form_Id']);
+			$get_form = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms WHERE Id='.$_POST['form_Id']);
+			$form = $wpdb->get_row($get_form);
 			$output .= '<div class="mail_to">'.$form->mail_to.'</div>';
 			$output .= '<div class="confirmation_mail_body">'.str_replace('\\','',$form->confirmation_mail_body).'</div>';
 			$output .= '<div class="confirmation_mail_subject">'.str_replace('\\','',$form->confirmation_mail_subject).'</div>';
@@ -236,7 +222,8 @@ if(!class_exists('IZC_Database'))
 		
 		public function load_nex_form_hidden_fields(){
 			global $wpdb;
-			$form = $wpdb->get_row('SELECT hidden_fields FROM '.$wpdb->prefix.'wap_nex_forms WHERE Id='.$_POST['form_Id']);
+			$get_form = $wpdb->prepare('SELECT hidden_fields FROM '.$wpdb->prefix.'wap_nex_forms WHERE Id='.$_POST['form_Id']);
+			$form = $wpdb->get_row($get_form);
 			
 			$hidden_fields_raw = explode('[end]',$form->hidden_fields);
 			
@@ -273,18 +260,20 @@ if(!class_exists('IZC_Database'))
 			global $wpdb;
 			$table 		= (isset($_POST['table'])) ? $_POST['table'] : $this->module_table;
 			$plugin		= (isset($_POST['plugin_alias'])) ? $_POST['plugin_alias'] : $this->plugin_alias;
-			$tree 		= $wpdb->query('SHOW FIELDS FROM '. $wpdb->prefix . $table .' LIKE "parent_Id"');
+			$get_tree 	= $wpdb->prepare('SHOW FIELDS FROM '. $wpdb->prefix . $table .' LIKE "parent_Id"');
+			$tree 		= $wpdb->query($get_tree);
 			
 			
 			
-			$sql = 'SELECT * FROM '. $wpdb->prefix . $table .'  WHERE 1=1 
+			$sql = $wpdb->prepare('SELECT * FROM '. $wpdb->prefix . $table .'  WHERE 1=1 
 											'.(($tree) ? ' 		AND parent_Id="0"' : '').'
-											'.(($plugin) ? ' 	AND (plugin="'.$plugin.'" || plugin="shared" )' : '');
+											'.(($plugin) ? ' 	AND (plugin="'.$plugin.'" || plugin="shared" )' : ''));
 			$results	= $wpdb->get_results($sql);
 			//echo $sql;
 			if(isset($_REQUEST['Id'])){
 				global $wpdb;
-				$selected  = $wpdb->get_var('SELECT '.$table.'_Id FROM '.$wpdb->prefix . $_REQUEST['table'] .' WHERE Id='.$_REQUEST['Id']);
+				$get_selected  = $wpdb->prepare('SELECT '.$table.'_Id FROM '.$wpdb->prefix . $_REQUEST['table'] .' WHERE Id='.$_REQUEST['Id']);
+				$selected  = $wpdb->get_var($get_selected);
 			}
 			
 			//$output .= '<option value="0">---- Select ----</option>';
@@ -307,7 +296,8 @@ if(!class_exists('IZC_Database'))
 			
 			global $wpdb;
 	
-			$results = $wpdb->get_results('SELECT '.$field.' FROM '. $wpdb->prefix . $table);
+			$get_results = $wpdb->prepare('SELECT '.$field.' FROM '. $wpdb->prefix . $table);
+			$results = $wpdb->get_results($get_results);
 		
 			$output .= '<option value="0">---- Select ----</option>';
 			
@@ -331,8 +321,11 @@ if(!class_exists('IZC_Database'))
 			
 			$table = (isset($_POST['table'])) ? $_POST['table'] : $this->module_table;
 			
-			$tree 		= $wpdb->query('SHOW FIELDS FROM '. $wpdb->prefix . $table .' LIKE "parent_Id"');
-			$results 	= $wpdb->get_results('SELECT * FROM '. $wpdb->prefix . $table .' '.(($tree) ? ' WHERE parent_Id="0"' : '') );
+			$get_tree 		= $wpdb->prepare('SHOW FIELDS FROM '. $wpdb->prefix . $table .' LIKE "parent_Id"');
+			$tree 		= $wpdb->query($get_tree);
+			
+			$get_results 	= $wpdb->prepare('SELECT * FROM '. $wpdb->prefix . $table .' '.(($tree) ? ' WHERE parent_Id="0"' : '') );
+			$results 	= $wpdb->get_results($get_results);
 			
 			if($results)
 				{			
@@ -466,23 +459,28 @@ if(!class_exists('IZC_Database'))
 	
 		public function has_child($Id,$table){
 			global $wpdb;
-			return $wpdb->get_results("SELECT * FROM " . $wpdb->prefix . $table ." WHERE parent_Id = '".$Id."'");
+			$result = $wpdb->prepare("SELECT * FROM " . $wpdb->prefix . $table ." WHERE parent_Id = '".$Id."'");
+			return $wpdb->get_results($result);
 		}
 		public function get_children($Id,$table){
 			global $wpdb;
-			return $wpdb->get_results("SELECT * FROM " . $wpdb->prefix . $table ." WHERE parent_Id = '".$Id."'");
+			$result = $wpdb->prepare("SELECT * FROM " . $wpdb->prefix . $table ." WHERE parent_Id = '".$Id."'");
+			return $wpdb->get_results($result);
 		}
 		public function count_children($Id,$table){
 			global $wpdb;
-			return $wpdb->get_var("SELECT count(*) FROM " . $wpdb->prefix . $table ." WHERE parent_Id = '".$Id."'");
+			$result = $wpdb->prepare("SELECT count(*) FROM " . $wpdb->prefix . $table ." WHERE parent_Id = '".$Id."'");
+			return $wpdb->get_var($result);
 		}
 		public function is_child($Id,$table){
 			global $wpdb;
-			return $wpdb->get_results("SELECT * FROM " . $wpdb->prefix . $table ." WHERE Id = '".$Id."'");
+			$result = $wpdb->prepare("SELECT * FROM " . $wpdb->prefix . $table ." WHERE Id = '".$Id."'");
+			return $wpdb->get_results($result);
 		}
 		public function get_parent($Id,$table){
 			global $wpdb;
-			return $wpdb->get_var("SELECT parent_Id FROM " . $wpdb->prefix . $table ." WHERE Id = '".$Id."'");
+			$result = $wpdb->prepare("SELECT parent_Id FROM " . $wpdb->prefix . $table ." WHERE Id = '".$Id."'");
+			return $wpdb->get_var($result);
 		}
 		
 		
@@ -493,23 +491,29 @@ if(!class_exists('IZC_Database'))
 		public function get_title($Id,$table){
 			global $wpdb;
 			
-			$the_title = $wpdb->get_var("SELECT title FROM " . $wpdb->prefix . $table ." WHERE Id = '".$Id."'");
+			$get_the_title = $wpdb->prepare("SELECT title FROM " . $wpdb->prefix . $table ." WHERE Id = '".$Id."'");
+			$the_title = $wpdb->get_var($get_the_title);
 	
 			if(!$the_title)
-				$the_title = $wpdb->get_var("SELECT _name FROM " . $wpdb->prefix . $table ." WHERE Id = '".$Id."'");
+				{
+				$get_the_title = $wpdb->prepare("SELECT _name FROM " . $wpdb->prefix . $table ." WHERE Id = '".$Id."'");
+				$the_title = $wpdb->get_var($get_the_title);
+				}
 		
 			return $the_title;
 		}
 		
 		public function get_username($Id){
 			global $wpdb;
-			$username = $wpdb->get_var("SELECT display_name FROM " . $wpdb->prefix . "users WHERE ID = '".$Id."'");
+			$get_username = $wpdb->prepare("SELECT display_name FROM " . $wpdb->prefix . "users WHERE ID = '".$Id."'");
+			$username = $wpdb->get_var($get_username);
 			return $username;
 		}
 		
 		public function get_description($Id,$table){
 			global $wpdb;
-			return $wpdb->get_var("SELECT description FROM " . $wpdb->prefix . $table ." WHERE Id = '".$Id."'");
+			$result = $wpdb->prepare("SELECT description FROM " . $wpdb->prefix . $table ." WHERE Id = '".$Id."'");
+			return $wpdb->get_var($result);
 		}
 		
 		
@@ -522,7 +526,8 @@ if(!class_exists('IZC_Database'))
 			global $wpdb;
 			echo '<pre>';
 			
-			$fields 	= $wpdb->get_results("SHOW FIELDS FROM " . $wpdb->prefix . $_POST['table']);
+			$get_fields 	= $wpdb->prepare("SHOW FIELDS FROM " . $wpdb->prefix . $_POST['table']);
+			$fields 	= $wpdb->get_results($get_fields);
 			$field_array = array();
 			foreach($fields as $field)
 				{
@@ -531,14 +536,15 @@ if(!class_exists('IZC_Database'))
 					$field_array[$field->Field] = $_POST[$field->Field];
 					}	
 				}
-			$insert = $wpdb->insert ( $wpdb->prefix . $_POST['table'], $field_array );
-			print_r("SHOW FIELDS FROM " . $wpdb->prefix . $_POST['table']);
+			$data_insert = $wpdb->prepare($wpdb->insert ( $wpdb->prefix . $_POST['table'], $field_array ));
+			$insert = $wpdb->query($data_insert);
 			die();
 		}
 		
 		public function do_insert(){
 			global $wpdb;
-			$fields 	= $wpdb->get_results("SHOW FIELDS FROM " . $wpdb->prefix . $_POST['table']);
+			$get_fields 	= $wpdb->prepare("SHOW FIELDS FROM " . $wpdb->prefix . $_POST['table']);
+			$fields 	= $wpdb->get_results($get_fields);
 			$field_array = array();
 			foreach($fields as $field)
 				{
@@ -550,13 +556,15 @@ if(!class_exists('IZC_Database'))
 						$field_array[$field->Field] = $_POST[$field->Field];
 					}	
 				}
-			$insert = $wpdb->insert ( $wpdb->prefix . $_POST['table'], $field_array );
+			$data_insert = $wpdb->prepare($wpdb->insert ( $wpdb->prefix . $_POST['table'], $field_array ));
+			$insert = $wpdb->query($data_insert);
 			echo mysql_insert_id();
 			die();
 		}
 		public function update(){
 		global $wpdb;
-		$fields 	= $wpdb->get_results("SHOW FIELDS FROM " . $wpdb->prefix . $_POST['table']);
+		$get_fields 	= $wpdb->prepare("SHOW FIELDS FROM " . $wpdb->prefix . $_POST['table']);
+		$fields 	= $wpdb->get_results($get_fields);
 		$field_array = array();
 		foreach($fields as $field)
 			{
@@ -568,14 +576,16 @@ if(!class_exists('IZC_Database'))
 					$field_array[$field->Field] = $_POST[$field->Field];
 				}	
 			}
-		$update = $wpdb->update ( $wpdb->prefix . $_POST['table'], $field_array, array(	'Id' => $_POST['edit_Id']) );
+		$update = $wpdb->prepare($wpdb->update ( $wpdb->prefix . $_POST['table'], $field_array, array(	'Id' => $_POST['edit_Id']) ));
+		$do_update = $wpdb->query($update);
 		echo $_POST['edit_Id'];
 		die();
 		}
 		public function update_form(){
 			global $wpdb;
 			
-			$fields 	= $wpdb->get_results("SHOW FIELDS FROM " . $wpdb->prefix . $_POST['table']);
+			$get_fields 	= $wpdb->prepare("SHOW FIELDS FROM " . $wpdb->prefix . $_POST['table']);
+			$fields 	= $wpdb->get_results($get_fields);
 			$field_array = array();
 			foreach($fields as $field)
 				{
@@ -585,15 +595,18 @@ if(!class_exists('IZC_Database'))
 					$field_array[$field->Field] = $_POST[$field->Field];
 					}	
 				}
-			$update = $wpdb->update ( $wpdb->prefix . $_POST['table'], $field_array, array(	'Id' => $_POST['edit_Id']) );
+			$update = $wpdb->prepare($wpdb->update ( $wpdb->prefix . $_POST['table'], $field_array, array(	'Id' => $_POST['edit_Id']) ));
+		$do_update = $wpdb->query($update);
 			die();
 		}
 		
 		public function duplicate_record(){
 		global $wpdb;
 
-		$record = $wpdb->get_row('SELECT * FROM ' .$wpdb->prefix. $_POST['table']. ' WHERE Id = '.$_POST['Id']);
-		$fields 	= $wpdb->get_results("SHOW FIELDS FROM " . $wpdb->prefix . $_POST['table']);
+		$get_record = $wpdb->prepare('SELECT * FROM ' .$wpdb->prefix. $_POST['table']. ' WHERE Id = '.$_POST['Id']);
+		$record = $wpdb->get_row($get_record);
+		$get_fields 	= $wpdb->prepare("SHOW FIELDS FROM " . $wpdb->prefix . $_POST['table']);
+		$fields 	= $wpdb->get_results($get_fields);
 		$field_array = array();
 		foreach($fields as $field)
 			{
@@ -606,7 +619,8 @@ if(!class_exists('IZC_Database'))
 		//unset($field_array['session_Id']);
 		
 		//var_dump($field_array);
-		$insert = $wpdb->insert ( $wpdb->prefix . $_POST['table'], $field_array );
+		$data_insert = $wpdb->prepare($wpdb->insert ( $wpdb->prefix . $_POST['table'], $field_array ));
+		$insert = $wpdb->query($data_insert);
 		
 		//header("Location: http://localhost/db_thermal/wp-admin/admin.php?page=WA-documents-contacts&Id=".mysql_insert_id()."&table=wam_contacts");
 		//IZC_Functions::print_message( 'updated' , 'Record Duplicated' );
@@ -620,9 +634,11 @@ if(!class_exists('IZC_Database'))
 			$decendents = explode(',',$_SESSION['decendants']);
 			foreach($decendents as $child)
 				{
-				$wpdb->query('DELETE FROM ' .$wpdb->prefix. $_POST['table']. ' WHERE Id = '.$child);
+				$delete_decendents = $wpdb->prepare('DELETE FROM ' .$wpdb->prefix. $_POST['table']. ' WHERE Id = '.$child);
+				$wpdb->query($delete_decendents);
 				}
-			$wpdb->query('DELETE FROM ' .$wpdb->prefix. $_POST['table']. ' WHERE Id = '.$_POST['Id']);
+			$delete = $wpdb->prepare('DELETE FROM ' .$wpdb->prefix. $_POST['table']. ' WHERE Id = '.$_POST['Id']);
+			$wpdb->query($delete);
 			$_SESSION['decendants'] = '';
 			IZC_Functions::print_message( 'updated' , 'Item deleted' );
 			die();
@@ -636,9 +652,11 @@ if(!class_exists('IZC_Database'))
 				$decendents = explode(',',$_SESSION['decendants']);
 				foreach($decendents as $child)
 					{
-					$wpdb->query('DELETE FROM ' .$wpdb->prefix. $table. ' WHERE Id = '.$child);
+					$delete_decendents = $wpdb->prepare('DELETE FROM ' .$wpdb->prefix. $table. ' WHERE Id = '.$child);
+					$wpdb->query($delete_decendents);
 					}
-				$delete = $wpdb->query('DELETE FROM ' .$wpdb->prefix. $table. ' WHERE Id = '.$record_Id);
+				$do_delete = $wpdb->prepare('DELETE FROM ' .$wpdb->prefix. $table. ' WHERE Id = '.$record_Id);
+				$delete = $wpdb->query($do_delete);
 				}
 			if($delete)
 				IZC_Functions::add_js_function( 'print_msg(\'updated\' , \'Items deleted\')' );
@@ -647,7 +665,8 @@ if(!class_exists('IZC_Database'))
 		public function alter_plugin_table($table='', $col = '', $type='text'){
 			global $wpdb;
 			
-			$result = $wpdb->query("ALTER TABLE ".$wpdb->prefix . $table ." ADD ".$col." ".$type);
+			$get_result = $wpdb->prepare("ALTER TABLE ".$wpdb->prefix . $table ." ADD ".$col." ".$type);
+			$result = $wpdb->query($get_result);
 			
 		}
 		
@@ -665,7 +684,8 @@ if(!class_exists('IZC_Database'))
 				foreach($this->link_modules as $link_module=>$val)
 					{
 					$links[$i] = $link_module;
-					$result = $wpdb->query("ALTER TABLE ".$wpdb->prefix . $link_module ." ADD ".$this->foreign_key." INT(11) unsigned NOT NULL");
+					$get_result = $wpdb->prepare("ALTER TABLE ".$wpdb->prefix . $link_module ." ADD ".$this->foreign_key." INT(11) unsigned NOT NULL");
+					$result = $wpdb->query($get_result);
 					$i++;
 					IZC_Modules::create_link_purpose($link_module,$val);
 					}
@@ -681,7 +701,8 @@ if(!class_exists('IZC_Database'))
 		public function share_item(){
 			global $wpdb;
 			
-			$is_multi = $wpdb->get_results('SELECT distinct(plugin) FROM ' . $wpdb->prefix . $this->plugin_table);
+			$get_is_multi = $wpdb->prepare('SELECT distinct(plugin) FROM ' . $wpdb->prefix . $this->plugin_table);
+			$is_multi = $wpdb->get_results($get_is_multi);
 			
 			if(count($is_multi)>1)
 				{
@@ -700,7 +721,8 @@ if(!class_exists('IZC_Database'))
 		
 		public function get_plugin_table(){
 			global $wpdb;
-			$fields = $wpdb->get_results("SHOW FIELDS FROM " . $wpdb->prefix . $this->plugin_table);
+			$get_fields = $wpdb->prepare("SHOW FIELDS FROM " . $wpdb->prefix . $this->plugin_table);
+			$fields = $wpdb->get_results($get_fields);
 			
 			foreach($fields as $field)
 				{
@@ -711,7 +733,8 @@ if(!class_exists('IZC_Database'))
 		
 		public function get_foreign_fields($key){
 			global $wpdb;
-			$fields = $wpdb->get_results("SHOW FIELDS FROM " . $wpdb->prefix . $this->plugin_table . " LIKE '%".$key."%'");
+			$get_fields = $wpdb->prepare("SHOW FIELDS FROM " . $wpdb->prefix . $this->plugin_table . " LIKE '%".$key."%'");
+			$fields = $wpdb->get_results($get_fields);
 			
 			$foreign_fields = array();
 			
@@ -724,12 +747,14 @@ if(!class_exists('IZC_Database'))
 		
 		public function get_foreign_Id($Id,$foreign_key,$table){
 			global $wpdb;
-			return $wpdb->get_var("SELECT ".$foreign_key." FROM " . $wpdb->prefix . $table ." WHERE Id = '".$Id."'");
+			$result = $wpdb->prepare("SELECT ".$foreign_key." FROM " . $wpdb->prefix . $table ." WHERE Id = '".$Id."'");
+			return $wpdb->get_var($result);
 		}
 		
 		public function get_module_table(){
 			global $wpdb;
-			$fields = $wpdb->get_results("SHOW FIELDS FROM " . $wpdb->prefix . $this->module_table);
+			$get_fields = $wpdb->prepare("SHOW FIELDS FROM " . $wpdb->prefix . $this->module_table);
+			$fields = $wpdb->get_results($get_fields);
 			$table_fields = '';
 			foreach($fields as $field)
 				{
