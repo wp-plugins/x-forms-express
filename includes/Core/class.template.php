@@ -39,21 +39,12 @@ if(!class_exists('IZC_Template'))
 			$this->page_header  .= $_REQUEST['Id'];
 			$this->page_header  .= '</div>';
 			
-			$this->page_header  .= '<div id="upload_path" style="display:none;">';
-			$this->page_header  .=	ABSPATH.'wp-content/uploads/wa-core/';
-			$this->page_header  .= '</div>';
 			
-			$this->page_header  .= '<div id="modules_uri" style="display:none;">';
-			$this->page_header  .=	get_option('siteurl').'/wp-content/modules/';
-			$this->page_header  .= '</div>';
 			
 			$this->page_header  .= '<div id="site_url" style="display:none;">';
 			$this->page_header  .=	get_option('siteurl');
 			$this->page_header  .= '</div>';
 			
-			$this->page_header  .= '<div id="upload_uri" style="display:none;">';
-			$this->page_header  .=	get_option('siteurl').'/wp-content/uploads/wa-core/';
-			$this->page_header  .= '</div>';
 			
 			$this->page_header  .= '<div class="wrap">';
 			
@@ -173,12 +164,12 @@ if(!class_exists('IZC_Template'))
 									switch(@$filter['type'])
 										{
 										case 'dropdown':
-										$output .= '<input type="hidden" name="selected_'.$filter['name'].'" value="'.IZC_Database::get_parent($_REQUEST['Id'],$this->component_table).'">';;
+										$output .= '<input type="hidden" name="selected_'.filter_var($filter['name'],FILTER_SANITIZE_STRING).'" value="'.IZC_Database::get_parent(filter_var($_REQUEST['Id'],FILTER_SANITIZE_NUMBER_INT),$this->component_table).'">';;
 										break;
 										case 'text':
-										$do_get_val = $wpdb->prepare('SELECT '.$filter['name'].' FROM '.$wpdb->prefix . $this->component_table .' WHERE Id='.$_REQUEST['Id']);
+										$do_get_val = $wpdb->prepare('SELECT '.filter_var($filter['name'],FILTER_SANITIZE_STRING).' FROM '.$wpdb->prefix . $this->component_table .' WHERE Id='.filter_var($_REQUEST['Id'],FILTER_SANITIZE_NUMBER_INT));
 										$get_val = $wpdb->get_var($do_get_val);
-										$output .= '<input type="hidden" name="get_'.$filter['name'].'" value='.$get_val.'>';
+										$output .= '<input type="hidden" name="get_'.filter_var($filter['name'],FILTER_SANITIZE_STRING).'" value='.$get_val.'>';
 										}
 									}
 							/*************************/
@@ -248,12 +239,12 @@ if(!class_exists('IZC_Template'))
 			if($total_pages>1)
 				{				
 				$output .= '<span class="pagination-links">';
-				$output .= '<a class="first-page iz-first-page btn btn-primary btn-sm">&lt;&lt;</a>&nbsp;';
-				$output .= '<a title="Go to the next page" class="iz-prev-page btn btn-sm btn-primary prev-page">&lt;</a>&nbsp;';
+				$output .= '<a class="first-page iz-first-page btn btn-default btn-sm"><span class="fa fa-angle-double-left"></span></a>&nbsp;';
+				$output .= '<a title="Go to the next page" class="iz-prev-page btn btn-sm btn-default prev-page"><span class="fa fa-angle-left"></span></a>&nbsp;';
 				$output .= '<span class="paging-input"> ';
 				$output .= '<span class="current-page">'.($_POST['current_page']+1).'</span> of <span class="total-pages">'.$total_pages.'</span>&nbsp;</span>';
-				$output .= '<a title="Go to the next page" class="iz-next-page btn btn-primary btn-sm next-page">&gt;</a>&nbsp;';
-				$output .= '<a title="Go to the last page" class="iz-last-page btn btn-primary btn-sm last-page">&gt;&gt;</a></span>';
+				$output .= '<a title="Go to the next page" class="iz-next-page btn btn-default btn-sm next-page"><span class="fa fa-angle-right"></span></a>&nbsp;';
+				$output .= '<a title="Go to the last page" class="iz-last-page btn btn-default btn-sm last-page"><span class="fa fa-angle-double-right"></span></a></span>';
 				}
 			echo $output;
 			die();
@@ -262,7 +253,7 @@ if(!class_exists('IZC_Template'))
 		public function get_total_records($table,$additional_params=array(),$nex_forms_id=''){
 			global $wpdb;
 			
-			$get_tree = $wpdb->prepare('SHOW FIELDS FROM '. $wpdb->prefix . $table .' LIKE "parent_Id"');
+			$get_tree = $wpdb->prepare('SHOW FIELDS FROM '. $wpdb->prefix . filter_var($table,FILTER_SANITIZE_STRING) .' LIKE "parent_Id"');
 			$tree = $wpdb->query($get_tree);
 			
 			$additional_params = json_decode(str_replace('\\','',$_POST['additional_params']),true);
@@ -275,8 +266,8 @@ if(!class_exists('IZC_Template'))
 			if($nex_forms_id)
 				$where_str .= ' AND nex_forms_Id='.$nex_forms_id;
 			
-			$return = $wpdb->prepare('SELECT count(*) FROM '.$wpdb->prefix . $table.' WHERE Id<>"" '. (($tree) ? ' AND parent_Id=0' : '').' '. (($_POST['plugin_alias']) ? ' AND plugin="'.$_POST['plugin_alias'].'"' : '').' '.$where_str );
-			return $wpdb->get_var($return);
+			$sql = $wpdb->prepare('SELECT count(*) FROM '.$wpdb->prefix . filter_var($table,FILTER_SANITIZE_STRING).' WHERE Id<>"" '. (($tree) ? ' AND parent_Id=0' : '').' '. ((filter_var($_POST['plugin_alias'],FILTER_SANITIZE_STRING)) ? ' AND plugin="'.$_POST['plugin_alias'].'"' : '').' '.$where_str );
+			return $wpdb->get_var($sql);
 		}
 		
 		public function build_data_list(){
@@ -294,6 +285,7 @@ if(!class_exists('IZC_Template'))
 						$output .= '<div class="alignleft actions">';
 						$output .= '<input type="hidden" name="export_nex_form" value="true">';
 						$output .= '<input type="hidden" name="page" value="nex-forms-form-export">';
+						$output .= '<input type="hidden" name="nex_forms_Id" value="">';
 							$output .= '<select name="nex_forms_Id" class="choose_nex_form form-control">';
 								$output .= '<option selected="selected" value="">All Forms</option>';
 								
@@ -310,9 +302,10 @@ if(!class_exists('IZC_Template'))
 								//$output .= '<option value="batch-delete">Delete</option>';
 							$output .= '</select>';
 							
-							$output .= '<button type="submit" class="btn btn-primary do_export" id="doaction" name=""><i class="fa fa-cloud-download"></i> Export</button>';
+							
 							
 						$output .= '</div>';
+						$output .= '<button type="submit" class="btn btn-primary btn-sm do_export" id="doaction" name=""><i class="fa fa-cloud-download"></i> Export to CSV</button>';
 					$output .= '</form>';	
 						
 						
@@ -327,11 +320,11 @@ if(!class_exists('IZC_Template'))
 					$output .= '<div class="tablenav top">';
 	
 						$output .= '<div class="alignleft actions">';
-							$output .= '<select name="action">';
+							$output .= '<select name="action" class="form-control">';
 								$output .= '<option selected="selected" value="-1">Bulk Actions</option>';
 								$output .= '<option value="batch-delete">Delete</option>';
 							$output .= '</select>';
-							$output .= '<input type="submit" value="Apply" class="button-secondary action bulk-action" id="doaction" name="">';
+							$output .= '<input type="submit" value="Apply" class="btn btn-default action bulk-action" id="doaction" name="">';
 						$output .= '</div>';
 						
 						
@@ -363,8 +356,10 @@ if(!class_exists('IZC_Template'))
 								{
 								if(is_array($header))
 									$header = $header['grouplabel'];
-															
-									$output .= '<th valign="bottom" class="manage-column sortable column-'.IZC_Functions::format_name($header).'" '.((IZC_Functions::format_name($header)=='form_data') ? 'width="5%"' : '').'><a class=""><span class="sortable-column" data-col-name="'.IZC_Functions::format_name($header).'" data-col-order="asc">'.IZC_Functions::unformat_name(str_replace('Id','',str_ireplace('dynamic_forms','',$header))).'</span></a></th>'; //<span class="sorting-indicator"></span>
+									if(IZC_Functions::format_name($header)=='form_data')						
+										$output .= '<th valign="bottom" class="manage-column">'.IZC_Functions::unformat_name(str_replace('Id','',str_ireplace('dynamic_forms','',$header))).'</th>'; //<span class="sorting-indicator"></span>
+									else
+										$output .= '<th valign="bottom" class="manage-column sortable column-'.IZC_Functions::format_name($header).'" '.((IZC_Functions::format_name($header)=='form_data') ? 'width="5%"' : '').'><a class=""><span class="sortable-column" data-col-name="'.IZC_Functions::format_name($header).'" data-col-order="asc">'.IZC_Functions::unformat_name(str_replace('Id','',str_ireplace('dynamic_forms','',$header))).'</span></a></th>'; //<span class="sorting-indicator"></span>
 								}
 						$output .= '<th class="manage-column" scope="col" width="5%"> Export to PDF</th>';	
 						$output .= '</tr>';
@@ -376,7 +371,12 @@ if(!class_exists('IZC_Template'))
 						
 						foreach($this->data_fields as $header)	
 								{
-								$output .= '<th valign="bottom" class="manage-column sortable column-'.IZC_Functions::format_name($header).'"><a class=""><span class="sortable-column" data-col-name="'.IZC_Functions::format_name($header).'" data-col-order="asc">'.IZC_Functions::unformat_name(str_replace('Id','',str_ireplace('dynamic_forms','',$header))).'</span></a></th>'; //<span class="sorting-indicator"></span>
+								if(is_array($header))
+									$header = $header['grouplabel'];
+									if(IZC_Functions::format_name($header)=='form_data')						
+										$output .= '<th valign="bottom" class="manage-column">'.IZC_Functions::unformat_name(str_replace('Id','',str_ireplace('dynamic_forms','',$header))).'</th>'; //<span class="sorting-indicator"></span>
+									else
+										$output .= '<th valign="bottom" class="manage-column sortable column-'.IZC_Functions::format_name($header).'" '.((IZC_Functions::format_name($header)=='form_data') ? 'width="5%"' : '').'><a class=""><span class="sortable-column" data-col-name="'.IZC_Functions::format_name($header).'" data-col-order="asc">'.IZC_Functions::unformat_name(str_replace('Id','',str_ireplace('dynamic_forms','',$header))).'</span></a></th>'; //<span class="sorting-indicator"></span>
 								}
 						
 						$output .= '<th class="manage-column" scope="col">Export to PDF</th>';	
@@ -391,11 +391,11 @@ if(!class_exists('IZC_Template'))
 					
 					$output .= '<div class="tablenav top">';
 					$output .= '<div class="alignleft actions">';
-					$output .= '<select name="action2">';
+					$output .= '<select name="action2" class="form-control">';
 					$output .= '<option selected="selected" value="-1">Bulk Actions</option>';
 					$output .= '<option value="batch-delete">Delete</option>';
 					$output .= '</select>';
-					$output .= '<input type="submit" value="Apply" class="button-secondary action bulk-action" id="doaction" name="">';
+					$output .= '<input type="submit" value="Apply" class="btn btn-default action bulk-action" id="doaction" name="">';
 					$output .= '</div>';
 					
 					$output	.= '<div class="nex-table-nav">';
@@ -474,17 +474,16 @@ if(!class_exists('IZC_Template'))
 			$set_label = '';
 			if(isset($_POST['edit_Id']))
 				{
-				$get_row  = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix . @$_POST['plugin_table'] .' WHERE Id='.@$_POST['edit_Id']);
+				$get_row  = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix . filter_var($_POST['plugin_table'],FILTER_SANITIZE_STRING) .' WHERE Id='.filter_var($_POST['edit_Id'],FILTER_SANITIZE_NUMBER_INT));
 				$row  = $wpdb->get_row($get_row);
 				}
-			
 			if(isset($_REQUEST['Id']))
 				{
-				$get_row  = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix . @$_REQUEST['table'] .' WHERE Id='.@$_REQUEST['Id']);
+				$get_row  = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix . filter_var($_REQUEST['plugin_table'],FILTER_SANITIZE_STRING) .' WHERE Id='.filter_var($_POST['edit_Id'],FILTER_SANITIZE_NUMBER_INT));
 				$row  = $wpdb->get_row($get_row);
 				}
 			
-			$default_values = get_option('nex-forms-default-settings');
+			$default_values = get_option('wnex-forms-default-settings');
 			
 			if($row)
 				$set_label = $row->$label;

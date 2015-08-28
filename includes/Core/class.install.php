@@ -1,5 +1,4 @@
 <?php
-define('PLUGIN_MODULE_ABSPATH', ABSPATH . 'wp-content/modules/');
 if(!class_exists('IZC_Instalation'))
 	{
 	class IZC_Instalation{
@@ -74,60 +73,7 @@ if(!class_exists('IZC_Instalation'))
 		
 		public function install_modules_directory(){
 			
-			if(!is_dir( PLUGIN_MODULE_ABSPATH ) )
-				{
-				if(!is_writable(ABSPATH . 'wp-content'))
-					{		
-					//$this->error_msg = '<strong>Write permisions denied!</strong><br> Please allow write permisions for directory: <em>'. ABSPATH . 'wp-content' .'</em></p>'; 
-					$this->errors    = true;
-					}
-				else
-					{			
-					$creat_modules_DIR 				= @mkdir(PLUGIN_MODULE_ABSPATH, 0777);
-					$creat_fileuploads_DIR 			= @mkdir(ABSPATH . 'wp-content/uploads', 0777);
-					$creat_coreuploads_DIR 			= @mkdir(ABSPATH . 'wp-content/uploads/wa-core', 0777);
-					$creat_coreuploads_thumbs_DIR 	= @mkdir(ABSPATH . 'wp-content/uploads/wa-core/thumbs', 0777);
-					
-					if(!$creat_modules_DIR)
-						{
-						//$this->error_msg = 'An error accured while trying to create <strong>'. PLUGIN_MODULE_ABSPATH .'</strong></p>'; 
-						$this->errors    = true;
-						}
-					else
-						{
-						$this->error_msg = ''; 
-						$this->errors    = false;
-						}
-					}
-				}
-			if(!is_dir(PLUGIN_MODULE_ABSPATH . $this->component_alias))
-				{
-				if(!is_writable(PLUGIN_MODULE_ABSPATH))
-					{
-					//$this->error_msg = '<strong>Write permisions denied!</strong><br> Please allow write permisions for directory: <em>'. PLUGIN_MODULE_ABSPATH .'</em></p>'; 
-					$this->errors    = true;
-					}
-				else
-					{	
-					$creat_modules_component_DIR = @mkdir(PLUGIN_MODULE_ABSPATH . $this->component_alias, 0777);
-					
-					if(!$creat_modules_component_DIR)
-						{
-						//$this->error_msg = 'An error occured while trying to create <strong>'. PLUGIN_MODULE_ABSPATH . $this->component_alias .'</strong>'; 
-						$this->errors    = true;
-						}
-					else
-						{
-						$this->error_msg 	= ''; 
-						$this->errors    	= false;
-						
-						$module_base 		= get_option('iz-modules-base', array());
-						$module_base[$this->component_name] = 'installed';
-						
-						update_option('iz-modules-base',$module_base);
-						}
-					}
-				}
+			
 		}
 		
 		public function install_component_table(){

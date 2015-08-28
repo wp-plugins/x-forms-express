@@ -2,7 +2,7 @@
 /***************************************/
 /***********   Ajax Calls   ************/
 /***************************************/
-
+error_reporting(1);
 add_action('wp_ajax_get_lang_settings',  array('NEXForms_admin','get_lang_settings') );
 add_action('wp_ajax_get_event_info',  array('NEXForms_admin','get_event_info') );
 add_action('wp_ajax_get_events',  array('NEXForms_admin','NEXForms_get_events') );
@@ -12,93 +12,10 @@ add_action('wp_ajax_build_form_data_table', array('NEXForms_form_entries','build
 add_action('wp_ajax_populate_form_data_list', array('NEXForms_form_entries','get_form_data'));
 add_action('wp_ajax_do_upload_image', array('NEXForms_admin','do_upload_image'));
 add_action('wp_ajax_do_upload_image_select', array('NEXForms_admin','do_upload_image_select'));
-
-
-add_action( 'wp_ajax_save_email_config', array('NEXForms_admin','save_email_config'));
-add_action( 'wp_ajax_save_script_config', array('NEXForms_admin','save_script_config'));
-add_action( 'wp_ajax_save_style_config', array('NEXForms_admin','save_style_config'));
-add_action( 'wp_ajax_save_other_config', array('NEXForms_admin','save_other_config'));
-
 add_action('wp_ajax_delete_form_entry', array('NEXForms_form_entries','delete_form_entry'));
 
 class NEXForms_admin{
 
-	/***************************************/
-	/*******   Customizing Forms   *********/
-	/***************************************/
-	
-	
-	public function submit_nex_form(){
-		echo 'test';
-		
-		die();	
-	}
-	
-	public function save_email_config() {
-		update_option('nex-forms-email-config',$_POST);
-		die();
-	}
-	
-	public function save_script_config() {
-		//print_r($_POST);
-		
-		
-		if(!array_key_exists('inc-jquery',$_POST))
-			$_POST['inc-jquery'] = '0';
-		if(!array_key_exists('inc-jquery-ui-core',$_POST))
-			$_POST['inc-jquery-ui-core'] = '0';
-		if(!array_key_exists('inc-jquery-ui-autocomplete',$_POST))
-			$_POST['inc-jquery-ui-autocomplete'] = 0;
-		if(!array_key_exists('inc-jquery-ui-slider',$_POST))
-			$_POST['inc-jquery-ui-slider'] = 0;
-		if(!array_key_exists('inc-jquery-form',$_POST))
-			$_POST['inc-jquery-form'] = 0;
-		if(!array_key_exists('inc-onload',$_POST))
-			$_POST['inc-onload'] = 0;
-			
-		update_option('nex-forms-script-config',$_POST);
-		die();
-	}
-	public function save_style_config() {
-
-		if(!array_key_exists('incstyle-jquery',$_POST))
-			$_POST['incstyle-jquery'] = '0';
-		if(!array_key_exists('incstyle-font-awesome',$_POST))
-			$_POST['incstyle-font-awesome'] = '0';
-		if(!array_key_exists('incstyle-bootstrap',$_POST))
-			$_POST['incstyle-bootstrap'] = '0';
-		if(!array_key_exists('incstyle-jquery',$_POST))
-			$_POST['incstyle-custom'] = '0';
-
-		update_option('nex-forms-style-config',$_POST);
-		die();
-	}
-	public function save_other_config() {
-		
-		if(!get_option('nex-forms-other-config'))
-		{
-		add_option('nex-forms-other-config',array(
-				'enable-print-scripts'=>'1',
-				'enable-print-styles'=>'1',
-				'enable-tinymce'=>'1',
-				'enable-widget'=>'1',	
-			));
-		}
-		if(!array_key_exists('enable-print-scripts',$_POST))
-			$_POST['enable-print-scripts'] = '0';
-		if(!array_key_exists('enable-print-styles',$_POST))
-			$_POST['enable-print-styles'] = '0';
-		if(!array_key_exists('enable-tinymce',$_POST))
-			$_POST['enable-tinymce'] = '0';
-		if(!array_key_exists('enable-widget',$_POST))
-			$_POST['enable-widget'] = '0';
-		
-		
-		update_option('nex-forms-other-config',$_POST);
-		die();
-	}
-	
-	
 	public function do_upload_image_select() {
 	
 		/*print_r($_POST);
@@ -3563,7 +3480,7 @@ xlsx</div>
 									
 									
 									if ( !is_plugin_active( 'nex-forms-themes-add-on/main.php' ) ) {
-										$output .= '<link rel="stylesheet" class="color_scheme_test" type="text/css" href="http://basixonline.net/theme_testing/" />';
+										//$output .= '<link rel="stylesheet" class="color_scheme_test" type="text/css" href="http://basixonline.net/theme_testing/" />';
 										?>
                                         
                                         <script type="text/javascript">
@@ -3577,7 +3494,7 @@ xlsx</div>
 																		jQuery(this).removeClass('active');
 																		if(jQuery(this).attr('class')!='default')
 																			{																				
-																				jQuery('link.color_scheme_test').attr('href','http://basixonline.net/theme_testing/'+ jQuery(this).attr('class') +'/jquery.ui.theme.css');
+																				//jQuery('link.color_scheme_test').attr('href','http://basixonline.net/theme_testing/'+ jQuery(this).attr('class') +'/jquery.ui.theme.css');
 																				jQuery('.the_input_element, .bootstrap-tagsinput, .radio-group a, .check-group a').addClass('ui-state-default')
 																				jQuery('.form_field .input-group-addon, .bootstrap-touchspin .btn').addClass('ui-state-active')
 																				jQuery('p.the_input_element, .heading .the_input_element').removeClass('ui-state-default');
@@ -4200,8 +4117,8 @@ class NEXForms_form_entries{
 	
 	public function delete_form(){
 			global $wpdb;
-			$prep = $wpdb->prepare('DELETE FROM ' .$wpdb->prefix. 'wap_nex_forms WHERE Id = '.$_POST['Id']);
-			$wpdb->query($prep);
+			$do_delete = $wpdb->prepare('DELETE FROM ' .$wpdb->prefix. 'wap_nex_forms WHERE Id = '.filter_var($_POST['Id'],FILTER_SANITIZE_NUMBER_INT));
+			$wpdb->query($do_delete);
 			die();
 		}
 
@@ -4210,8 +4127,7 @@ class NEXForms_form_entries{
 		if(!get_option('wNex-Forms-default-settings'))
 			add_option('wNex-Forms-default-settings',array());
 		
-		update_option('wNex-Forms-default-settings',$_POST);
-		
+
 		IZC_Functions::print_message( 'updated' , 'Settings Updated' );
 		die();
 	}
@@ -4227,7 +4143,7 @@ class NEXForms_form_entries{
 		
 		foreach($forms as $form)
 			{
-			$get_form_data = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE nex_forms_Id='.$form->Id);
+			$get_form_data = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE nex_forms_Id='.filter_var($form->Id,FILTER_SANITIZE_NUMBER_INT));
 			$form_data = $wpdb->get_results($get_form_data);
 			
 			$form_field_array = json_decode($form_fields->form_fields,true);
@@ -4239,7 +4155,7 @@ class NEXForms_form_entries{
 				array_unique($headers);	
 				
 				
-				$sql = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE nex_forms_Id='.$form->Id.' GROUP BY time_added  ORDER BY time_added');
+				$sql = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE nex_forms_Id='.filter_var($form->Id,FILTER_SANITIZE_NUMBER_INT).' GROUP BY time_added  ORDER BY time_added');
 				$results 	= $wpdb->get_results($sql);
 				
 				
@@ -4275,11 +4191,10 @@ class NEXForms_form_entries{
 									'viewed'				=>	'no',
 									'date_time'				=>   date('Y-m-d H:i:s',$data->time_added),
 									'form_data'				=>	json_encode($val,true)
-										)
-									 )
-								 );		
+									)
+							 )		
+							 );			
 							}
-							
 						$do_insert = $wpdb->query($insert);
 						
 						$new_record = $old_record;
@@ -4355,10 +4270,11 @@ class NEXForms_form_entries{
 
 		$csv_data = '';
 		
-		$get_form_fields = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms WHERE Id='.$form_id);
+		$get_form_fields = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms WHERE Id='.filter_var($form_id,FILTER_SANITIZE_NUMBER_INT));
 		$form_fields = $wpdb->get_row($get_form_fields);
 		
-		$get_form_data = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE nex_forms_Id='.$form_id);
+		
+		$get_form_data = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE nex_forms_Id='.filter_var($form_id,FILTER_SANITIZE_NUMBER_INT));
 		$form_data = $wpdb->get_results($get_form_data);
 		
 		$form_field_array = json_decode($form_fields->form_fields,true);
@@ -4423,13 +4339,12 @@ class NEXForms_form_entries{
 			
 			$output .= '<tbody class="list:tag" id="the-list">';
 			
-			$sql = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE nex_forms_Id='.$form_id.' GROUP BY time_added ORDER BY time_added DESC
-								LIMIT '.((isset($_POST['current_page'])) ? $_POST['current_page']*10 : '0'  ).',10 ');
+			$sql = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE nex_forms_Id='.filter_var($form_id,FILTER_SANITIZE_NUMBER_INT).' GROUP BY time_added ORDER BY time_added DESC
+								LIMIT '.((isset($_POST['current_page'])) ? filter_var($_POST['current_page'],FILTER_SANITIZE_NUMBER_INT)*10 : '0'  ).',10 ');
 			$results 	= $wpdb->get_results($sql);
 			
-			$sql2 = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE nex_forms_Id='.$form_id.' GROUP BY time_added ORDER BY time_added DESC');
+			$sql2 = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE nex_forms_Id='.filter_var($form_id,FILTER_SANITIZE_NUMBER_INT).' GROUP BY time_added ORDER BY time_added DESC');
 			$csv_results 	= $wpdb->get_results($sql2);
-
 			if($results)
 				{
 				$i = 1;			
@@ -4455,28 +4370,6 @@ class NEXForms_form_entries{
 								{
 								
 								$val = $check_field->meta_value;
-								
-								if(strstr($check_field->meta_value,'wp-content'))
-									{
-									$get_extension = explode('.',$check_field->meta_value);
-									
-									$get_file_name = explode('/',$get_extension[0]);
-									
-									$val = '<a href="'.$check_field->meta_value.'" target="_blank"><img width="30" src="'.WP_PLUGIN_URL.'/X%20Forms/includes/Core/images/icons/ext/'.$get_extension[count($get_extension)-1].'.png">'.$get_file_name[count($get_file_name)-1].'</a>';
-									$image_extensions = array('jpg','jpeg','gif','png','bmp');
-									foreach($image_extensions as $image_extension)
-										{
-										if(stristr($check_field->meta_value,$image_extension))
-											{
-											$val = '<a href="'.$check_field->meta_value.'" ><img src="'.$check_field->meta_value.'" style="max-width:100px" ></a>';
-											}
-										}
-									}
-								else
-									{
-									$val = $check_field->meta_value;
-									}
-								
 								$output .= '<td class="manage-column column-'.$heading.'">'.$val.'&nbsp;';
 								$output .= (($k==1) ? '<div class="row-actions"><span class="delete"><a href="javascript:delete_form_entry(\''.$data->time_added.'\',\''.$data->Id.'\');" >Delete</a></span></div>' : '' ).'</td>';
 								
@@ -4557,9 +4450,10 @@ class NEXForms_form_entries{
 				$output .= '<input type="hidden" name="current_page" value="0">';
 				$output .= '<input type="hidden" name="wa_form_Id" value="'.$_POST['form_Id'].'">';
 
+			$output .= '<form name="export_csv" method="post" action="'.plugins_url('export.php',__FILE__).'" id="posts-filter" style="display:none;">';
 				$output .= '<textarea name="csv_content">'.$csv_data.'</textarea>';	
 				$output .= '<input name="_title" value="'.IZC_Database::get_title($form_id,'wap_nex_forms').'">';	
-		
+			$output .= '</form>';
 			
 		if($_POST['form_Id'])	{
 			echo $output;
@@ -4578,8 +4472,8 @@ class NEXForms_form_entries{
 		$headings 	= json_decode($args);
 
 		
-		$sql = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE nex_forms_Id='.$_POST['form_Id'].' GROUP BY time_added ORDER BY time_added DESC
-										LIMIT '.((isset($_POST['current_page'])) ? $_POST['current_page']*10 : '0'  ).',10 ');
+		$sql = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE nex_forms_Id='.filter_var($_POST['form_Id'],FILTER_SANITIZE_NUMBER_INT).' GROUP BY time_added ORDER BY time_added DESC
+										LIMIT '.((isset($_POST['current_page'])) ? filter_var($_POST['current_page'],FILTER_SANITIZE_NUMBER_INT)*10 : '0'  ).',10 ');
 		$results 	= $wpdb->get_results($sql);
 
 		if($results)
@@ -4600,34 +4494,14 @@ class NEXForms_form_entries{
 					}
 					$k =1;
 					foreach($headings as $heading)	
-						{						
-							$get_check_field = $wpdb->prepare('SELECT meta_key,meta_value FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE meta_key="'.$heading.'" AND time_added="'.$data->time_added.'"');
-							$check_field = $wpdb->get_row($get_check_field );
+						{	
+							$get_check_field = $wpdb->prepare('SELECT meta_key,meta_value FROM '.$wpdb->prefix.'wap_nex_forms_meta WHERE meta_key="'.$heading.'" AND time_added="'.$data->time_added.'"');					
+							$check_field = $wpdb->get_row($get_check_field);
 							
 							if($check_field)
 								{
 								$val = $check_field->meta_value;
 								
-								if(strstr($check_field->meta_value,'wp-content'))
-									{
-									$get_extension = explode('.',$check_field->meta_value);
-									
-									$get_file_name = explode('/',$get_extension[0]);
-									
-									$val = '<a href="'.$check_field->meta_value.'" target="_blank"><img width="30" src="'.WP_PLUGIN_URL.'/X%20Forms/includes/Core/images/icons/ext/'.$get_extension[count($get_extension)-1].'.png">'.$get_file_name[count($get_file_name)-1].'</a>';
-									$image_extensions = array('jpg','jpeg','gif','png','bmp');
-									foreach($image_extensions as $image_extension)
-										{
-										if(stristr($check_field->meta_value,$image_extension))
-											{
-											$val = '<a href="'.$check_field->meta_value.'" ><img src="'.$check_field->meta_value.'" style="max-width:100px" ></a>';
-											}
-										}
-									}
-								else
-									{
-									$val = $check_field->meta_value;
-									}
 								$output .= '<td class="manage-column column-'.$heading.'">'.$val.'&nbsp;';
 								$output .= (($k==1) ? '<div class="row-actions"><span class="delete"><a href="javascript:delete_form_entry(\''.$data->time_added.'\',\''.$data->Id.'\');" >Delete</a></span></div>' : '' ).'</td>';
 
@@ -4655,7 +4529,6 @@ class NEXForms_form_entries{
 		die();
 	}
 	
-	
 	public function from_entries_table_pagination(){
 
 		
@@ -4680,19 +4553,17 @@ class NEXForms_form_entries{
 	
 	public function get_total_form_entries($wa_form_Id){
 		global $wpdb;
-		$do_get_count  = $wpdb->prepare('SELECT Id FROM '.$wpdb->prefix .'wap_nex_forms_meta WHERE nex_forms_Id='.$wa_form_Id.' GROUP BY time_added');
+		$do_get_count  = $wpdb->get_results('SELECT Id FROM '.$wpdb->prefix .'wap_nex_forms_meta WHERE nex_forms_Id='.filter_var($wa_form_Id,FILTER_SANITIZE_NUMBER_INT).' GROUP BY time_added');
 		$get_count  = $wpdb->get_results($do_get_count);
 
 		return count($get_count);
-		
-		
-		
 	}
 	
 	public function delete_form_entry(){
 		global $wpdb;
-		$delete = $wpdb->prepare('DELETE FROM ' .$wpdb->prefix. 'wap_nex_forms_meta WHERE time_added = "'.$_POST['last_update'].'"');
-		$wpdb->query($delete);
+		
+		$do_delete = $wpdb->prepare('DELETE FROM ' .$wpdb->prefix. 'wap_nex_forms_meta WHERE time_added = "'.filter_var($_POST['last_update'],FILTER_SANITIZE_NUMBER_INT).'"');
+		$wpdb->query($do_delete);
 
 		IZC_Functions::print_message( 'updated' , 'Item deleted' );
 		die();

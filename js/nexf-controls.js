@@ -406,7 +406,6 @@ jQuery('.create_new_calendar').live('click',
 					
 					if(!jQuery('link.color_scheme').attr('class'))
 						{
-						jQuery('.nex-forms-container').prepend('<link href="' + jQuery('#site_url').text() + '/wp-content/plugins/nex-forms-themes-add-on/css/default/jquery.ui.theme.css" title="color_scheme" class="color_scheme" rel="stylesheet" />');
 						jQuery('.nex-forms-container').prepend('<div class="active_theme" style="display:none;">default</div>');
 						}
 					else

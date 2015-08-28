@@ -700,7 +700,7 @@ public function generate_csv()
 global $wpdb;
   	
 	
-	$get_form_data = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_entries WHERE nex_forms_Id = '.$_REQUEST['nex_forms_Id'].' ORDER BY date_time DESC');
+	$get_form_data = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms_entries WHERE nex_forms_Id = '.filter_var($_REQUEST['nex_forms_Id'],FILTER_SANITIZE_NUMBER_INT).' ORDER BY date_time DESC');
 	$form_data = $wpdb->get_results($get_form_data);
 	$top = 1;	
 	foreach($form_data as $data)
@@ -776,7 +776,7 @@ function submit_nex_form(){
 		global $wpdb;
 	//$form_attr = $wpdb->get_row('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms WHERE Id = '.$_REQUEST['nex_forms_Id']);
 	
-	$get_form = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms WHERE Id = '.$_POST['nex_forms_Id']);
+	$get_form = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms WHERE Id = '.filter_var($_POST['nex_forms_Id'],FILTER_SANITIZE_NUMBER_INT));
 	$form_attr = $wpdb->get_row($get_form);
 
 $user_fields = '
@@ -1079,9 +1079,9 @@ $data_array = array();
 	
 	$data_entry = $wpdb->prepare($wpdb->insert($wpdb->prefix.'wap_nex_forms_entries',
 		array(								
-			'nex_forms_Id'			=>	$_REQUEST['nex_forms_Id'],
-			'page'					=>	$_POST['page'],
-			'ip'					=>  $_POST['ip'],
+			'nex_forms_Id'			=>	filter_var($_REQUEST['nex_forms_Id'],FILTER_SANITIZE_NUMBER_INT),
+			'page'					=>	filter_var($_POST['page'],FILTER_SANITIZE_URL),
+			'ip'					=>  filter_var($_POST['ip'],FILTER_SANITIZE_NUMBER_FLOAT),
 			'user_Id'				=>	get_current_user_id(),
 			'viewed'				=>	'no',
 			'date_time'				=>  date('Y-m-d H:i:s'),
@@ -1290,7 +1290,7 @@ function NEXForms_ui_output( $atts , $echo=''){
 	else
 		$id=$atts;
 		
-		$get_form = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms WHERE Id = '.$id);
+		$get_form = $wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'wap_nex_forms WHERE Id = '.filter_var($id,FILTER_SANITIZE_NUMBER_INT));
 		$form_attr = $wpdb->get_row($get_form);
 		
 		if($make_sticky=='yes')
